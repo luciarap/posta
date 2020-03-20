@@ -23,9 +23,8 @@ public class VeduciPosty extends Zamestnanci {
 	
 	public void zapisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		zasielka.podacieCislo = generujPodacieCislo();
-		ar.add(new Zasielky());
+		ar.add(zasielka);
 		System.out.println("Zapisana nova zasielka s podacim cislo: " + zasielka.podacieCislo);
-		
 	}
 
 }
