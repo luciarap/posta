@@ -4,12 +4,14 @@ package Posta;
 import java.util.ArrayList;
 
 import Zamestnanci.VeduciPosty;
+import tovary.Tovary;
 import zasielky.DoporucenyList;
 import zasielky.Zasielky;
 import zasielky.Zasielky.Adresa;
 
 public class Posta {
 	static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
+	static ArrayList<Tovary> ar2 = new ArrayList<Tovary>();
 
 	public static void main(String[] args) {
 
