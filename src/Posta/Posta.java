@@ -3,6 +3,7 @@ package Posta;
 
 import java.util.ArrayList;
 
+import Zamestnanci.Dorucovatel;
 import Zamestnanci.VeduciPosty;
 import tovary.Tovary;
 import zasielky.DoporucenyList;
@@ -12,6 +13,7 @@ import zasielky.Zasielky.Adresa;
 public class Posta {
 	static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
 	static ArrayList<Tovary> ar2 = new ArrayList<Tovary>();
+	
 
 	public static void main(String[] args) {
 
@@ -20,6 +22,8 @@ public class Posta {
 		DoporucenyList doplist2 = new DoporucenyList("Jano", "Kovac", "Komenskeho", 12, 97222, "Nitrica");
 		veduci1.zapisZasielky(ar, doplist1);
 		veduci1.zapisZasielky(ar, doplist2);
+		Dorucovatel dorucovatel1 = new Dorucovatel("Eva", "Benkova");
+		veduci1.pridelPeniaze(dorucovatel1, 4000);
 		
 	
 	}
