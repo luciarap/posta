@@ -9,12 +9,29 @@ public abstract class Zamestnanci {
 	public Zamestnanci(String meno, String priezvisko) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
-		//id nahodne cislo
-		System.out.println("Novy zamestnanec: " + meno + " " + priezvisko);
+		this.ID = generovatID();
+		System.out.println("Novy zamestnanec: " + meno + " " + priezvisko + " s ID: " + ID);
 	}
 	
+	public String generujPodacieCislo() {
+		return "RE" + generovatCislo() + "SK";
+	}
+	
+	public static long generovatCislo() {
+	    final long leftLimit = 000000000 ; //final
+	    final long rightLimit = 999999999;
+	    long cislo = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+	    return cislo;
+	}
+	
+	public static int generovatID() {
+	    final int leftLimit = 1111 ; //final
+	    final int rightLimit = 9999;
+		int cislo = (int) (leftLimit + (Math.random() * (rightLimit - leftLimit)));
+		return cislo;
+	}
 
-	public abstract void pridelVyplatu(double suma);
+	public abstract void pridelVyplatu();
 
 
 	public String getMeno() {

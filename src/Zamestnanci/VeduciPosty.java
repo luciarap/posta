@@ -12,17 +12,6 @@ public class VeduciPosty extends Zamestnanci {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String generujPodacieCislo() {
-		return "RE" + generovatCislo() + "SK";
-	}
-	
-	public static long generovatCislo() {
-	    final long leftLimit = 000000000 ; //final
-	    final long rightLimit = 999999999;
-	    long cislo = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
-	    return cislo;
-	}
-	
 	public void zapisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(zasielka);
@@ -34,7 +23,6 @@ public class VeduciPosty extends Zamestnanci {
 			if (stavHotovostiNaPracovisku > suma) {
 				((Dorucovatel) zamestnanec).setStavHotovosti(suma);
 				System.out.println(((Dorucovatel) zamestnanec).getStavHotovosti());
-			
 			}
 		}
 		
@@ -42,16 +30,13 @@ public class VeduciPosty extends Zamestnanci {
 			if (stavHotovostiNaPracovisku > suma) {
 				((Pracovnik) zamestnanec).setStavHotovosti(suma);
 				System.out.println(((Pracovnik) zamestnanec).getStavHotovosti());
-			
 			}
-			
-		}
-		
+		}	
 	}
 
 	@Override
-	public void pridelVyplatu(double suma) {
-		// TODO Auto-generated method stub
+	public void pridelVyplatu() {
+		setMzda(800);
 		
 	}
 

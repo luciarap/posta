@@ -1,16 +1,18 @@
 package Posta;
-//import javafx.application.Application;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 import Zamestnanci.Dorucovatel;
+import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
 import tovary.Tovary;
 import zasielky.DoporucenyList;
 import zasielky.Zasielky;
 import zasielky.Zasielky.Adresa;
 
-public class Posta {
+public class Posta extends Application {
 	static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
 	static ArrayList<Tovary> ar2 = new ArrayList<Tovary>();
 	
@@ -22,10 +24,29 @@ public class Posta {
 		DoporucenyList doplist2 = new DoporucenyList("Jano", "Kovac", "Komenskeho", 12, 97222, "Nitrica");
 		veduci1.zapisZasielky(ar, doplist1);
 		veduci1.zapisZasielky(ar, doplist2);
+		
 		Dorucovatel dorucovatel1 = new Dorucovatel("Eva", "Benkova");
 		veduci1.pridelPeniaze(dorucovatel1, 4000);
+		Pracovnik pracovnik1 = new Pracovnik("Klaudia", "Novakova", "cely");
+		Pracovnik pracovnik2 = new Pracovnik("Peter", "Simko", "polovicny");
+		pracovnik2.pridelVyplatu();
+		System.out.println(pracovnik2.getMzda());
+		for(Zasielky i : ar){
+			System.out.println(i);
+		}
+		dorucovatel1.Dorucit(doplist1, ar);
+		for(Zasielky i : ar){
+			System.out.println(i);
+		}
 		
 	
+	}
+
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

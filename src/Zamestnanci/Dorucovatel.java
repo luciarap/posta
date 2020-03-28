@@ -1,5 +1,9 @@
 package Zamestnanci;
 
+import java.util.ArrayList;
+
+import zasielky.Zasielky;
+
 public class Dorucovatel extends Zamestnanci {
 	
 	private double stavHotovosti = 0;
@@ -18,13 +22,18 @@ public class Dorucovatel extends Zamestnanci {
 	}
 
 	@Override
-	public void pridelVyplatu(double suma) {
-		// TODO Auto-generated method stub
-		
+	public void pridelVyplatu() {
+		setMzda(700);
 	}
 	
-	public void dorucitZasielku() {
-		
+	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
+		ar.remove(zasielka);
+		System.out.println("Zasielka bola dorucena.");
+	}
+	
+	public void Dorucit(Zasielky zasielka, ArrayList<Zasielky> ar) {
+		zasielka.jeDorucena = true;
+		odpisZasielky(ar, zasielka);
 	}
 	
 
