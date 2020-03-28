@@ -39,5 +39,7 @@ public class VeduciPosty extends Zamestnanci {
 		setMzda(800);
 		
 	}
+	
+	//veduci objedna tovar, ak je ho malo
 
 }

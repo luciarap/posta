@@ -5,7 +5,10 @@ public class Tovary {
 	String nazov;
 	int pocet;
 	
-	public Tovary() {
+	public Tovary(double cena, String nazov, int pocet) {
+		this.cena = cena;
+		this.nazov = nazov;
+		this.pocet = pocet;
 		
 	}
 
