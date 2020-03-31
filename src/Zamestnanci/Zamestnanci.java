@@ -1,5 +1,9 @@
 package Zamestnanci;
 
+import java.util.ArrayList;
+
+import zasielky.Zasielky;
+
 public abstract class Zamestnanci {
 	private String meno;
 	private String priezvisko;
@@ -12,6 +16,8 @@ public abstract class Zamestnanci {
 		this.ID = generovatID();
 		System.out.println("Novy zamestnanec: " + meno + " " + priezvisko + " s ID: " + ID);
 	}
+	
+
 	
 	public String generujPodacieCislo() {
 		return "RE" + generovatCislo() + "SK";

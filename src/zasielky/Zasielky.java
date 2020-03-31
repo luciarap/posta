@@ -2,7 +2,7 @@ package zasielky;
 
 import java.util.Date;
 
-public abstract class Zasielky {
+public class Zasielky {
 	public Date datum;
 	public String podacieCislo;
 	public boolean jeDorucena;

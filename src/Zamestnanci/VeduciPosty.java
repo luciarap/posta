@@ -1,19 +1,24 @@
 package Zamestnanci;
 
 import java.util.ArrayList;
+
+import javafx.geometry.Insets;
 import zasielky.Zasielky;
 
 public class VeduciPosty extends Zamestnanci {
 	
 	private static double stavHotovostiNaPracovisku = 10000;
+	static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
 
 	public VeduciPosty(String meno, String priezvisko) {
 		super(meno, priezvisko);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void zapisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
-		zasielka.podacieCislo = generujPodacieCislo();
+	public void zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) { //test
+		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
+		zasielka.podacieCislo = podacieCislo;
+		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(zasielka);
 		System.out.println("Zapisana nova zasielka s podacim cislo: " + zasielka.podacieCislo);
 	}
@@ -39,6 +44,7 @@ public class VeduciPosty extends Zamestnanci {
 		setMzda(800);
 		
 	}
+
 	
 	//veduci objedna tovar, ak je ho malo
 
