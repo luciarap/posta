@@ -31,10 +31,11 @@ public class Dorucovatel extends Zamestnanci {
 		System.out.println("Zasielka bola dorucena.");
 	}
 	
-	public void Dorucit(Zasielky zasielka, ArrayList<Zasielky> ar) {
+	public void Dorucit(Zasielky zasielka) {
 		zasielka.jeDorucena = true;
 		odpisZasielky(ar, zasielka);
 	}
+
 	
 
 }

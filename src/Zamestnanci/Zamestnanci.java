@@ -10,6 +10,8 @@ public abstract class Zamestnanci {
 	private int ID;
 	private double mzda;
 	
+	static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
+	
 	public Zamestnanci(String meno, String priezvisko) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
