@@ -72,8 +72,8 @@ public class PostaGUI extends Application {
 	public void start(Stage hlavneOkno) throws Exception {
 
 		hlavneOkno.setTitle("Posta");
-		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova");
-		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova");
+		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178);
+		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179);
 		GridPane tovaryPane = new GridPane();
 		GridPane pane = new GridPane();
 		GridPane uvodPane = new GridPane();
@@ -87,11 +87,9 @@ public class PostaGUI extends Application {
 		invisible.setToggleGroup(group);
 		invisible.setSelected(true);
 		invisible.setVisible(false);
-		// zapisZasielku.setAlignment(Pos.CENTER);
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 
 		pane.add(meno, 1, 0);
-		// meno.setVisible(false);
 		pane.add(menoLabel, 0, 0);
 		pane.add(priezviskoLabel, 0, 1);
 		pane.add(priezvisko, 1, 1);
@@ -115,6 +113,7 @@ public class PostaGUI extends Application {
 		pane.add(invisible, 1, 12);
 		pane.add(listView, 0, 12);
 		pane.add(dorucitZasielku, 0, 13);
+		
 		uvodPane.add(Scene1, 0, 0);
 		uvodPane.add(Scene2, 0, 1);
 

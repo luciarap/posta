@@ -18,9 +18,7 @@ public abstract class Zamestnanci {
 		this.ID = generovatID();
 		System.out.println("Novy zamestnanec: " + meno + " " + priezvisko + " s ID: " + ID);
 	}
-	
 
-	
 	public String generujPodacieCislo() {
 		return "RE" + generovatCislo() + "SK";
 	}
@@ -72,9 +70,9 @@ public abstract class Zamestnanci {
 	}
 
 
-	public double getMzda() {
+	/*public double getMzda() {
 		return mzda;
-	}
+	}*/
 
 
 	public void setMzda(double mzda) {

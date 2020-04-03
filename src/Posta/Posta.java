@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
+import Zamestnanci.Zamestnanec;
 import tovary.Tovary;
 import zasielky.DoporucenyList;
 import zasielky.Zasielky;
@@ -25,26 +26,15 @@ public class Posta {
 
 	public static void main(String[] args) {
 
-		VeduciPosty veduci1 = new VeduciPosty("Jana", "Horvathova");
-		//DoporucenyList doplist1 = new DoporucenyList("Jozef", "Mak", "Nizovecka", 4, 97223, "Dolne Vestenice");
-		//DoporucenyList doplist2 = new DoporucenyList("Jano", "Kovac", "Komenskeho", 12, 97222, "Nitrica");
-		//veduci1.zapisZasielky(ar, doplist1);
-		//veduci1.zapisZasielky(ar, doplist2);
-		
-		Dorucovatel dorucovatel1 = new Dorucovatel("Eva", "Benkova");
-		veduci1.pridelPeniaze(dorucovatel1, 4000);
-		Pracovnik pracovnik1 = new Pracovnik("Klaudia", "Novakova", "cely");
-		Pracovnik pracovnik2 = new Pracovnik("Peter", "Simko", "polovicny");
-		pracovnik2.pridelVyplatu();
-		//System.out.println(pracovnik2.getMzda());
-		//for(Zasielky i : ar){
-		//	System.out.println(i);
-		//}
-		//dorucovatel1.Dorucit(doplist1, ar);
-		//for(Zasielky i : ar){
-		//	System.out.println(i);
-		//}
-		
+		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579);
+		Zamestnanec pracovnik1 = new Pracovnik("Klaudia", "Novakova", 4580, "cely");
+		Zamestnanec pracovnik2 = new Pracovnik("Peter", "Simko", 4581,"polovicny");
+		Zamestnanec veduci1 = new VeduciPosty("Jana", "Horvathova", 4578);
+		veduci1.add(dorucovatel1);
+		veduci1.add(pracovnik2);
+		veduci1.add(pracovnik1);
+		veduci1.dostanVyplatu(); //vsetci dostanu vyplatu
+		veduci1.info();
 	
 	}
 

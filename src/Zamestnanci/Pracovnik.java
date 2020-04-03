@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 import zasielky.Zasielky;
 
-public class Pracovnik extends Zamestnanci {
+public class Pracovnik implements Zamestnanec { //LEAF
+	
+	private String meno;
+	private String priezvisko;
+	private int ID;
+	private double mzda;
 	
 	private double stavHotovosti = 0;
 	String uvazok;
@@ -17,27 +22,76 @@ public class Pracovnik extends Zamestnanci {
 		this.stavHotovosti = stavHotovosti;
 	}
 
-	public Pracovnik(String meno, String priezvisko, String uvazok) {
-		super(meno, priezvisko);
+	public Pracovnik(String meno, String priezvisko, int ID, String uvazok) {
+		this.meno = meno;
+		this.priezvisko = priezvisko;
+		this.ID = ID;
 		this.uvazok = uvazok;
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void pridelVyplatu() {
-		if (uvazok == "cely") setMzda(600);
-		if (uvazok == "polovicny") setMzda(300);
-		else System.out.println("Pracovnik nema kompletne nastavenia");
-	}
+
 	
 	public void predajTovar() {
 		
 	}
 	
-	public void zapisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
-		zasielka.podacieCislo = generujPodacieCislo();
+	/*public void zapisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
+		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(zasielka);
 		System.out.println("Zapisana nova zasielka s podacim cislo: " + zasielka.podacieCislo);
+	}*/
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return ID;
+	}
+
+	@Override
+	public double getMzda() {
+		// TODO Auto-generated method stub
+		return mzda;
+	}
+
+	@Override
+	public void add(Zamestnanec zamestnanec) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void odstranZamestnanca(Zamestnanec zamestnanec) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dostanVyplatu() {
+		if (uvazok == "cely") mzda = 600;
+		if (uvazok == "polovicny") mzda = 300;
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void info() {
+	       System.out.println("_______________");  
+	       System.out.println("ID: "+ getID());  
+	       System.out.println("Meno: " + getMeno());  
+	       System.out.println("Priezvisko: " + getPriezvisko());  
+	       System.out.println("Mzda: " + getMzda());  
+	       System.out.println("_______________");  
+	}
+
+	@Override
+	public String getMeno() {
+		// TODO Auto-generated method stub
+		return meno;
+	}
+
+	@Override
+	public String getPriezvisko() {
+		// TODO Auto-generated method stub
+		return priezvisko;
 	}
 
 }

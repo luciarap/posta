@@ -1,6 +1,6 @@
 package tovary;
 
-public class Tovary {
+public abstract class Tovary { //abstract
 	double cena;
 	String nazov;
 	int pocet;
@@ -13,3 +13,7 @@ public class Tovary {
 	}
 
 }
+
+//ked sa preda tovar zapisu sa peniaze vzdy ine - polymorfizmus?
+//predatTovar
+//pridaj tovar

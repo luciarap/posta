@@ -1,20 +1,32 @@
 package Zamestnanci;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import javafx.geometry.Insets;
 import zasielky.Dobierka;
 import zasielky.Zasielky;
-
-public class VeduciPosty extends Zamestnanci {
+// Composite
+public class VeduciPosty implements Zamestnanec { //COMPOSITE
 	
-	private static double stavHotovostiNaPracovisku = 10000;
+	private String meno;
+	private String priezvisko;
+	private int ID;
+	private double mzda;
+	public VeduciPosty(String meno, String priezvisko, int ID) {
+		this.meno = meno;
+		this.priezvisko = priezvisko;
+		this.ID = ID;
+	}
+	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();  
+	
+	//private static double stavHotovostiNaPracovisku = 10000;
 	//static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
 
-	public VeduciPosty(String meno, String priezvisko) {
+	/*public VeduciPosty(String meno, String priezvisko) {
 		super(meno, priezvisko);
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 	//spravit Zapis metody pre rozne zasielky, radio button
 	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) { //test
 		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
@@ -45,30 +57,67 @@ public class VeduciPosty extends Zamestnanci {
 		
 		return dobierka;
 	}
-	
-	public void pridelPeniaze(Zamestnanci zamestnanec, double suma) {
-		if (zamestnanec instanceof Dorucovatel) {
-			if (stavHotovostiNaPracovisku > suma) {
-				((Dorucovatel) zamestnanec).setStavHotovosti(suma);
-				System.out.println(((Dorucovatel) zamestnanec).getStavHotovosti());
-			}
-		}
+
+	@Override
+	public double getMzda() {
+		// TODO Auto-generated method stub
+		return mzda;
+	}
+	@Override
+	public void add(Zamestnanec zamestnanec) {
+		zamestnanci.add(zamestnanec); 
 		
-		if (zamestnanec instanceof Pracovnik) {
-			if (stavHotovostiNaPracovisku > suma) {
-				((Pracovnik) zamestnanec).setStavHotovosti(suma);
-				System.out.println(((Pracovnik) zamestnanec).getStavHotovosti());
-			}
-		}	
+	}
+	@Override
+	public void odstranZamestnanca(Zamestnanec zamestnanec) {
+		zamestnanci.remove(zamestnanec); 
+		
+	}
+	@Override
+	public void dostanVyplatu() {
+		mzda = 750;
+		
+	       Iterator<Zamestnanec> it = zamestnanci.iterator();  
+	        
+	          while(it.hasNext())  {  
+	            Zamestnanec zamestnanec = it.next();  
+	            zamestnanec.dostanVyplatu();  
+	         }
+
+	//to do
 	}
 
 	@Override
-	public void pridelVyplatu() {
-		setMzda(800);
-		
+	public int getID() {
+		return ID;
 	}
 
+	@Override
+	public String getMeno() {
+		return meno;
+	}
+
+	@Override
+	public String getPriezvisko() {
+		return priezvisko;
+	}
+
+	@Override
+	public void info() {
+	       System.out.println("_______________");  
+	       System.out.println("ID: "+ getID());  
+	       System.out.println("Meno: " + getMeno());  
+	       System.out.println("Priezvisko: " + getPriezvisko());  
+	       System.out.println("Mzda: " + getMzda());  
+	       System.out.println("_______________");  
+	       Iterator<Zamestnanec> it = zamestnanci.iterator();  
+	        
+	          while(it.hasNext())  {  
+	            Zamestnanec zamestnanec = it.next();  
+	            zamestnanec.info();  
+	         }
+	}
 	
-	//veduci objedna tovar, ak je ho malo
+
 
 }
