@@ -3,6 +3,7 @@ package Zamestnanci;
 import java.util.ArrayList;
 
 import javafx.geometry.Insets;
+import zasielky.Dobierka;
 import zasielky.Zasielky;
 
 public class VeduciPosty extends Zamestnanci {
@@ -28,6 +29,21 @@ public class VeduciPosty extends Zamestnanci {
 		}
 		
 		return zasielka;
+	}
+	
+	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) { //test
+		Dobierka dobierka = new Dobierka(meno, priezvisko, ulica, cislo, psc, Mesto, suma, hmotnost);
+		dobierka.podacieCislo = podacieCislo;
+		//zasielka.podacieCislo = generujPodacieCislo();
+		ar.add(dobierka);
+		
+		System.out.println("Zapisana nova dobierka s podacim cislo: " + dobierka.podacieCislo);
+		
+		for(Zasielky i : ar){
+			System.out.println(i);
+		}
+		
+		return dobierka;
 	}
 	
 	public void pridelPeniaze(Zamestnanci zamestnanec, double suma) {
