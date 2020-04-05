@@ -119,5 +119,7 @@ public class VeduciPosty implements Zamestnanec { //COMPOSITE
 	}
 	
 
+	
+
 
 }

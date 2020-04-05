@@ -1,23 +1,16 @@
 package Posta;
-import javafx.application.Application;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 
-import java.util.ArrayList;
 
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
 import Zamestnanci.Zamestnanec;
-import tovary.Tovary;
-import zasielky.DoporucenyList;
-import zasielky.Zasielky;
-import zasielky.Zasielky.Adresa;
+import tovary.Znamky;
+import tovary.Znamky.DruhZnamok;
+
 
 public class Posta {
-	
+	static double stavHotovosti;
 
 	
 	//static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
@@ -35,6 +28,11 @@ public class Posta {
 		veduci1.add(pracovnik1);
 		veduci1.dostanVyplatu(); //vsetci dostanu vyplatu
 		veduci1.info();
+		Znamky znamkyT2 = new Znamky(0.65, "ZnamkyT2", 100, DruhZnamok.T2);
+		Znamky znamkyT1 = new Znamky(0.80, "ZnamkyT1", 100, DruhZnamok.T1);
+		stavHotovosti = znamkyT2.predatTovar(znamkyT2, 5, stavHotovosti);
+		stavHotovosti = znamkyT1.predatTovar(znamkyT1, 5, stavHotovosti);
+		System.out.println(stavHotovosti);
 	
 	}
 
