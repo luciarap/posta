@@ -40,6 +40,13 @@ public abstract class Tovary { //abstract
 
 	public abstract double predatTovar(Tovary tovar, int pocet, double stavHotovosti);
 
+	@Override
+	public String toString() {
+		return "Tovary [cena=" + cena + ", nazov=" + nazov + ", pocet=" + pocet + "]";
+	}
+	
+	
+
 }
 
 //ked sa preda tovar zapisu sa peniaze vzdy ine - polymorfizmus?

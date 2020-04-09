@@ -1,12 +1,20 @@
 package Posta;
 
 import java.io.IOException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
+
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -27,8 +35,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import zasielky.Dobierka;
 import zasielky.DoporucenyList;
@@ -41,6 +51,8 @@ public class PostaGUI extends Application {
 	private Button dorucitZasielku = new Button("Dorucit zasielku");
 	private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
+	private Button Logout = new Button("Log Out");
+	private Button Zamestnanci = new Button("Zamestnanci");
 	private TextField meno = new TextField();
 	private TextField priezvisko = new TextField();
 	private TextField ulica = new TextField();
@@ -72,10 +84,12 @@ public class PostaGUI extends Application {
 	Scene tovary;
 	Scene zasielky;
 	Scene uvod;
-	Scene Login;
+	Scene LoginScene;
+	Scene skrolScene;
+	Scene veduciScena;
 
 	public void start(Stage hlavneOkno) throws Exception {
-
+		
 		hlavneOkno.setTitle("Posta");
 		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178);
 		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179);
@@ -108,7 +122,9 @@ public class PostaGUI extends Application {
 		invisible.setSelected(true);
 		invisible.setVisible(false);
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
-
+		
+		skrol.setContent(Login);
+		
 		pane.add(meno, 1, 0);
 		pane.add(menoLabel, 0, 0);
 		pane.add(priezviskoLabel, 0, 1);
@@ -133,28 +149,42 @@ public class PostaGUI extends Application {
 		pane.add(invisible, 1, 12);
 		pane.add(listView, 0, 12);
 		pane.add(dorucitZasielku, 0, 13);
+		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 
 		uvodVeduciPane.add(Scene1, 0, 0);
 		uvodVeduciPane.add(Scene2, 0, 1);
 
 		tovaryPane.add(ZoznamTovarov, 0, 0);
 		tovaryPane.add(pridatTovar, 0, 1);
-
-		skrol.setContent(Login);
+		//LoginScene = new Scene(Login, 900, 900);
+		
 
 		Scene2.setOnAction(e -> hlavneOkno.setScene(tovary));
 		tovary = new Scene(tovaryPane, 1000, 1000);
 
 		Scene1.setOnAction(e -> hlavneOkno.setScene(zasielky));
-		zasielky = new Scene(pane, 1000, 1000);
-
+		zasielky = new Scene(pane, 900, 900);
+		
+		HBox veduciHBox = new HBox();
+		//border.setTop(hbox);
+		veduciHBox.setPadding(new Insets(15, 12, 15, 12));
+		veduciHBox.setSpacing(10);
+		veduciHBox.setStyle("-fx-background-color:  #5f9ea0;");
+		Scene2.setPrefSize(100, 20);
+		Scene1.setPrefSize(100, 20);
+		Zamestnanci.setPrefSize(130, 20);
+		Logout.setPrefSize(100, 20);
+		veduciHBox.getChildren().addAll(Scene2, Scene1, Zamestnanci, Logout);
+		
 		/*buttonLogin.setOnAction(e -> hlavneOkno.setScene(uvod));
 		uvod = new Scene(uvodPane, 1000, 1000);*/
+		
+		veduciScena = new Scene(veduciHBox, 500, 400);
 
 		buttonLogin.setOnAction(e -> {
 			if (txtUserName.getText().toString().equals(CheckLogin.getVeduciUsername())
 					&& pf.getText().toString().equals(CheckLogin.getVeduciPassword())) {
-				hlavneOkno.setScene(new Scene(uvodVeduciPane, 1000, 1000));
+				hlavneOkno.setScene(veduciScena);
 				hlavneOkno.show();
 			} else {
 				alert.show();
@@ -164,7 +194,11 @@ public class PostaGUI extends Application {
 			pf.setText("");
 
 		});
-	
+		
+		
+		Logout.setOnAction(e -> hlavneOkno.setScene(skrolScene));
+		//LoginScene = new Scene(Login, 300, 150);
+		
 		dorucitZasielku.setOnAction(event -> {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
 			dorucovatel3.Dorucit(itemToRemove);
@@ -173,6 +207,7 @@ public class PostaGUI extends Application {
 		});
 
 		pridatTovar.setOnAction(e -> {
+			
 
 		});
 
@@ -213,9 +248,13 @@ public class PostaGUI extends Application {
 				}
 			}
 		});
-
-		hlavneOkno.setScene(new Scene(skrol, 300, 150));
+		
+		
+		skrolScene = new Scene(skrol, 300, 150);
+		hlavneOkno.setScene(skrolScene);
 		hlavneOkno.show();
+
+	
 	}
 
 	public static void main(String[] args) {
