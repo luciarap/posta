@@ -5,8 +5,10 @@ import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
 import Zamestnanci.Zamestnanec;
+import tovary.Casopisy;
 import tovary.Znamky;
 import tovary.Znamky.DruhZnamok;
+import tovary.Casopisy.DruhCasopisov;
 
 
 public class Posta {
@@ -28,10 +30,13 @@ public class Posta {
 		veduci1.add(pracovnik1);
 		veduci1.dostanVyplatu(); //vsetci dostanu vyplatu
 		veduci1.info();
-		Znamky znamkyT2 = new Znamky(0.65, "ZnamkyT2", 100, DruhZnamok.T2);
-		Znamky znamkyT1 = new Znamky(0.80, "ZnamkyT1", 100, DruhZnamok.T1);
+		Znamky znamkyT2 = new Znamky("ZnamkyT2", 100, DruhZnamok.T2);
+		Znamky znamkyT1 = new Znamky("ZnamkyT1", 100, DruhZnamok.T1);
+		Casopisy GEO = new Casopisy("Geo", 5, DruhCasopisov.Geo);
 		stavHotovosti = znamkyT2.predatTovar(znamkyT2, 5, stavHotovosti);
 		stavHotovosti = znamkyT1.predatTovar(znamkyT1, 5, stavHotovosti);
+		stavHotovosti = GEO.predatTovar(GEO, 1, stavHotovosti);
+		System.out.println(GEO.getPocet());
 		System.out.println(stavHotovosti);
 	
 	}

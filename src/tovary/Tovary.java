@@ -29,8 +29,7 @@ public abstract class Tovary { //abstract
 		this.pocet = pocet;
 	}
 
-	public Tovary(double cena, String nazov, int pocet) {
-		this.cena = cena;
+	public Tovary(String nazov, int pocet) {
 		this.nazov = nazov;
 		this.pocet = pocet;
 		

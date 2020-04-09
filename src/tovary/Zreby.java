@@ -10,8 +10,9 @@ public class Zreby extends Tovary {
 		  Stastie
 		}
 	private DruhZrebov druh;
-	public Zreby(double cena, String nazov, int pocet) {
-		super(cena, nazov, pocet);
+	public Zreby(double cena, String nazov, int pocet, DruhZrebov druh) {
+		super(nazov, pocet);
+		this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
 

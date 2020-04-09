@@ -11,8 +11,8 @@ public class Znamky extends Tovary {
 		}
 
 	private DruhZnamok druh;
-	public Znamky(double cena, String nazov, int pocet, DruhZnamok druh) {
-		super(cena, nazov, pocet);
+	public Znamky(String nazov, int pocet, DruhZnamok druh) {
+		super(nazov, pocet);
 		this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}

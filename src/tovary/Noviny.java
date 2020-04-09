@@ -1,7 +1,7 @@
 package tovary;
 public class Noviny extends Tovary {
 	
-	enum DruhNovin {
+	public enum DruhNovin {
 		  NovyCas,
 		  Sme,
 		  Pravda,
@@ -9,19 +9,16 @@ public class Noviny extends Tovary {
 		  Dnes
 		}
 	private DruhNovin druh;
-	public Noviny(double cena, String nazov, int pocet) {
-		super(cena, nazov, pocet);
+	public Noviny(String nazov, int pocet, DruhNovin druh) {
+		super(nazov, pocet);
+		this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	@Override
 	public void objednatTovar(Tovary tovar, int pocet) {
 		tovar.setPocet(pocet + 1);
 	}
-
-
 
 	@Override
 	public double predatTovar(Tovary tovar, int pocet, double stavHotovosti) {

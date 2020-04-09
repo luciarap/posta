@@ -1,11 +1,11 @@
 package Posta;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import Zamestnanci.Dorucovatel;
+import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
-import Zamestnanci.Zamestnanci;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -33,6 +34,7 @@ import zasielky.Dobierka;
 import zasielky.DoporucenyList;
 import zasielky.Zasielky;
 import Posta.Posta;
+import Posta.CheckLogin;
 
 public class PostaGUI extends Application {
 	private Button zapisZasielku = new Button("Zapis zasielku");
@@ -63,20 +65,38 @@ public class PostaGUI extends Application {
 	RadioButton rb2 = new RadioButton("Dobierka");
 	RadioButton invisible = new RadioButton("Invisible");
 	ListView listView = new ListView();
+	ListView ZoznamTovarov = new ListView();
+	private Button pridatTovar = new Button("Pridat Tovar");
+
 	Alert alert = new Alert(AlertType.ERROR);
 	Scene tovary;
 	Scene zasielky;
 	Scene uvod;
+	Scene Login;
 
-	// Exception ex = new FileNotFoundException("Could not find file blabla.txt");
 	public void start(Stage hlavneOkno) throws Exception {
 
 		hlavneOkno.setTitle("Posta");
 		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178);
 		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179);
+		Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny");
 		GridPane tovaryPane = new GridPane();
 		GridPane pane = new GridPane();
-		GridPane uvodPane = new GridPane();
+		GridPane uvodVeduciPane = new GridPane();
+
+		GridPane Login = new GridPane();
+		Label labelUserName = new Label("Username");
+		final TextField txtUserName = new TextField();
+		Label lblPassword = new Label("Password");
+		final PasswordField pf = new PasswordField();
+		Button buttonLogin = new Button("Login");
+
+		Login.add(labelUserName, 0, 0);
+		Login.add(txtUserName, 1, 0);
+		Login.add(lblPassword, 0, 1);
+		Login.add(pf, 1, 1);
+		Login.add(buttonLogin, 0, 2);
+
 		pane.setPadding(new Insets(10, 10, 10, 10));
 		pane.setMinSize(300, 300);
 		pane.setVgap(5);
@@ -113,11 +133,14 @@ public class PostaGUI extends Application {
 		pane.add(invisible, 1, 12);
 		pane.add(listView, 0, 12);
 		pane.add(dorucitZasielku, 0, 13);
-		
-		uvodPane.add(Scene1, 0, 0);
-		uvodPane.add(Scene2, 0, 1);
 
-		skrol.setContent(uvodPane);
+		uvodVeduciPane.add(Scene1, 0, 0);
+		uvodVeduciPane.add(Scene2, 0, 1);
+
+		tovaryPane.add(ZoznamTovarov, 0, 0);
+		tovaryPane.add(pridatTovar, 0, 1);
+
+		skrol.setContent(Login);
 
 		Scene2.setOnAction(e -> hlavneOkno.setScene(tovary));
 		tovary = new Scene(tovaryPane, 1000, 1000);
@@ -125,11 +148,31 @@ public class PostaGUI extends Application {
 		Scene1.setOnAction(e -> hlavneOkno.setScene(zasielky));
 		zasielky = new Scene(pane, 1000, 1000);
 
+		/*buttonLogin.setOnAction(e -> hlavneOkno.setScene(uvod));
+		uvod = new Scene(uvodPane, 1000, 1000);*/
+
+		buttonLogin.setOnAction(e -> {
+			if (txtUserName.getText().toString().equals(CheckLogin.getVeduciUsername())
+					&& pf.getText().toString().equals(CheckLogin.getVeduciPassword())) {
+				hlavneOkno.setScene(new Scene(uvodVeduciPane, 1000, 1000));
+				hlavneOkno.show();
+			} else {
+				alert.show();
+
+			}
+			txtUserName.setText("");
+			pf.setText("");
+
+		});
+	
 		dorucitZasielku.setOnAction(event -> {
-			// int selectedIdx = listView.getSelectionModel().getSelectedIndex();
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
 			dorucovatel3.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
+
+		});
+
+		pridatTovar.setOnAction(e -> {
 
 		});
 
@@ -164,25 +207,14 @@ public class PostaGUI extends Application {
 							Zasielky zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
 									priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
 									Integer.parseInt(psc.getText()), mesto.getText());
-							// DoporucenyList doplist = posta.zapisZasielku(podacieCislo, meno, priezvisko,
-							// ulica, cislo, psc, Mesto)
-							// Dobierka dobierka = posta.zapisDobierku(podacieCislo.getText(),
-							// meno.getText(), priezvisko.getText(), ulica.getText(),
-							// Integer.parseInt(cislo.getText()), Integer.parseInt(psc.getText()),
-							// mesto.getText(), Integer.parseInt(suma.getText()),
-							// Integer.parseInt(hmotnost.getText()));
 							listView.getItems().add(zasielka);
-							// listView.getItems().add(dobierka);
 						});
-						// meno.setVisible(true);
-
 					}
 				}
-
 			}
 		});
 
-		hlavneOkno.setScene(new Scene(skrol, 1000, 1000));
+		hlavneOkno.setScene(new Scene(skrol, 300, 150));
 		hlavneOkno.show();
 	}
 

@@ -3,7 +3,7 @@ package tovary;
 
 public class Pohladnice extends Tovary {
 	
-	enum DruhPohladnic {
+	public enum DruhPohladnic {
 		  Narodeniny1,
 		  Narodeniny2,
 		  Vianoce,
@@ -11,8 +11,9 @@ public class Pohladnice extends Tovary {
 		  Meniny
 		}
 	private DruhPohladnic druh;
-	public Pohladnice(double cena, String nazov, int pocet) {
-		super(cena, nazov, pocet);
+	public Pohladnice(String nazov, int pocet, DruhPohladnic druh) {
+		super(nazov, pocet);
+		this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
 

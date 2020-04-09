@@ -1,10 +1,7 @@
 package tovary;
-
-
-
 public class Casopisy extends Tovary {
 	
-	enum DruhCasopisov {
+	public enum DruhCasopisov {
 		  Zahradkar,
 		  Byvanie,
 		  Tyzden,
@@ -12,13 +9,12 @@ public class Casopisy extends Tovary {
 		  Geo
 		}
 	private DruhCasopisov druh;
-	public Casopisy(double cena, String nazov, int pocet) {
-		super(cena, nazov, pocet);
+	public Casopisy(String nazov, int pocet, DruhCasopisov druh) {
+		super(nazov, pocet);
+		this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
-
-
-
+	
 	@Override
 	public void objednatTovar(Tovary tovar, int pocet) {
 		tovar.setPocet(pocet + 1);
