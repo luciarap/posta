@@ -82,6 +82,7 @@ public class PostaGUI extends Application {
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		tovary = tovaryScreen.Zobraz();
 		Scene2.setOnAction(e -> hlavneOkno.setScene(tovary));
+		//poslat stage cez argument
 
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
 		zasielky = zasielkyScreen.ZobrazZasielkyScreen();

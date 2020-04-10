@@ -10,10 +10,10 @@ public class Pohladnice extends Tovary {
 		  VelkaNoc,
 		  Meniny
 		}
-	private DruhPohladnic druh;
-	public Pohladnice(String nazov, int pocet, DruhPohladnic druh) {
-		super(nazov, pocet);
-		this.druh = druh;
+	//private DruhPohladnic druh;
+	public Pohladnice(String nazov, int pocet, String druh) {
+		super(nazov, pocet, druh);
+		//this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,28 +31,28 @@ public class Pohladnice extends Tovary {
 		}
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		switch (druh) {
-		case Narodeniny1:
+		switch (tovar.getDruh()) {
+		case "Narodeniny1":
 			stavHotovosti += pocet*0.40;
 			return stavHotovosti;
 			
-		case Narodeniny2:
+		case "Narodeniny2":
 			stavHotovosti += pocet*0.80;
 			return stavHotovosti;
 		
-		case Vianoce:
+		case "Vianoce":
 			stavHotovosti += pocet*1;
 			return stavHotovosti;
 		
-		case VelkaNoc:
+		case "VelkaNoc":
 			stavHotovosti += pocet*1;
 			return stavHotovosti;
 		
-		case Meniny:
+		case "Meniny":
 			stavHotovosti += pocet*0.50;
 			return stavHotovosti;
 			
-			
+		default: System.out.println("CHYBA");
 		}
 		return stavHotovosti;
 		

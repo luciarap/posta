@@ -30,9 +30,9 @@ public class Posta {
 		veduci1.add(pracovnik1);
 		veduci1.dostanVyplatu(); //vsetci dostanu vyplatu
 		veduci1.info();
-		Znamky znamkyT2 = new Znamky("ZnamkyT2", 100, DruhZnamok.T2);
-		Znamky znamkyT1 = new Znamky("ZnamkyT1", 100, DruhZnamok.T1);
-		Casopisy GEO = new Casopisy("Geo", 5, DruhCasopisov.Geo);
+		Znamky znamkyT2 = new Znamky("ZnamkyT2", 100, "T2");
+		Znamky znamkyT1 = new Znamky("ZnamkyT1", 100, "T1");
+		Casopisy GEO = new Casopisy("Geo", 5, "GEO");
 		stavHotovosti = znamkyT2.predatTovar(znamkyT2, 5, stavHotovosti);
 		stavHotovosti = znamkyT1.predatTovar(znamkyT1, 5, stavHotovosti);
 		stavHotovosti = GEO.predatTovar(GEO, 1, stavHotovosti);

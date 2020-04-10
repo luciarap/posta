@@ -4,7 +4,16 @@ public abstract class Tovary { //abstract
 	private double cena;
 	private String nazov;
 	private int pocet;
+	private String druh;
 	
+	public String getDruh() {
+		return druh;
+	}
+
+	public void setDruh(String druh) {
+		this.druh = druh;
+	}
+
 	public double getCena() {
 		return cena;
 	}
@@ -29,7 +38,7 @@ public abstract class Tovary { //abstract
 		this.pocet = pocet;
 	}
 
-	public Tovary(String nazov, int pocet) {
+	public Tovary(String nazov, int pocet, String druh) {
 		this.nazov = nazov;
 		this.pocet = pocet;
 		

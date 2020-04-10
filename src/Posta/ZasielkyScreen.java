@@ -35,7 +35,7 @@ public class ZasielkyScreen {
 	private TextField podacieCislo = new TextField();
 	private TextField suma = new TextField();
 	private TextField hmotnost = new TextField();
-	private ScrollPane skrol = new ScrollPane();
+	//private ScrollPane skrol = new ScrollPane();
 	private Label menoLabel = new Label("Meno: ");
 	private Label priezviskoLabel = new Label("Priezvisko: ");
 	private Label ulicaLabel = new Label("Ulica: ");

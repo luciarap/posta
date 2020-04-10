@@ -9,10 +9,10 @@ public class Zreby extends Tovary {
 		  CiernaPerla,
 		  Stastie
 		}
-	private DruhZrebov druh;
-	public Zreby(double cena, String nazov, int pocet, DruhZrebov druh) {
-		super(nazov, pocet);
-		this.druh = druh;
+	//private DruhZrebov druh;
+	public Zreby(double cena, String nazov, int pocet, String druh) {
+		super(nazov, pocet, druh);
+		//this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,22 +28,23 @@ public class Zreby extends Tovary {
 		}
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		switch (druh) {
-		case PrasaVZite:
+		switch (tovar.getDruh()) {
+		case "PrasaVZite":
 			stavHotovosti += pocet*0.50;
 			return stavHotovosti;
 			
-		case StastneCisla:
+		case "StastneCisla":
 			stavHotovosti += pocet*1;
 			return stavHotovosti;
 		
-		case CiernaPerla:
+		case "CiernaPerla":
 			stavHotovosti += pocet*5;
 			return stavHotovosti;
 		
-		case Stastie:
+		case "Stastie":
 			stavHotovosti += pocet*2;
 			return stavHotovosti;
+		default: System.out.println("CHYBA");
 		}
 		return stavHotovosti;
 	}

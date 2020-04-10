@@ -8,10 +8,10 @@ public class Noviny extends Tovary {
 		  Hospodarske,
 		  Dnes
 		}
-	private DruhNovin druh;
-	public Noviny(String nazov, int pocet, DruhNovin druh) {
-		super(nazov, pocet);
-		this.druh = druh;
+	//private DruhNovin druh;
+	public Noviny(String nazov, int pocet, String druh) {
+		super(nazov, pocet, druh);
+		//this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,26 +27,27 @@ public class Noviny extends Tovary {
 		}
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		switch (druh) {
-		case NovyCas:
+		switch (tovar.getDruh()) {
+		case "NovyCas":
 			stavHotovosti += pocet*0.65;
 			return stavHotovosti;
 			
-		case Hospodarske:
+		case "Hospodarske":
 			stavHotovosti += pocet*1.20;
 			return stavHotovosti;
 		
-		case Pravda:
+		case "Pravda":
 			stavHotovosti += pocet*0.80;
 			return stavHotovosti;
 		
-		case Sme:
+		case "Sme":
 			stavHotovosti += pocet*0.90;
 			return stavHotovosti;
 		
-		case Dnes:
+		case "Dnes":
 			stavHotovosti += pocet*1;
 			return stavHotovosti;
+		default: System.out.println("CHYBA");
 			
 			
 		}

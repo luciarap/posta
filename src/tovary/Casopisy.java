@@ -8,10 +8,10 @@ public class Casopisy extends Tovary {
 		  Kreativ,
 		  Geo
 		}
-	private DruhCasopisov druh;
-	public Casopisy(String nazov, int pocet, DruhCasopisov druh) {
-		super(nazov, pocet);
-		this.druh = druh;
+	//private DruhCasopisov druh;
+	public Casopisy(String nazov, int pocet, String druh) {
+		super(nazov, pocet, druh);
+		//this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -29,26 +29,27 @@ public class Casopisy extends Tovary {
 		}
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		switch (druh) {
-		case Zahradkar:
+		switch (tovar.getDruh()) {
+		case "Zahradkar":
 			stavHotovosti += pocet*1.30;
 			return stavHotovosti;
 			
-		case Byvanie:
+		case "Byvanie":
 			stavHotovosti += pocet*2;
 			return stavHotovosti;
 		
-		case Tyzden:
+		case "Tyzden":
 			stavHotovosti += pocet*1;
 			return stavHotovosti;
 		
-		case Kreativ:
+		case "Kreativ":
 			stavHotovosti += pocet*2.80;
 			return stavHotovosti;
 		
-		case Geo:
+		case "Geo":
 			stavHotovosti += pocet*3;
 			return stavHotovosti;
+		default: System.out.println("CHYBA");
 			
 			
 		}

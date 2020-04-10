@@ -10,11 +10,11 @@ public class Znamky extends Tovary {
 		  eur050,
 		}
 
-	private DruhZnamok druh;
-	public Znamky(String nazov, int pocet, DruhZnamok druh) {
-		super(nazov, pocet);
-		this.druh = druh;
-		// TODO Auto-generated constructor stub
+	//private String druh;
+	private DruhZnamok druhZ;
+	public Znamky(String nazov, int pocet, String druh) {
+		super(nazov, pocet, druh);
+		//this.druh = druh;
 	}
 
 	@Override
@@ -29,26 +29,29 @@ public class Znamky extends Tovary {
 		}
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		switch (druh) {
-		case T1:
+		switch (tovar.getDruh()) {
+		case "T1":
+			System.out.println("Fungujem ci nie?");
+			tovar.setCena(0.80);
 			stavHotovosti += pocet*0.80;
 			return stavHotovosti;
 			
-		case T2:
+		case "T2":
 			stavHotovosti += pocet*0.65;
 			return stavHotovosti;
 		
-		case eur1:
+		case "eur1":
 			stavHotovosti += pocet*1;
 			return stavHotovosti;
 		
-		case eur2:
+		case "eur2":
 			stavHotovosti += pocet*2;
 			return stavHotovosti;
 		
-		case eur050:
+		case "eur050":
 			stavHotovosti += pocet*0.50;
 			return stavHotovosti;
+		default: System.out.println("CHYBA");
 			
 			
 		}

@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 
 public class CheckLogin {
 	
-	private static String veduciUsername = "veduciposty1";
+	private static String veduciUsername = "veduci";
 	private static String veduciPassword = "123456";
 	public static String getVeduciUsername() {
 		return veduciUsername;
