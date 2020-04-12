@@ -7,7 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import tovary.Casopisy;
+import tovary.Noviny;
+import tovary.Pohladnice;
 import tovary.Znamky;
+import tovary.Zreby;
 import zasielky.Dobierka;
 
 public class TovaryScreen {
@@ -93,8 +97,8 @@ public class TovaryScreen {
 		tovaryPane.add(pridatZnamky, 4, 1);
 		tovaryPane.add(pridatZreby, 4, 2);
 		tovaryPane.add(pridatPohladnice, 4, 3);
-		tovaryPane.add(pridatCasopisy, 4, 4);
-		tovaryPane.add(pridatNoviny, 4, 5);
+		tovaryPane.add(pridatNoviny, 4, 4);
+		tovaryPane.add(pridatCasopisy, 4, 5);
 		
 		tovaryPane.add(ZoznamTovarov, 0, 7);
 		
@@ -102,6 +106,26 @@ public class TovaryScreen {
 			Znamky znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());
 			ZoznamTovarov.getItems().add(znamky);
 			System.out.println("Fungujem aj tu.");
+		});
+		
+		pridatZreby.setOnAction(e -> {
+			Zreby zreby = new Zreby (nazovZrebyTxt.getText(), Integer.parseInt(pocetZrebyTxt.getText()), druhZrebyTxt.getText());
+			ZoznamTovarov.getItems().add(zreby);
+		});
+		
+		pridatPohladnice.setOnAction(e -> {
+			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
+			ZoznamTovarov.getItems().add(pohladnice);
+		});
+		
+		pridatCasopisy.setOnAction(e -> {
+			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
+			ZoznamTovarov.getItems().add(casopisy);
+		});
+		
+		pridatNoviny.setOnAction(e -> {
+			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
+			ZoznamTovarov.getItems().add(noviny);
 		});
 			
 		//tovaryPane.add(pridatTovar, 0, 1);

@@ -51,7 +51,7 @@ public abstract class Tovary { //abstract
 
 	@Override
 	public String toString() {
-		return "Tovary [cena=" + cena + ", nazov=" + nazov + ", pocet=" + pocet + "]";
+		return "Tovary [nazov=" + nazov + ", pocet=" + pocet + "]";
 	}
 	
 	

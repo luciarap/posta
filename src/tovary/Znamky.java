@@ -11,10 +11,9 @@ public class Znamky extends Tovary {
 		}
 
 	//private String druh;
-	private DruhZnamok druhZ;
+	//private DruhZnamok druhZ;
 	public Znamky(String nazov, int pocet, String druh) {
 		super(nazov, pocet, druh);
-		//this.druh = druh;
 	}
 
 	@Override
@@ -31,8 +30,6 @@ public class Znamky extends Tovary {
 		tovar.setPocet(aktualnyPocet - pocet);
 		switch (tovar.getDruh()) {
 		case "T1":
-			System.out.println("Fungujem ci nie?");
-			tovar.setCena(0.80);
 			stavHotovosti += pocet*0.80;
 			return stavHotovosti;
 			

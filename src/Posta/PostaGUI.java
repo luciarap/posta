@@ -60,6 +60,7 @@ public class PostaGUI extends Application {
 	Scene LoginScene;
 	Scene skrolScene;
 	Scene veduciScena;
+	Scene zamestnanci;
 
 	public void start(Stage hlavneOkno) throws Exception {
 		
@@ -87,6 +88,10 @@ public class PostaGUI extends Application {
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
 		zasielky = zasielkyScreen.ZobrazZasielkyScreen();
 		Scene1.setOnAction(e -> hlavneOkno.setScene(zasielky));
+		
+		ZamestnanciScreen zamestnanciScreen = new ZamestnanciScreen();
+		zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen();
+		Zamestnanci.setOnAction(e -> hlavneOkno.setScene(zamestnanci));
 
 		HBox veduciHBox = new HBox();
 		veduciHBox.setPadding(new Insets(15, 12, 15, 12));
