@@ -11,3 +11,9 @@ Posta.java - len konzola
 **Dedenie** -  napríklad Tovary ale aj package Zasielky, kde Zasielky sú hlavná trieda a dedia od nej triedy DoporucenyList, Dobierka, PoistenyList
 
 **Agregácia** - napríklad Zamestnanec majú arraylist zásielok
+
+Login pre GUI
+
+`username: veduci`
+
+`password: 123456`
