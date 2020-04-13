@@ -2,11 +2,12 @@
 oop-2020-str-18-b-sulaimankhail-luciarap created by GitHub Classroom
 
 # Poštový systém na zapisovanie a doručovanie zásielok, predaj tovaru, správu používateľov
-Main s GUI -> PostaGUI.java
-Posta.java - len konzolové testovanie
+Main s GUI -> `PostaGUI.java`
 
-Polymorfizmus - napríklad package tovary, kde Tovary je abstraktná trieda, ktorá má abstraktné metódy, ostatné od nej dedia a prekonávajú tieto metódy
+Posta.java - len konzola
 
-Dedenie -  napríklad Tovary ale aj package Zasielky, kde Zasielky sú hlavná trieda a dedia od nej triedy DoporucenyList, Dobierka, PoistenyList
+**Polymorfizmus** - napríklad package tovary, kde Tovary je abstraktná trieda, ktorá má abstraktné metódy, ostatné od nej dedia a prekonávajú tieto metódy
 
-Agregácia - napríklad Zamestnanci majú arraylist zásielok
+**Dedenie** -  napríklad Tovary ale aj package Zasielky, kde Zasielky sú hlavná trieda a dedia od nej triedy DoporucenyList, Dobierka, PoistenyList
+
+**Agregácia** - napríklad Zamestnanec majú arraylist zásielok
