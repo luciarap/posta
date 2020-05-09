@@ -91,6 +91,14 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 	       System.out.println("_______________");  
 	}
 
+	@Override
+	public String toString() {
+		return "Dorucovatel [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID + ", mzda=" + mzda
+				+ ", stavHotovosti=" + stavHotovosti + "]";
+	}
+	
+	
+
 	
 
 }
