@@ -18,6 +18,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import zasielky.Dobierka;
 import zasielky.Zasielky;
 
@@ -50,8 +51,8 @@ public class ZasielkyScreen {
 	RadioButton rb2 = new RadioButton("Dobierka");
 	RadioButton invisible = new RadioButton("Invisible");
 	ListView listView = new ListView();
-	
-	public Scene ZobrazZasielkyScreen() {
+	private Button spat = new Button("Spä");
+	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		
 		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178);
@@ -94,6 +95,9 @@ public class ZasielkyScreen {
 		pane.add(listView, 0, 12);
 		pane.add(dorucitZasielku, 0, 13);
 		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
+		pane.add(spat, 0, 14);
+		
+		//spat.setOnAction(e -> hlavny.setScene(hlavna));
 		
 		dorucitZasielku.setOnAction(event -> {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();

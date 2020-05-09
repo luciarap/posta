@@ -86,11 +86,11 @@ public class PostaGUI extends Application {
 		//poslat stage cez argument
 
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
-		zasielky = zasielkyScreen.ZobrazZasielkyScreen();
+		zasielky = zasielkyScreen.ZobrazZasielkyScreen(veduciScena, hlavneOkno);
 		Scene1.setOnAction(e -> hlavneOkno.setScene(zasielky));
 		
 		ZamestnanciScreen zamestnanciScreen = new ZamestnanciScreen();
-		zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen();
+		zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(veduciScena, hlavneOkno);
 		Zamestnanci.setOnAction(e -> hlavneOkno.setScene(zamestnanci));
 
 		HBox veduciHBox = new HBox();
