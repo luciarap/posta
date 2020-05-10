@@ -1,5 +1,13 @@
 package Posta;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
@@ -22,7 +30,10 @@ import javafx.stage.Stage;
 import zasielky.Dobierka;
 import zasielky.Zasielky;
 
-public class ZasielkyScreen {
+public class ZasielkyScreen implements java.io.Serializable {
+	
+	ArrayList<Zasielky> woi=new ArrayList<>();
+	
 	Alert alert = new Alert(AlertType.ERROR);
 	GridPane pane = new GridPane();
 	private Button zapisZasielku = new Button("Zapis zasielku");
@@ -97,7 +108,26 @@ public class ZasielkyScreen {
 		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		pane.add(spat, 0, 14);
 		
-		//spat.setOnAction(e -> hlavny.setScene(hlavna));
+		try {
+	        FileInputStream fis=new FileInputStream("C:\\Users\\lucia\\doporucenyList.ser");
+	        ObjectInputStream ois=new ObjectInputStream(fis);
+	        Zasielky wo=null;
+	        Zasielky[] woj=new Zasielky[5];
+
+	        //ArrayList<Zasielky> woi=new ArrayList<>();
+	        woi = (ArrayList<Zasielky>)ois.readObject();
+
+	        for(int i=0;i<woi.size();i++) {
+	        	listView.getItems().add(woi.get(i));
+	        }
+	} catch (IOException i) {
+		System.out.println("CHYBA");
+	} catch (ClassNotFoundException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+		
+		//spat.setOnAction(e -> hlavny.setScene(hlavna));	
 		
 		dorucitZasielku.setOnAction(event -> {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
@@ -134,14 +164,32 @@ public class ZasielkyScreen {
 					}
 
 					if (s == "Doporuceny List") {
+						
 						zapisZasielku.setOnAction(e -> { // lambda vyraz s odvodenim typu z kontextu
 
 							Zasielky zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
 									priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
 									Integer.parseInt(psc.getText()), mesto.getText());
 							listView.getItems().add(zasielka);
+							woi.add(zasielka);
+							
+							try {
+
+								//DataInputStream in = new DataInputStream(ft);
+						         FileOutputStream fileOut =
+						         new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
+						         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+						         out.writeObject(woi);
+						         //out.writeObject(e);
+						         out.close();
+						         fileOut.close();
+						         System.out.printf("Data ulozene");
+						      } catch (IOException i) {
+						         i.printStackTrace();
+						      }
 							System.out.println("Fungujem aj tu.");
 						});
+					
 					}
 				}
 			}

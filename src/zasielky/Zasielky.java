@@ -2,7 +2,7 @@ package zasielky;
 
 import java.util.Date;
 
-public class Zasielky {
+public class Zasielky implements java.io.Serializable {
 	public Date datum;
 	public String podacieCislo;
 	public boolean jeDorucena;

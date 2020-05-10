@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import tovary.Noviny;
@@ -26,10 +27,11 @@ public class ZamestnanciScreen implements Runnable {
 	GridPane zamestnanciPane = new GridPane();
 	private Button spat = new Button("Sp‰ù");
 	private Button vyplata = new Button("Pridel vyplatu");
+	TextArea textArea = new TextArea();
 	
 
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny)  {
-		
+		zamestnanciPane.add(textArea, 0, 1);
 		ComboBox<Zamestnanec> comboBox = new ComboBox<>(ZoznamZamestnancov);
 		Label selected = new Label("default item selected"); 
         // Create action event 
@@ -37,14 +39,15 @@ public class ZamestnanciScreen implements Runnable {
                   new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
             { 
-                selected.setText(comboBox.getValue() + " selected"); 
+            	comboBox.setItems(ZoznamZamestnancov);
+            	textArea.setText(comboBox.getValue() + " selected"); 
                 //textfield or something, vypise vsetky udaje o zamestanncoch or something...
             } 
         }; 
   
         // Set on action 
         comboBox.setOnAction(event); 
-		zamestnanciPane.add(comboBox, 1, 1);
+		zamestnanciPane.add(comboBox, 0, 0);
 		 
 		//ZoznamZamestnancov.
 		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579);
@@ -63,15 +66,17 @@ public class ZamestnanciScreen implements Runnable {
 		//zamestnanciPane.add(ZoznamZamestnancov, 1, 1);
 		// TODO Auto-generated method stub
 		VeduciScreen screen = new VeduciScreen();
-		zamestnanciPane.add(spat, 0, 2);
-		zamestnanciPane.add(vyplata, 0, 3);
+		zamestnanciPane.add(spat, 0, 3);
+		zamestnanciPane.add(vyplata, 0, 4);
 		//update observable or something
-		zamestnanciPane.add(selected, 0, 4);
+		//zamestnanciPane.add(selected, 0, 5);
 		vyplata.setOnAction(e -> {
 			ZamestnanciScreen m1 = new ZamestnanciScreen();  
 			Thread t1 =new Thread(m1); 
 			t1.start(); //to do...
 			veduci1.dostanVyplatu(); 
+			//comboBox.setItems(ZoznamZamestnancov);
+			
 			veduci1.info();  
 		});
 		spat.setOnAction(e -> {
@@ -79,6 +84,8 @@ public class ZamestnanciScreen implements Runnable {
 			return;
 
 		});
+		
+		//comboBox.setItems(ZoznamZamestnancov);
 		return new Scene(zamestnanciPane, 1000, 1000);
 		
 	}
