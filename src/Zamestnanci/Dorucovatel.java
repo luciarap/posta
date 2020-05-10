@@ -93,8 +93,7 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 
 	@Override
 	public String toString() {
-		return "Dorucovatel [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID + ", mzda=" + mzda
-				+ ", stavHotovosti=" + stavHotovosti + "]";
+		return "Dorucovatel [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID;
 	}
 	
 	

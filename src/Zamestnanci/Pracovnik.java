@@ -96,8 +96,7 @@ public class Pracovnik implements Zamestnanec { //LEAF
 
 	@Override
 	public String toString() {
-		return "Pracovnik [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID + ", mzda=" + mzda
-				+ ", stavHotovosti=" + stavHotovosti + ", uvazok=" + uvazok + "]";
+		return "Pracovnik [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID;
 	}
 	
 	
