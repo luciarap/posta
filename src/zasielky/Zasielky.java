@@ -30,6 +30,11 @@ public class Zasielky implements java.io.Serializable {
 		
 		System.out.println(adresa.meno +" "+ adresa.priezvisko +"\n"+ adresa.ulica +" "+ adresa.cislo +"\n"+ adresa.psc +" "+ adresa.mesto);
 	}
+
+	@Override
+	public String toString() {
+		return "Zasielky: datum=" + datum + ", podacieCislo=" + podacieCislo;
+	}
 	
 	/*public String toString() {
 		return Adresa.meno +" "+ Adresa.priezvisko +" "+ Adresa.ulica +" "+ Adresa.cislo +" "+ Adresa.psc +" "+ Adresa.mesto ;

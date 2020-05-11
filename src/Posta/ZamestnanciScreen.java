@@ -75,12 +75,12 @@ public class ZamestnanciScreen implements Runnable {
 			Thread t1 =new Thread(m1); 
 			t1.start(); //to do...
 			veduci1.dostanVyplatu(); 
-			//comboBox.setItems(ZoznamZamestnancov);
+		comboBox.setItems(ZoznamZamestnancov);
 			
 			veduci1.info();  
 		});
 		spat.setOnAction(e -> {
-			screen.zobrazVeduciScreen(hlavna, hlavny);
+			//screen.zobrazVeduciScreen(hlavna, hlavny);
 			return;
 
 		});

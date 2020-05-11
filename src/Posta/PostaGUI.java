@@ -48,19 +48,19 @@ import Posta.CheckLogin;
 
 public class PostaGUI extends Application {
 	
-	private Button Scene2 = new Button("Tovary");
+	/*private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
-	private Button Zamestnanci = new Button("Zamestnanci");
+	private Button Zamestnanci = new Button("Zamestnanci");*/
 	private ScrollPane skrol = new ScrollPane();
 
-	Scene tovary;
-	Scene zasielky;
-	Scene uvod;
-	Scene LoginScene;
+	//Scene tovary;
+	//Scene zasielky;
+	//Scene uvod;
+	//Scene LoginScene;
 	Scene skrolScene;
 	Scene veduciScena;
-	Scene zamestnanci;
+	//Scene zamestnanci;
 
 	public void start(Stage hlavneOkno) throws Exception {
 		
@@ -71,6 +71,8 @@ public class PostaGUI extends Application {
 		Label lblPassword = new Label("Password");
 		final PasswordField pf = new PasswordField();
 		Button buttonLogin = new Button("Login");
+		
+		LoginController loginController = new LoginController();
 
 		Login.add(labelUserName, 0, 0);
 		Login.add(txtUserName, 1, 0);
@@ -79,47 +81,30 @@ public class PostaGUI extends Application {
 		Login.add(buttonLogin, 0, 2);
 		
 		skrol.setContent(Login);
-
-		TovaryScreen tovaryScreen = new TovaryScreen();
-		tovary = tovaryScreen.Zobraz();
-		Scene2.setOnAction(e -> hlavneOkno.setScene(tovary));
-		//poslat stage cez argument
-
-		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
-		zasielky = zasielkyScreen.ZobrazZasielkyScreen(veduciScena, hlavneOkno);
-		Scene1.setOnAction(e -> hlavneOkno.setScene(zasielky));
 		
-		ZamestnanciScreen zamestnanciScreen = new ZamestnanciScreen();
-		zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(veduciScena, hlavneOkno);
-		Zamestnanci.setOnAction(e -> hlavneOkno.setScene(zamestnanci));
-
-		HBox veduciHBox = new HBox();
-		veduciHBox.setPadding(new Insets(15, 12, 15, 12));
-		veduciHBox.setSpacing(10);
-		veduciHBox.setStyle("-fx-background-color:  #5f9ea0;");
-		Scene2.setPrefSize(100, 20);
-		Scene1.setPrefSize(100, 20);
-		Zamestnanci.setPrefSize(130, 20);
-		Logout.setPrefSize(100, 20);
-		veduciHBox.getChildren().addAll(Scene2, Scene1, Zamestnanci, Logout);
-		veduciScena = new Scene(veduciHBox, 500, 400);
 		
 		buttonLogin.setOnAction(e -> {
-			if (txtUserName.getText().toString().equals(CheckLogin.getVeduciUsername())
-					&& pf.getText().toString().equals(CheckLogin.getVeduciPassword())) {
+		
+			if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "veduci") {
+				VeduciScreen veduciScreen = new VeduciScreen();
+				veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno);
 				hlavneOkno.setScene(veduciScena);
-				hlavneOkno.show();
-			} else {
-				System.out.println("Chyba");
-
 			}
+			
+			/*if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
+				hlavneOkno.setScene(PracovnikScena); //to do
+			}*/
+			
+			else {
+				System.out.println("Chyba"); //will do exception
+			}
+			
 			txtUserName.setText("");
 			pf.setText("");
 
 		});
 		
-		
-		Logout.setOnAction(e -> hlavneOkno.setScene(skrolScene));
+		//Logout.setOnAction(e -> hlavneOkno.setScene(skrolScene));
 		
 		skrolScene = new Scene(skrol, 300, 150);
 		hlavneOkno.setScene(skrolScene);

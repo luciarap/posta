@@ -107,6 +107,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 		pane.add(dorucitZasielku, 0, 13);
 		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		pane.add(spat, 0, 14);
+		listView.setPrefSize(500, 500);
 		
 		try {
 	        FileInputStream fis=new FileInputStream("C:\\Users\\lucia\\doporucenyList.ser");
