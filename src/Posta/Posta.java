@@ -5,6 +5,8 @@ import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
 import Zamestnanci.Zamestnanec;
+import hotovost.ManageMoney;
+import hotovost.ManazerHotovosti;
 import tovary.Casopisy;
 import tovary.Znamky;
 import tovary.Znamky.DruhZnamok;
@@ -12,7 +14,8 @@ import tovary.Casopisy.DruhCasopisov;
 
 
 public class Posta {
-	static double stavHotovosti;
+	static double stavHotovosti = 100;
+	double suma  = 50;
 
 	
 	//static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
@@ -21,7 +24,7 @@ public class Posta {
 
 	public static void main(String[] args) {
 
-		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579);
+		/*Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579);
 		Zamestnanec pracovnik1 = new Pracovnik("Klaudia", "Novakova", 4580, "cely");
 		Zamestnanec pracovnik2 = new Pracovnik("Peter", "Simko", 4581,"polovicny");
 		Zamestnanec veduci1 = new VeduciPosty("Jana", "Horvathova", 4578);
@@ -38,6 +41,12 @@ public class Posta {
 		stavHotovosti = GEO.predatTovar(GEO, 1, stavHotovosti);
 		System.out.println(GEO.getPocet());
 		System.out.println(stavHotovosti);
+		*/
+		ManazerHotovosti manazer = new ManazerHotovosti();
+		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
+		double result = manazer.add(100.5,50.8, pridaj);
+		System.out.println(result);
+
 	
 	}
 

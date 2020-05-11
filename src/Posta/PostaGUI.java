@@ -60,10 +60,12 @@ public class PostaGUI extends Application {
 	//Scene LoginScene;
 	Scene skrolScene;
 	Scene veduciScena;
+	Scene pracovnikScena;
+	Alert alert = new Alert(AlertType.ERROR);
 	//Scene zamestnanci;
 
 	public void start(Stage hlavneOkno) throws Exception {
-		
+		alert.setContentText("Nespravne meno alebo heslo.");
 		hlavneOkno.setTitle("Posta");
 		GridPane Login = new GridPane();
 		Label labelUserName = new Label("Username");
@@ -91,12 +93,13 @@ public class PostaGUI extends Application {
 				hlavneOkno.setScene(veduciScena);
 			}
 			
-			/*if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
-				hlavneOkno.setScene(PracovnikScena); //to do
-			}*/
-			
+			else if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
+				PracovnikScreen pracovnikScreen = new PracovnikScreen();
+				pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno);
+				hlavneOkno.setScene(pracovnikScena);
+			}
 			else {
-				System.out.println("Chyba"); //will do exception
+				alert.show();
 			}
 			
 			txtUserName.setText("");
