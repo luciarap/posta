@@ -36,6 +36,7 @@ public class TovaryScreen {
 	static Label pocetLabel = new Label("Pocet");
 	static Label druhLabel = new Label("Druh");
 	
+	static Label pocetKsLabel = new Label("Pocet kusov na predaj");
 	static TextField pocetTxt = new TextField();
 	
 	static TextField nazovZnamkyTxt = new TextField();
@@ -66,6 +67,7 @@ public class TovaryScreen {
 	static GridPane tovaryPane = new GridPane();
 
 	public static Scene Zobraz() throws ZleUdajeException  {
+		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		tovaryPane.add(zoznamLabel, 0, 0);
@@ -111,19 +113,25 @@ public class TovaryScreen {
 		
 		tovaryPane.add(ZoznamTovarov, 0, 7);
 		tovaryPane.add(predatTovar, 0, 9);
-		tovaryPane.add(pocetTxt, 0, 8);
+		tovaryPane.add(pocetTxt, 1, 8);
+		tovaryPane.add(pocetKsLabel, 0, 8);
 		
 		predatTovar.setOnAction(e -> {
 			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
 			try {
 				itemToRemove.predatTovar(itemToRemove, Integer.parseInt(pocetTxt.getText()));
 			} catch (NumberFormatException e1) {
+				System.out.println("Chyba");
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (ZleUdajeException e1) {
+				System.out.println("Chyba");
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} catch (Exception e1) {
+				System.out.println("Chyba");
 			}
+			
 			ZoznamTovarov.getItems().remove(itemToRemove);
 			ZoznamTovarov.getItems().add(itemToRemove);
 			
@@ -184,7 +192,7 @@ public class TovaryScreen {
 
 		});
 		
-		return new Scene(tovaryPane, 1000, 1000);
+		return new Scene(tovaryPane, 1000, 700);
 		
 	}
 

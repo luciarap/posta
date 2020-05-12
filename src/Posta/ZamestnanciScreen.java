@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tovary.Noviny;
 
@@ -29,6 +31,8 @@ public class ZamestnanciScreen implements Runnable {
 	private Button vyplata = new Button("Pridel vyplatu");
 	TextArea textArea = new TextArea();
 	
+	Text text = new Text();
+	
 
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny)  {
 		zamestnanciPane.add(textArea, 0, 1);
@@ -39,8 +43,26 @@ public class ZamestnanciScreen implements Runnable {
                   new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
             { 
+            	text.setFont((Font.font ("Verdana", 20)));
             	comboBox.setItems(ZoznamZamestnancov);
             	textArea.setText(comboBox.getValue() + " selected"); 
+            	if (comboBox.getValue() instanceof Dorucovatel) {
+            		text.setText(comboBox.getValue().getMeno() + "\n" + comboBox.getValue().getPriezvisko() +"\n"+ comboBox.getValue().getID() +"\n"+ comboBox.getValue().getMzda() );
+            	}
+            	
+            	if (comboBox.getValue() instanceof Pracovnik) {
+            		text.setText(comboBox.getValue().getMeno() + "\n" + comboBox.getValue().getPriezvisko() +"\n"+ comboBox.getValue().getID() +"\n"+ comboBox.getValue().getMzda() + "\n" + ((Pracovnik) comboBox.getValue()).getUvazok()  );
+            	}
+            			
+            			
+            			
+	     /*  System.out.println("ID: "+ getID());  
+	       System.out.println("Meno: " + getMeno());  
+	       System.out.println("Priezvisko: " + getPriezvisko());  
+	       System.out.println("Mzda: " + getMzda());  
+	       System.out.println("_______________");  );*/
+            	
+            	
                 //textfield or something, vypise vsetky udaje o zamestanncoch or something...
             } 
         }; 
@@ -48,6 +70,7 @@ public class ZamestnanciScreen implements Runnable {
         // Set on action 
         comboBox.setOnAction(event); 
 		zamestnanciPane.add(comboBox, 0, 0);
+		zamestnanciPane.add(text, 0, 5);
 		 
 		//ZoznamZamestnancov.
 		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579);

@@ -3,8 +3,8 @@ package hotovost;
 public interface ManageMoney {
 	
 	double pridaj(double stavHotovosti, double suma);
-	default void skontrolujStav(double stav) {
-		System.out.println(stav);
+	default void skontrolujStav() {
+		System.out.println();
 		//return stav;
 	}
 

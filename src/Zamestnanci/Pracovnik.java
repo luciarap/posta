@@ -100,6 +100,14 @@ public class Pracovnik implements Zamestnanec { //LEAF
 				+ uvazok + "]";
 	}
 
+	public String getUvazok() {
+		return uvazok;
+	}
+
+	public void setUvazok(String uvazok) {
+		this.uvazok = uvazok;
+	}
+
 
 	
 

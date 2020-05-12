@@ -14,7 +14,7 @@ public class VeduciScreen {
 	Scene zasielky;
 	Scene uvod;
 	Scene LoginScene;
-	Scene skrolScene;
+	//Scene skrolScene;
 	Scene veduciScena;
 	Scene zamestnanci;
 	private Button Scene2 = new Button("Tovary");
@@ -22,7 +22,7 @@ public class VeduciScreen {
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
 
-	public Scene zobrazVeduciScreen(Stage hlavny) throws ZleUdajeException {
+	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException {
 		
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		tovary = tovaryScreen.Zobraz();
@@ -47,7 +47,7 @@ public class VeduciScreen {
 		Logout.setPrefSize(100, 20);
 		veduciHBox.getChildren().addAll(Scene2, Scene1, Zamestnanci, Logout);
 		
-		//Logout.setOnAction(e -> hlavny.setScene(skrolScene));
+		Logout.setOnAction(e -> hlavny.setScene(login));
 		//veduciScena = new Scene(veduciHBox, 500, 400);
 		
 		//hlavny.setScene(hlavna);

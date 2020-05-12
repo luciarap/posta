@@ -56,6 +56,11 @@ public class PostaGUI extends Application {
 	Alert alert = new Alert(AlertType.ERROR);
 
 	public void start(Stage hlavneOkno) throws Exception {
+		
+		VeduciScreen veduciScreen = new VeduciScreen();
+		PracovnikScreen pracovnikScreen = new PracovnikScreen();
+		
+		
 		alert.setContentText("Nespravne meno alebo heslo.");
 		hlavneOkno.setTitle("Posta");
 		GridPane Login = new GridPane();
@@ -79,10 +84,10 @@ public class PostaGUI extends Application {
 		buttonLogin.setOnAction(e -> {
 		
 			if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "veduci") {
-				VeduciScreen veduciScreen = new VeduciScreen();
+				
 				
 					try {
-						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno);
+						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno,skrolScene);
 					} catch (ZleUdajeException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -94,7 +99,7 @@ public class PostaGUI extends Application {
 			}
 			
 			else if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
-				PracovnikScreen pracovnikScreen = new PracovnikScreen();
+				
 				try {
 					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno);
 				} catch (ZleUdajeException e1) {
