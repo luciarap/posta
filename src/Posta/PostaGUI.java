@@ -35,10 +35,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import zasielky.Dobierka;
 import zasielky.DoporucenyList;
@@ -57,6 +59,8 @@ public class PostaGUI extends Application {
 
 	public void start(Stage hlavneOkno) throws Exception {
 		
+		//hlavneOkno.getIcons().add(new Image(("file:letter.png")));
+		
 		VeduciScreen veduciScreen = new VeduciScreen();
 		PracovnikScreen pracovnikScreen = new PracovnikScreen();
 		
@@ -64,11 +68,15 @@ public class PostaGUI extends Application {
 		alert.setContentText("Nespravne meno alebo heslo.");
 		hlavneOkno.setTitle("Posta");
 		GridPane Login = new GridPane();
+		//Login.setStyle("-fx-background-color:  #6a5acd;");
 		Label labelUserName = new Label("Username");
+		labelUserName.setFont((Font.font("Times New Roman", 15)));
 		final TextField txtUserName = new TextField();
 		Label lblPassword = new Label("Password");
+		lblPassword.setFont((Font.font("Times New Roman", 15)));
 		final PasswordField pf = new PasswordField();
 		Button buttonLogin = new Button("Login");
+		buttonLogin.setFont((Font.font("Times New Roman", 15)));
 		
 		LoginController loginController = new LoginController();
 
