@@ -12,6 +12,7 @@ public class ManazerHotovosti {
 	    return manageMoney.pridaj(stav,suma);
 	}
 	
+
 	//public updateStav( )
 
 }

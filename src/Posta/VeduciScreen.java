@@ -22,7 +22,7 @@ public class VeduciScreen {
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
 
-	public Scene zobrazVeduciScreen(Stage hlavny) {
+	public Scene zobrazVeduciScreen(Stage hlavny) throws ZleUdajeException {
 		
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		tovary = tovaryScreen.Zobraz();

@@ -2,10 +2,12 @@ package Posta;
 
 import Zamestnanci.VeduciPosty;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import tovary.Casopisy;
 import tovary.Noviny;
@@ -58,7 +60,9 @@ public class TovaryScreen {
 	private static Button pridatNoviny = new Button("Pridat noviny");
 	static GridPane tovaryPane = new GridPane();
 
-	public static Scene Zobraz() {
+	public static Scene Zobraz() throws ZleUdajeException  {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		tovaryPane.add(zoznamLabel, 0, 0);
 		tovaryPane.setStyle("-fx-background-color: linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		zoznamLabel.setStyle("-fx-font-size: 18px; "
@@ -109,8 +113,29 @@ public class TovaryScreen {
 		});
 		
 		pridatZreby.setOnAction(e -> {
-			Zreby zreby = new Zreby (nazovZrebyTxt.getText(), Integer.parseInt(pocetZrebyTxt.getText()), druhZrebyTxt.getText());
-			ZoznamTovarov.getItems().add(zreby);
+			Zreby zreby = null;
+			//try {
+				try {
+					zreby = new Zreby (nazovZrebyTxt.getText(), Integer.parseInt(pocetZrebyTxt.getText()), druhZrebyTxt.getText());
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ZleUdajeException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			//}  catch (ZleUdajeException e1) {
+			//	alert.show();
+				// TODO Auto-generated catch block
+			//	e1.printStackTrace();
+			//	return;
+		//	}
+			if (zreby.isValid() == true) ZoznamTovarov.getItems().add(zreby);
+			else alert.show();
+			
+			
+			
 		});
 		
 		pridatPohladnice.setOnAction(e -> {

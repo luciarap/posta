@@ -1,5 +1,7 @@
 package tovary;
 
+import Posta.ZleUdajeException;
+
 public abstract class Tovary { //abstract
 	private double cena;
 	private String nazov;
@@ -47,12 +49,14 @@ public abstract class Tovary { //abstract
 	//public abstract int predatTovar(Tovary tovar, int pocet);
 	public abstract void objednatTovar(Tovary tovar, int pocet);//ked bude pocet < 2 or sth
 
-	public abstract double predatTovar(Tovary tovar, int pocet, double stavHotovosti);
+	public abstract double predatTovar(Tovary tovar, int pocet, double stavHotovosti) throws ZleUdajeException;
 
 	@Override
 	public String toString() {
-		return "Tovary [nazov=" + nazov + ", pocet=" + pocet + "]";
+		return "Tovary:  nazov=" + nazov + ", pocet=" + pocet;
 	}
+
+
 	
 	
 

@@ -20,7 +20,7 @@ public class PracovnikScreen {
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
 
-	public Scene zobrazPracovnikScreen(Stage hlavny) {
+	public Scene zobrazPracovnikScreen(Stage hlavny) throws ZleUdajeException {
 		
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		tovary = tovaryScreen.Zobraz();

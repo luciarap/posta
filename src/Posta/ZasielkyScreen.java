@@ -154,8 +154,8 @@ public class ZasielkyScreen implements java.io.Serializable {
 										priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
 										Integer.parseInt(psc.getText()), mesto.getText(),
 										Integer.parseInt(suma.getText()), Integer.parseInt(hmotnost.getText()));
+								
 								listView.getItems().add(dobierka);
-								System.out.println("Fungujem aj tu.");
 							} catch (Exception e1) {
 								alert.show();
 								System.out.println("Chyba");

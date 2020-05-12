@@ -15,7 +15,7 @@ import tovary.Casopisy.DruhCasopisov;
 
 public class Posta {
 	static double stavHotovosti = 100;
-	double suma  = 50;
+	static double suma  = 50;
 
 	
 	//static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
@@ -44,8 +44,10 @@ public class Posta {
 		*/
 		ManazerHotovosti manazer = new ManazerHotovosti();
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
-		double result = manazer.add(100.5,50.8, pridaj);
-		System.out.println(result);
+		double result = manazer.add(stavHotovosti,suma, pridaj);
+		//double result2 = manazer.add(stavHotovosti,suma, pridaj);
+		stavHotovosti = result;
+		System.out.println(stavHotovosti);
 
 	
 	}

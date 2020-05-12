@@ -48,21 +48,12 @@ import Posta.CheckLogin;
 
 public class PostaGUI extends Application {
 	
-	/*private Button Scene2 = new Button("Tovary");
-	private Button Scene1 = new Button("Zasielky");
-	private Button Logout = new Button("Log Out");
-	private Button Zamestnanci = new Button("Zamestnanci");*/
 	private ScrollPane skrol = new ScrollPane();
 
-	//Scene tovary;
-	//Scene zasielky;
-	//Scene uvod;
-	//Scene LoginScene;
 	Scene skrolScene;
 	Scene veduciScena;
 	Scene pracovnikScena;
 	Alert alert = new Alert(AlertType.ERROR);
-	//Scene zamestnanci;
 
 	public void start(Stage hlavneOkno) throws Exception {
 		alert.setContentText("Nespravne meno alebo heslo.");
@@ -89,13 +80,23 @@ public class PostaGUI extends Application {
 		
 			if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "veduci") {
 				VeduciScreen veduciScreen = new VeduciScreen();
-				veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno);
+				try {
+					veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno);
+				} catch (ZleUdajeException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				hlavneOkno.setScene(veduciScena);
 			}
 			
 			else if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
 				PracovnikScreen pracovnikScreen = new PracovnikScreen();
-				pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno);
+				try {
+					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno);
+				} catch (ZleUdajeException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				hlavneOkno.setScene(pracovnikScena);
 			}
 			else {
@@ -106,8 +107,6 @@ public class PostaGUI extends Application {
 			pf.setText("");
 
 		});
-		
-		//Logout.setOnAction(e -> hlavneOkno.setScene(skrolScene));
 		
 		skrolScene = new Scene(skrol, 300, 150);
 		hlavneOkno.setScene(skrolScene);
