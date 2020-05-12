@@ -43,13 +43,14 @@ public abstract class Tovary { //abstract
 	public Tovary(String nazov, int pocet, String druh) {
 		this.nazov = nazov;
 		this.pocet = pocet;
+		this.druh = druh;
 		
 	}
 	
 	//public abstract int predatTovar(Tovary tovar, int pocet);
 	public abstract void objednatTovar(Tovary tovar, int pocet);//ked bude pocet < 2 or sth
 
-	public abstract double predatTovar(Tovary tovar, int pocet, double stavHotovosti) throws ZleUdajeException;
+	public abstract void predatTovar(Tovary tovar, int pocet) throws ZleUdajeException;
 
 	@Override
 	public String toString() {

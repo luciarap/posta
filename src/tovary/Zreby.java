@@ -1,12 +1,15 @@
 package tovary;
 
 import Posta.ZleUdajeException;
+import hotovost.ManageMoney;
+import hotovost.ManazerHotovosti;
 
 //konstruktor moze vyhodit vynimku ked dostane udaje, ktore nie su platne pre druh
 public class Zreby extends Tovary {
 	
 	private boolean isValid = false;
 	private int flag = 0;
+	
 	public enum DruhZrebov {
 		  PrasaVZite("Prasa v zite"),
 		  StastneCisla("Stastne cislo"),
@@ -20,7 +23,6 @@ public class Zreby extends Tovary {
 	        }
 	        
 	        public boolean equalsName(String otherName) {
-	            // (otherName == null) check is not needed because name.equals(null) returns false 
 	            return nazovDruhu.equals(otherName);
 	        }
 	        
@@ -43,7 +45,7 @@ public class Zreby extends Tovary {
 		   // System.out.println(typ); 
 		}
 		
-		System.out.println(flag);
+		//System.out.println(flag);
 		if (flag == 1) isValid = true;
 		
 		if (flag == 0) throw new ZleUdajeException("Udaje neboli spravne zadane");
@@ -67,31 +69,50 @@ public class Zreby extends Tovary {
 	}
 
 	@Override
-	public double predatTovar(Tovary tovar, int pocet, double stavHotovosti) {
+	public void predatTovar(Tovary tovar, int pocet) {
+		
+		double celkovaSuma;
+		
+		ManazerHotovosti manazer = new ManazerHotovosti();
+		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
+		//double result = manazer.add(ManazerHotovosti.stavHotovosti,suma, pridaj);
+		//double result2 = manazer.add(stavHotovosti,suma, pridaj);
+		//ManazerHotovosti.stavHotovosti = result;
+		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
+		//System.out.println(tovar.getDruh());
+		
 		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
 		}
+		
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		switch (tovar.getDruh()) {
-		case "PrasaVZite":
-			stavHotovosti += pocet*0.50;
-			return stavHotovosti;
-			
-		case "StastneCisla":
-			stavHotovosti += pocet*1;
-			return stavHotovosti;
 		
-		case "CiernaPerla":
-			stavHotovosti += pocet*5;
-			return stavHotovosti;
+		switch (tovar.getDruh()) {
+		
+		case "Prasa v zite":
+			celkovaSuma = pocet*0.50;
+			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result1); 
+		
+		case "Stastne cisla":
+			celkovaSuma = pocet*1;
+			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result2); 
+		
+		case "Cierna perla":
+			celkovaSuma = pocet*5;
+			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result3); 
 		
 		case "Stastie":
-			stavHotovosti += pocet*2;
-			return stavHotovosti;
-		default: System.out.println("CHYBA");
+			celkovaSuma = pocet*2;
+			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result4); 
+			
+	//	default: System.out.println("CHYBA");
 		}
-		return stavHotovosti;
+		//return stavHotovosti;
 	}
 	
 

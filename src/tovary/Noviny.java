@@ -21,8 +21,8 @@ public class Noviny extends Tovary {
 	}
 
 	@Override
-	public double predatTovar(Tovary tovar, int pocet, double stavHotovosti) {
-		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
+	public void predatTovar(Tovary tovar, int pocet) {
+		/*if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
 		}
 		int aktualnyPocet = tovar.getPocet();
@@ -51,7 +51,7 @@ public class Noviny extends Tovary {
 			
 			
 		}
-		return stavHotovosti;
+		return stavHotovosti;*/
 		
 	}
 

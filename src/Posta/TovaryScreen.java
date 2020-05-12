@@ -12,15 +12,18 @@ import javafx.scene.layout.GridPane;
 import tovary.Casopisy;
 import tovary.Noviny;
 import tovary.Pohladnice;
+import tovary.Tovary;
 import tovary.Znamky;
 import tovary.Zreby;
 import zasielky.Dobierka;
+import zasielky.Zasielky;
 
 public class TovaryScreen {
 
 	
 	static ListView ZoznamTovarov = new ListView();
 	private static Button pridatTovar = new Button("Pridat Tovar");
+	private static Button predatTovar = new Button("Predat Tovar");
 	private static Button Spat = new Button("Spä");
 	static Label zoznamLabel = new Label("Tovary");
 	static Label znamkyLabel = new Label("Znamky");
@@ -32,6 +35,8 @@ public class TovaryScreen {
 	static Label nazovLabel = new Label("Nazov");
 	static Label pocetLabel = new Label("Pocet");
 	static Label druhLabel = new Label("Druh");
+	
+	static TextField pocetTxt = new TextField();
 	
 	static TextField nazovZnamkyTxt = new TextField();
 	static TextField pocetZnamkyTxt = new TextField();
@@ -105,6 +110,25 @@ public class TovaryScreen {
 		tovaryPane.add(pridatCasopisy, 4, 5);
 		
 		tovaryPane.add(ZoznamTovarov, 0, 7);
+		tovaryPane.add(predatTovar, 0, 9);
+		tovaryPane.add(pocetTxt, 0, 8);
+		
+		predatTovar.setOnAction(e -> {
+			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
+			try {
+				itemToRemove.predatTovar(itemToRemove, Integer.parseInt(pocetTxt.getText()));
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ZleUdajeException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			ZoznamTovarov.getItems().remove(itemToRemove);
+			ZoznamTovarov.getItems().add(itemToRemove);
+			
+			// text field pocet
+		});
 		
 		pridatZnamky.setOnAction(e -> {
 			Znamky znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());

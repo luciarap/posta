@@ -2,14 +2,22 @@ package hotovost;
 
 public class ManazerHotovosti {
 	
-	public double stavHotovosti;
+	private static double stavHotovosti = 10000;
 	
-	public ManazerHotovosti() {
-		this.stavHotovosti = 10000;
+	/*public ManazerHotovosti() {
+		ManazerHotovosti.stavHotovosti = 10000;
+	}*/
+	
+	public double add(double stav, double suma, ManageMoney manageMoney) {
+	    return manageMoney.pridaj(stav, suma);
 	}
-	
-	public double add(double stav,double suma, ManageMoney manageMoney) {
-	    return manageMoney.pridaj(stav,suma);
+
+	public static double getStavHotovosti() {
+		return stavHotovosti;
+	}
+
+	public static void setStavHotovosti(double stavHotovosti) {
+		ManazerHotovosti.stavHotovosti = stavHotovosti;
 	}
 	
 

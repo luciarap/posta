@@ -80,12 +80,16 @@ public class PostaGUI extends Application {
 		
 			if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "veduci") {
 				VeduciScreen veduciScreen = new VeduciScreen();
-				try {
-					veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno);
-				} catch (ZleUdajeException e1) {
+				
+					try {
+						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno);
+					} catch (ZleUdajeException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
 				hlavneOkno.setScene(veduciScena);
 			}
 			
