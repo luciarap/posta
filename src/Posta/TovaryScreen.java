@@ -138,6 +138,7 @@ public class TovaryScreen {
 			
 			ZoznamTovarov.getItems().remove(itemToRemove);
 			ZoznamTovarov.getItems().add(itemToRemove);
+			zoznam.remove(itemToRemove);
 			
 			// text field pocet
 		});
