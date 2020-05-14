@@ -8,7 +8,9 @@ public interface ManageMoney {
 	
 	default void objednatPeniaze() {
 		double current = ManazerHotovosti.getStavHotovosti();
+		System.out.println(current);
 		current += 10000;
+		System.out.println(current);
 		ManazerHotovosti.setStavHotovosti(current);
 	}
 

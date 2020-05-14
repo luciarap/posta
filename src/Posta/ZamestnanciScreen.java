@@ -44,12 +44,12 @@ public class ZamestnanciScreen implements Runnable {
 				comboBox.setItems(ZoznamZamestnancov);
 				// textArea.setText(comboBox.getValue() + " selected");
 				if (comboBox.getValue() instanceof Dorucovatel) {
-					text.setText("Dorucovatel \n Meno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
+					text.setText("Dorucovatel \nMeno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
 							+ "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda());
 				}
 
 				if (comboBox.getValue() instanceof Pracovnik) {
-					text.setText("Pracovnik \n Meno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
+					text.setText("Pracovnik \nMeno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
 							+  "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda() + "\n"
 							+ "Uvazok: " + ((Pracovnik) comboBox.getValue()).getUvazok());
 				}
@@ -105,6 +105,9 @@ public class ZamestnanciScreen implements Runnable {
 			comboBox.setItems(ZoznamZamestnancov);
 
 			veduci1.info();
+			vyplata.setDisable(true);
+			vyplata.setStyle("-fx-background-color: #d3d3d3");
+			
 		});
 		spat.setOnAction(e -> {
 			// screen.zobrazVeduciScreen(hlavna, hlavny);

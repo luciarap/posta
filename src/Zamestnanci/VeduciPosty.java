@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 import zasielky.Dobierka;
 import zasielky.Zasielky;
 // Composite
-public class VeduciPosty implements Zamestnanec { //COMPOSITE
+public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	
 	private String meno;
 	private String priezvisko;
@@ -77,7 +78,6 @@ public class VeduciPosty implements Zamestnanec { //COMPOSITE
 	@Override
 	public void dostanVyplatu() {
 		mzda = 750;
-		
 	       Iterator<Zamestnanec> it = zamestnanci.iterator();  
 	        
 	          while(it.hasNext())  {  
@@ -85,8 +85,14 @@ public class VeduciPosty implements Zamestnanec { //COMPOSITE
 	            zamestnanec.dostanVyplatu();  
 	            double current = ManazerHotovosti.getStavHotovosti();
 	            current -= mzda;
+	            if (current < 0) {
+	            	System.out.println("Pred " + ManazerHotovosti.getStavHotovosti());
+	            	objednatPeniaze();
+	            }
+	            else {
 	            ManazerHotovosti.setStavHotovosti(current);
-	            System.out.println(ManazerHotovosti.getStavHotovosti());
+	            System.out.println("Po: " + ManazerHotovosti.getStavHotovosti());
+	            }
 	         }
 
 	//to do
@@ -125,8 +131,13 @@ public class VeduciPosty implements Zamestnanec { //COMPOSITE
 
 	@Override
 	public String toString() {
-		return "VeduciPosty [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID + ", mzda=" + mzda
-				+ ", zamestnanci=" + zamestnanci + "]";
+		return "meno: " + meno + ", priezvisko: " + priezvisko;
+	}
+
+	@Override
+	public double pridaj(double stavHotovosti, double suma) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
