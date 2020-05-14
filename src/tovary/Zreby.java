@@ -51,6 +51,8 @@ public class Zreby extends Tovary {
 		catch (ZleUdajeException e ) {
 			isValid = false;
 			System.out.println(e);
+			e.ShowAlert();
+			//alert tu ako, osetrenie
 		}
 
 	}

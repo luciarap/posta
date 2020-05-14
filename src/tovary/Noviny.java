@@ -6,6 +6,7 @@ import tovary.Zreby.DruhZrebov;
 public class Noviny extends Tovary {
 	private boolean isValid = false;
 	private int flag = 0;
+	
 	public enum DruhNovin {
 		  NovyCas("Novy cas"),
 		  Sme("Sme"),

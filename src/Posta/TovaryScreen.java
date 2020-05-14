@@ -81,7 +81,7 @@ public class TovaryScreen {
 		Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
-		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
+		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu. Hover over selected text area to show a tip");
 		
 		tovaryPane.setStyle("-fx-background-color: linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		zoznamLabel.setStyle("-fx-font-size: 18px; "
@@ -201,7 +201,7 @@ public class TovaryScreen {
 			//	return;
 		//	}
 			if (zreby.isValid() == true) ZoznamTovarov.getItems().add(zreby);
-			else alert.show();
+			//else alert.show();
 			
 			
 			
@@ -209,7 +209,9 @@ public class TovaryScreen {
 		
 		pridatPohladnice.setOnAction(e -> {
 			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
-			ZoznamTovarov.getItems().add(pohladnice);
+			if (pohladnice.isValid() == true) ZoznamTovarov.getItems().add(pohladnice);
+			else alert.show();
+			
 			//nakup.tailInsert(pohladnice);
 		});
 		
