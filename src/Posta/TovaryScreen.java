@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import tovary.Casopisy;
 import tovary.Element;
 import tovary.Noviny;
@@ -74,7 +75,7 @@ public class TovaryScreen {
 	
 	
 
-	public static Scene Zobraz() throws ZleUdajeException  {
+	public Scene Zobraz(Stage hlavny) throws ZleUdajeException  {
 		Text text = new Text();
 		//Zoznamy<Object> zoznam = new Zoznamy<Object>();
 		Zoznamy<Object> nakup = new Zoznamy<Object>();
@@ -128,6 +129,18 @@ public class TovaryScreen {
 		tovaryPane.add(pocetKsLabel, 0, 8);
 		
 		tovaryPane.add(text, 0, 9);
+		
+		tovaryPane.add(Spat, 0, 10);
+		
+		Spat.setOnAction(e -> {
+			if (PostaGUI.povod == "veduci") {
+				hlavny.setScene(PostaGUI.veduciScena);
+			}
+			
+			else if (PostaGUI.povod == "pracovnik") 
+				hlavny.setScene(PostaGUI.pracovnikScena);
+			
+		});
 		
 		predatTovar.setOnAction(e -> {
 			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();

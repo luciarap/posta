@@ -63,6 +63,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 	RadioButton invisible = new RadioButton("Invisible");
 	ListView listView = new ListView();
 	private Button spat = new Button("Sp‰ù");
+	
 	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		

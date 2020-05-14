@@ -30,9 +30,12 @@ public class VeduciScreen {
 		
 		
 		if (PostaGUI.tovary == null) {
-			PostaGUI.tovary = tovaryScreen.Zobraz();
+			PostaGUI.tovary = tovaryScreen.Zobraz(hlavny);
 		}
-		Scene2.setOnAction(e -> hlavny.setScene(PostaGUI.tovary));
+		Scene2.setOnAction(e -> {
+			PostaGUI.povod = "veduci";
+			hlavny.setScene(PostaGUI.tovary);
+		});
 		
 		
 		if (PostaGUI.zasielky == null) {
