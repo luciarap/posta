@@ -1,6 +1,11 @@
 package tovary;
+
+import Posta.ZleUdajeException;
+import tovary.Zreby.DruhZrebov;
+
 public class Noviny extends Tovary {
-	
+	private boolean isValid = false;
+	private int flag = 0;
 	public enum DruhNovin {
 		  NovyCas("Novy cas"),
 		  Sme("Sme"),
@@ -23,9 +28,32 @@ public class Noviny extends Tovary {
 	         }
 
 		}
+	
+	public boolean isValid() {
+	    return isValid;
+	}
 	//private DruhNovin druh;
 	public Noviny(String nazov, int pocet, String druh) {
 		super(nazov, pocet, druh);
+		try {
+			
+			
+		for (DruhNovin typ : DruhNovin.values()) { 
+			if (typ.equalsName(druh)) {
+				flag = 1;
+			}
+		}
+
+		if (flag == 1) isValid = true;
+		
+		if (flag == 0) throw new ZleUdajeException("Udaje neboli spravne zadane");
+		
+		}
+		
+		catch (ZleUdajeException e ) {
+			isValid = false;
+			System.out.println(e);
+		}
 		//this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}

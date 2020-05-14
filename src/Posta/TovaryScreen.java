@@ -221,7 +221,9 @@ public class TovaryScreen {
 		
 		pridatNoviny.setOnAction(e -> {
 			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
-			ZoznamTovarov.getItems().add(noviny);
+			if (noviny.isValid() == true) ZoznamTovarov.getItems().add(noviny);
+			else alert.show();
+			
 			//nakup.tailInsert(noviny);
 		});
 			

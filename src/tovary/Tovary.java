@@ -47,6 +47,8 @@ public abstract class Tovary { //abstract
 		
 	}
 	
+	
+	
 	//public abstract int predatTovar(Tovary tovar, int pocet);
 	public abstract void objednatTovar(Tovary tovar, int pocet);//ked bude pocet < 2 or sth
 
