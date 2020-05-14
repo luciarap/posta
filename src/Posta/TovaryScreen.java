@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -71,10 +72,9 @@ public class TovaryScreen {
 	private static Button pridatCasopisy = new Button("Pridat casopisy");
 	private static Button pridatNoviny = new Button("Pridat noviny");
 	static GridPane tovaryPane = new GridPane();
+	final Tooltip tooltip = new Tooltip();
 	
 	
-	
-
 	public Scene Zobraz(Stage hlavny) throws ZleUdajeException  {
 		Text text = new Text();
 		//Zoznamy<Object> zoznam = new Zoznamy<Object>();
@@ -96,6 +96,8 @@ public class TovaryScreen {
 		tovaryPane.add(nazovZnamkyTxt, 1, 1);
 		tovaryPane.add(pocetZnamkyTxt, 2, 1);
 		tovaryPane.add(druhZnamkyTxt, 3, 1);
+		tooltip.setText("je potrebne zadat spravny druh znamky. Druhy znamok su: T1, T2, eur1, eur2, eur050");
+		druhZnamkyTxt.setTooltip(tooltip);
 		
 		tovaryPane.add(nazovZrebyTxt, 1, 2);
 		tovaryPane.add(pocetZrebyTxt, 2, 2);

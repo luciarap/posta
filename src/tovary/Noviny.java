@@ -2,11 +2,26 @@ package tovary;
 public class Noviny extends Tovary {
 	
 	public enum DruhNovin {
-		  NovyCas,
-		  Sme,
-		  Pravda,
-		  Hospodarske,
-		  Dnes
+		  NovyCas("Novy cas"),
+		  Sme("Sme"),
+		  Pravda("Pravda"),
+		  Hospodarske("Hospodarske noviny"),
+		  Dnes("Dnes");
+		  
+	        private String nazovDruhu;
+        
+	        private DruhNovin(String nazov) {
+	            this.nazovDruhu = nazov;
+	        }
+	        
+	        public boolean equalsName(String otherName) {
+	            return nazovDruhu.equals(otherName);
+	        }
+	        
+	        public String toString() {
+	            return this.nazovDruhu;
+	         }
+
 		}
 	//private DruhNovin druh;
 	public Noviny(String nazov, int pocet, String druh) {

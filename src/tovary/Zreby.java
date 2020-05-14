@@ -4,7 +4,6 @@ import Posta.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 
-//konstruktor moze vyhodit vynimku ked dostane udaje, ktore nie su platne pre druh
 public class Zreby extends Tovary {
 	
 	private boolean isValid = false;
@@ -31,7 +30,6 @@ public class Zreby extends Tovary {
 	         }
 
 		}
-	//private DruhZrebov druh;
 	public Zreby(String nazov, int pocet, String druh) throws ZleUdajeException{
 		super(nazov, pocet, druh);
 		
@@ -42,10 +40,8 @@ public class Zreby extends Tovary {
 			if (typ.equalsName(druh)) {
 				flag = 1;
 			}
-		   // System.out.println(typ); 
 		}
-		
-		//System.out.println(flag);
+
 		if (flag == 1) isValid = true;
 		
 		if (flag == 0) throw new ZleUdajeException("Udaje neboli spravne zadane");
@@ -56,8 +52,7 @@ public class Zreby extends Tovary {
 			isValid = false;
 			System.out.println(e);
 		}
-		//this.druh = druh;
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public boolean isValid() {
@@ -75,12 +70,8 @@ public class Zreby extends Tovary {
 		
 		ManazerHotovosti manazer = new ManazerHotovosti();
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
-		//double result = manazer.add(ManazerHotovosti.stavHotovosti,suma, pridaj);
-		//double result2 = manazer.add(stavHotovosti,suma, pridaj);
-		//ManazerHotovosti.stavHotovosti = result;
 		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
-		//System.out.println(tovar.getDruh());
-		
+
 		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
 		}
