@@ -11,9 +11,9 @@ public aspect AspectTestDruhy {
 	
 	
 	after() throwing (Exception e): callDorucit() {
-		alert.setContentText("Chyba: " + e);
+		alert.setContentText("Chyba: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
 		alert.show();
-		System.out.println("Threw an exception: " + e);
+		System.out.println("Threw an exception: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
 	}
 	
 

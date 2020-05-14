@@ -70,7 +70,8 @@ public class TovaryScreen {
 	
 
 	public static Scene Zobraz() throws ZleUdajeException  {
-		Zoznamy<Object> zoznam = new Zoznamy<Object>();
+		//Zoznamy<Object> zoznam = new Zoznamy<Object>();
+		Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
@@ -138,14 +139,15 @@ public class TovaryScreen {
 			
 			ZoznamTovarov.getItems().remove(itemToRemove);
 			ZoznamTovarov.getItems().add(itemToRemove);
-			zoznam.remove(itemToRemove);
+			//zoznam.remove(itemToRemove);
 			
 			// text field pocet
 		});
 		
 		pridatZnamky.setOnAction(e -> {
 			Znamky znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());
-			zoznam.add(znamky);
+			//zoznam.add(znamky);
+			nakup.tailInsert(znamky);
 			
 			ZoznamTovarov.getItems().add(znamky);
 			System.out.println("Fungujem aj tu.");
@@ -156,7 +158,8 @@ public class TovaryScreen {
 			//try {
 				try {
 					zreby = new Zreby (nazovZrebyTxt.getText(), Integer.parseInt(pocetZrebyTxt.getText()), druhZrebyTxt.getText());
-					zoznam.add(zreby);
+					nakup.tailInsert(zreby);
+					nakup.print();
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -181,29 +184,31 @@ public class TovaryScreen {
 		pridatPohladnice.setOnAction(e -> {
 			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
 			ZoznamTovarov.getItems().add(pohladnice);
-			zoznam.add(pohladnice);
+			nakup.tailInsert(pohladnice);
 		});
 		
 		pridatCasopisy.setOnAction(e -> {
 			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
 			ZoznamTovarov.getItems().add(casopisy);
-			zoznam.add(casopisy);
+			nakup.tailInsert(casopisy);
 		});
 		
 		pridatNoviny.setOnAction(e -> {
 			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
 			ZoznamTovarov.getItems().add(noviny);
-			zoznam.add(noviny);
+			nakup.tailInsert(noviny);
 		});
 			
 		//tovaryPane.add(pridatTovar, 0, 1);
 		//tovary = new Scene(tovaryPane, 1000, 1000);
 		pridatTovar.setOnAction(e -> {
 			System.out.println("Fungujem?");
+			
 
 		});
 		
-		zoznam.print();
+		
+		//zoznam.print(zoznam);
 		return new Scene(tovaryPane, 1000, 700);
 		
 	}

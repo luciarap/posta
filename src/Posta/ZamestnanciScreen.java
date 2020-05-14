@@ -91,9 +91,9 @@ public class ZamestnanciScreen implements Runnable {
 		// update observable or something
 		// zamestnanciPane.add(selected, 0, 5);
 		vyplata.setOnAction(e -> {
-			ZamestnanciScreen m1 = new ZamestnanciScreen();
+			/*ZamestnanciScreen m1 = new ZamestnanciScreen();
 			Thread t1 = new Thread(m1);
-			t1.start(); // to do...
+			t1.start(); // to do...*/
 			veduci1.dostanVyplatu();
 			comboBox.setItems(ZoznamZamestnancov);
 
