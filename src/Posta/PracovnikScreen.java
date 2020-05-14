@@ -33,9 +33,12 @@ public class PracovnikScreen {
 		
 		
 		if (PostaGUI.zasielky == null) {
-			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny, "pracovnik");
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny);
 		}
-		Scene1.setOnAction(e -> hlavny.setScene(PostaGUI.zasielky));
+		Scene1.setOnAction(e -> {
+			PostaGUI.povod = "pracovnik";
+			hlavny.setScene(PostaGUI.zasielky);
+		});
 
 		HBox PracovnikHBox = new HBox();
 		PracovnikHBox.setPadding(new Insets(15, 12, 15, 12));

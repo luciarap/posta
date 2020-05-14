@@ -24,6 +24,7 @@ public class PostaGUI extends Application {
 	static Scene tovary;
 	static Scene zasielky;
 	static Scene zamestnanci;
+	static String povod;
 
 	public void start(Stage hlavneOkno) throws Exception {
 		tovary = null;
@@ -85,7 +86,7 @@ public class PostaGUI extends Application {
 				if (pracovnikScena == null) {
 				
 				try {
-					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno,skrolScene);
+					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno, skrolScene);
 				} catch (ZleUdajeException e1) {
 					// TODO Auto-generated catch block
 						e1.printStackTrace();

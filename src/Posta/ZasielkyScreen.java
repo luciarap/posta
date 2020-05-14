@@ -63,7 +63,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 	RadioButton invisible = new RadioButton("Invisible");
 	ListView listView = new ListView();
 	private Button spat = new Button("Spä");
-	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny, String povod) {
+	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		
 		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178);
@@ -108,13 +108,13 @@ public class ZasielkyScreen implements java.io.Serializable {
 		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		pane.add(spat, 0, 14);
 		listView.setPrefSize(500, 500);
-		System.out.println(povod);
+		System.out.println(PostaGUI.povod);
 		spat.setOnAction(e -> {
-			if (povod == "veduci") {
+			if (PostaGUI.povod == "veduci") {
 				hlavny.setScene(PostaGUI.veduciScena);
 			}
 			
-			else if (povod == "pracovnik") 
+			else if (PostaGUI.povod == "pracovnik") 
 				hlavny.setScene(PostaGUI.pracovnikScena);
 			
 		});

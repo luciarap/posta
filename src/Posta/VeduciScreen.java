@@ -36,9 +36,12 @@ public class VeduciScreen {
 		
 		
 		if (PostaGUI.zasielky == null) {
-			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PostaGUI.veduciScena, hlavny, "veduci");
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PostaGUI.veduciScena, hlavny);
 		}
-		Scene1.setOnAction(e -> hlavny.setScene(PostaGUI.zasielky));
+		Scene1.setOnAction(e -> {
+			PostaGUI.povod = "veduci";
+			hlavny.setScene(PostaGUI.zasielky);
+		});
 		
 		if (PostaGUI.zamestnanci == null) {
 			PostaGUI.zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(PostaGUI.veduciScena, hlavny);
