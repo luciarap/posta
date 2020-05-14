@@ -81,7 +81,7 @@ public class TovaryScreen {
 		Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
-		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu. Hover over selected text area to show a tip");
+		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		
 		tovaryPane.setStyle("-fx-background-color: linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		zoznamLabel.setStyle("-fx-font-size: 18px; "
@@ -172,11 +172,7 @@ public class TovaryScreen {
 		
 		pridatZnamky.setOnAction(e -> {
 			Znamky znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());
-			//zoznam.add(znamky);
-			//nakup.tailInsert(znamky);
-			
-			ZoznamTovarov.getItems().add(znamky);
-			System.out.println("Fungujem aj tu.");
+			if (znamky.isValid() == true) ZoznamTovarov.getItems().add(znamky);
 		});
 		
 		pridatZreby.setOnAction(e -> {
@@ -187,6 +183,7 @@ public class TovaryScreen {
 					//nakup.tailInsert(zreby);
 					//nakup.print();
 				} catch (NumberFormatException e1) {
+					alert.show();
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (ZleUdajeException e1) {
@@ -210,21 +207,22 @@ public class TovaryScreen {
 		pridatPohladnice.setOnAction(e -> {
 			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
 			if (pohladnice.isValid() == true) ZoznamTovarov.getItems().add(pohladnice);
-			else alert.show();
+			//else alert.show();
 			
 			//nakup.tailInsert(pohladnice);
 		});
 		
 		pridatCasopisy.setOnAction(e -> {
 			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
-			ZoznamTovarov.getItems().add(casopisy);
+			if (casopisy.isValid() == true) ZoznamTovarov.getItems().add(casopisy);
+			//ZoznamTovarov.getItems().add(casopisy);
 			//nakup.tailInsert(casopisy);
 		});
 		
 		pridatNoviny.setOnAction(e -> {
 			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
 			if (noviny.isValid() == true) ZoznamTovarov.getItems().add(noviny);
-			else alert.show();
+			//else alert.show();
 			
 			//nakup.tailInsert(noviny);
 		});

@@ -10,11 +10,15 @@ public aspect AspectTestDruhy {
 	pointcut callDorucit(): call(* Dorucovatel.Dorucit(..));
 	
 	
+	
+	
 	after() throwing (Exception e): callDorucit() {
 		alert.setContentText("Chyba: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
 		alert.show();
 		System.out.println("Threw an exception: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
 	}
+	
+
 	
 
 	

@@ -4,6 +4,7 @@ import Posta.ZleUdajeException;
 import tovary.Zreby.DruhZrebov;
 
 public class Noviny extends Tovary {
+	
 	private boolean isValid = false;
 	private int flag = 0;
 	
@@ -54,6 +55,7 @@ public class Noviny extends Tovary {
 		catch (ZleUdajeException e ) {
 			isValid = false;
 			System.out.println(e);
+			e.ShowAlert();
 		}
 		//this.druh = druh;
 		// TODO Auto-generated constructor stub

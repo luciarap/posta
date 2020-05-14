@@ -4,8 +4,10 @@ import Posta.ZleUdajeException;
 import tovary.Noviny.DruhNovin;
 
 public class Pohladnice extends Tovary {
+	
 	private boolean isValid = false;
 	private int flag = 0;
+	
 	public enum DruhPohladnic {
 		  Narodeniny1("Narodeniny druh 1"),
 		  Narodeniny2("Narodeniny druh 2"),
@@ -53,6 +55,7 @@ public class Pohladnice extends Tovary {
 		catch (ZleUdajeException e ) {
 			isValid = false;
 			System.out.println(e);
+			e.ShowAlert();
 		}
 		//this.druh = druh;
 		// TODO Auto-generated constructor stub

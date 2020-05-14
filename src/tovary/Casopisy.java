@@ -1,20 +1,65 @@
 package tovary;
+
+import Posta.ZleUdajeException;
+import tovary.Noviny.DruhNovin;
+
 public class Casopisy extends Tovary {
 	
+	private boolean isValid = false;
+	private int flag = 0;
+	
 	public enum DruhCasopisov {
-		  Zahradkar,
-		  Byvanie,
-		  Tyzden,
-		  Kreativ,
-		  Geo
+		  Zahradkar("Zahradkar"),
+		  Byvanie("Byvanie"),
+		  Tyzden("Tyzden"),
+		  Kreativ("Kreativ"),
+		  Geo("Geo");
+		
+        private String nazovDruhu;
+        
+        private DruhCasopisov(String nazov) {
+            this.nazovDruhu = nazov;
+        }
+        
+        public boolean equalsName(String otherName) {
+            return nazovDruhu.equals(otherName);
+        }
+        
+        public String toString() {
+            return this.nazovDruhu;
+         }
 		}
 	//private DruhCasopisov druh;
 	public Casopisy(String nazov, int pocet, String druh) {
 		super(nazov, pocet, druh);
+		
+		try {
+			
+			
+			for (DruhCasopisov typ : DruhCasopisov.values()) { 
+				if (typ.equalsName(druh)) {
+					flag = 1;
+				}
+			}
+
+			if (flag == 1) isValid = true;
+			
+			if (flag == 0) throw new ZleUdajeException("Udaje neboli spravne zadane");
+			
+			}
+			
+			catch (ZleUdajeException e ) {
+				isValid = false;
+				System.out.println(e);
+				e.ShowAlert();
+			}
 		//this.druh = druh;
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public boolean isValid() {
+	    return isValid;
+	}
 	@Override
 	public void objednatTovar(Tovary tovar, int pocet) {
 		tovar.setPocet(pocet + 1);
