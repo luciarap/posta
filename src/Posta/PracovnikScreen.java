@@ -9,27 +9,33 @@ import javafx.stage.Stage;
 
 public class PracovnikScreen {
 	GridPane pane = new GridPane();
-	Scene tovary;
-	Scene zasielky;
+	//static Scene tovary;
+	//static Scene zasielky;
 	Scene uvod;
 	Scene LoginScene;
-	Scene skrolScene;
-	Scene veduciScena;
-	Scene zamestnanci;
+//	Scene skrolScene;
+	Scene PracovnikScena;
+//	Scene zamestnanci;
 	private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
 
-	public Scene zobrazPracovnikScreen(Stage hlavny) throws ZleUdajeException {
-		
-		TovaryScreen tovaryScreen = new TovaryScreen();
-		tovary = tovaryScreen.Zobraz();
-		Scene2.setOnAction(e -> hlavny.setScene(tovary));
-		//poslat stage cez argument
+	public Scene zobrazPracovnikScreen(Stage hlavny, Scene login) throws ZleUdajeException {
 
+		TovaryScreen tovaryScreen = new TovaryScreen();
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
-		zasielky = zasielkyScreen.ZobrazZasielkyScreen(veduciScena, hlavny);
-		Scene1.setOnAction(e -> hlavny.setScene(zasielky));
+		
+		
+		if (PostaGUI.tovary == null) {
+			PostaGUI.tovary = tovaryScreen.Zobraz();
+		}
+		Scene2.setOnAction(e -> hlavny.setScene(PostaGUI.tovary));
+		
+		
+		if (PostaGUI.zasielky == null) {
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny);
+		}
+		Scene1.setOnAction(e -> hlavny.setScene(PostaGUI.zasielky));
 
 		HBox PracovnikHBox = new HBox();
 		PracovnikHBox.setPadding(new Insets(15, 12, 15, 12));
@@ -39,6 +45,8 @@ public class PracovnikScreen {
 		Scene1.setPrefSize(100, 20);
 		Logout.setPrefSize(100, 20);
 		PracovnikHBox.getChildren().addAll(Scene2, Scene1, Logout);
+		
+		Logout.setOnAction(e -> hlavny.setScene(login));
 		
 		//Logout.setOnAction(e -> hlavny.setScene(skrolScene));
 		//veduciScena = new Scene(veduciHBox, 500, 400);

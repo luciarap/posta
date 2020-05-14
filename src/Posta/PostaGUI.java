@@ -18,11 +18,19 @@ public class PostaGUI extends Application {
 	private ScrollPane skrol = new ScrollPane();
 
 	Scene skrolScene;
-	Scene veduciScena;
-	Scene pracovnikScena;
+	static Scene veduciScena;
+	static Scene pracovnikScena;
 	Alert alert = new Alert(AlertType.ERROR);
+	static Scene tovary;
+	static Scene zasielky;
+	static Scene zamestnanci;
 
 	public void start(Stage hlavneOkno) throws Exception {
+		tovary = null;
+		zasielky = null;
+		veduciScena = null;
+		pracovnikScena = null;
+		zamestnanci = null;
 		
 		//hlavneOkno.getIcons().add(new Image(("file:letter.png")));
 		
@@ -58,13 +66,14 @@ public class PostaGUI extends Application {
 		
 			if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "veduci") {
 				
-				
+				if (veduciScena == null) {
 					try {
 						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno,skrolScene);
 					} catch (ZleUdajeException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+				}
 				
 					// TODO Auto-generated catch block
 
@@ -73,12 +82,17 @@ public class PostaGUI extends Application {
 			
 			else if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
 				
+				if (pracovnikScena == null) {
+				
 				try {
-					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno);
+					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno,skrolScene);
 				} catch (ZleUdajeException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+						e1.printStackTrace();
+					}
+				
 				}
+				
 				hlavneOkno.setScene(pracovnikScena);
 			}
 			else {

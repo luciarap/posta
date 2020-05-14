@@ -10,32 +10,40 @@ import javafx.stage.Stage;
 
 public class VeduciScreen {
 	GridPane pane = new GridPane();
-	Scene tovary;
-	Scene zasielky;
+
 	Scene uvod;
 	Scene LoginScene;
 	//Scene skrolScene;
 	Scene veduciScena;
-	Scene zamestnanci;
+
 	private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
 
 	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException {
-		
-		TovaryScreen tovaryScreen = new TovaryScreen();
-		tovary = tovaryScreen.Zobraz();
-		Scene2.setOnAction(e -> hlavny.setScene(tovary));
-		//poslat stage cez argument
 
+		//zamestnanci = null;
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
-		zasielky = zasielkyScreen.ZobrazZasielkyScreen(veduciScena, hlavny);
-		Scene1.setOnAction(e -> hlavny.setScene(zasielky));
-		
+		TovaryScreen tovaryScreen = new TovaryScreen();
 		ZamestnanciScreen zamestnanciScreen = new ZamestnanciScreen();
-		zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(veduciScena, hlavny);
-		Zamestnanci.setOnAction(e -> hlavny.setScene(zamestnanci));
+		
+		
+		if (PostaGUI.tovary == null) {
+			PostaGUI.tovary = tovaryScreen.Zobraz();
+		}
+		Scene2.setOnAction(e -> hlavny.setScene(PostaGUI.tovary));
+		
+		
+		if (PostaGUI.zasielky == null) {
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(veduciScena, hlavny);
+		}
+		Scene1.setOnAction(e -> hlavny.setScene(PostaGUI.zasielky));
+		
+		if (PostaGUI.zamestnanci == null) {
+			PostaGUI.zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(veduciScena, hlavny);
+		}
+		Zamestnanci.setOnAction(e -> hlavny.setScene(PostaGUI.zamestnanci));
 
 		HBox veduciHBox = new HBox();
 		veduciHBox.setPadding(new Insets(15, 12, 15, 12));
