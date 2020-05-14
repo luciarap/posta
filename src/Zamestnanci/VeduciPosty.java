@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import hotovost.ManazerHotovosti;
 import zasielky.Dobierka;
 import zasielky.Zasielky;
 // Composite
@@ -82,6 +83,10 @@ public class VeduciPosty implements Zamestnanec { //COMPOSITE
 	          while(it.hasNext())  {  
 	            Zamestnanec zamestnanec = it.next();  
 	            zamestnanec.dostanVyplatu();  
+	            double current = ManazerHotovosti.getStavHotovosti();
+	            current -= mzda;
+	            ManazerHotovosti.setStavHotovosti(current);
+	            System.out.println(ManazerHotovosti.getStavHotovosti());
 	         }
 
 	//to do
@@ -117,6 +122,14 @@ public class VeduciPosty implements Zamestnanec { //COMPOSITE
 	            zamestnanec.info();  
 	         }
 	}
+
+	@Override
+	public String toString() {
+		return "VeduciPosty [meno=" + meno + ", priezvisko=" + priezvisko + ", ID=" + ID + ", mzda=" + mzda
+				+ ", zamestnanci=" + zamestnanci + "]";
+	}
+	
+	
 	
 
 	

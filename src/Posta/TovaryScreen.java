@@ -1,5 +1,7 @@
 package Posta;
 
+import java.io.Serializable;
+
 import Zamestnanci.VeduciPosty;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -9,7 +11,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import tovary.Casopisy;
+import tovary.Element;
 import tovary.Noviny;
 import tovary.Pohladnice;
 import tovary.Tovary;
@@ -68,8 +72,10 @@ public class TovaryScreen {
 	static GridPane tovaryPane = new GridPane();
 	
 	
+	
 
 	public static Scene Zobraz() throws ZleUdajeException  {
+		Text text = new Text();
 		//Zoznamy<Object> zoznam = new Zoznamy<Object>();
 		Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
@@ -121,6 +127,8 @@ public class TovaryScreen {
 		tovaryPane.add(pocetTxt, 1, 8);
 		tovaryPane.add(pocetKsLabel, 0, 8);
 		
+		tovaryPane.add(text, 0, 9);
+		
 		predatTovar.setOnAction(e -> {
 			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
 			try {
@@ -139,6 +147,9 @@ public class TovaryScreen {
 			
 			ZoznamTovarov.getItems().remove(itemToRemove);
 			ZoznamTovarov.getItems().add(itemToRemove);
+			//itemToRemove.setPocet(Integer.parseInt(pocetTxt.getText()));
+			nakup.tailInsert(itemToRemove);
+			nakup.print();
 			//zoznam.remove(itemToRemove);
 			
 			// text field pocet
@@ -147,7 +158,7 @@ public class TovaryScreen {
 		pridatZnamky.setOnAction(e -> {
 			Znamky znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());
 			//zoznam.add(znamky);
-			nakup.tailInsert(znamky);
+			//nakup.tailInsert(znamky);
 			
 			ZoznamTovarov.getItems().add(znamky);
 			System.out.println("Fungujem aj tu.");
@@ -158,8 +169,8 @@ public class TovaryScreen {
 			//try {
 				try {
 					zreby = new Zreby (nazovZrebyTxt.getText(), Integer.parseInt(pocetZrebyTxt.getText()), druhZrebyTxt.getText());
-					nakup.tailInsert(zreby);
-					nakup.print();
+					//nakup.tailInsert(zreby);
+					//nakup.print();
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -184,19 +195,19 @@ public class TovaryScreen {
 		pridatPohladnice.setOnAction(e -> {
 			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
 			ZoznamTovarov.getItems().add(pohladnice);
-			nakup.tailInsert(pohladnice);
+			//nakup.tailInsert(pohladnice);
 		});
 		
 		pridatCasopisy.setOnAction(e -> {
 			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
 			ZoznamTovarov.getItems().add(casopisy);
-			nakup.tailInsert(casopisy);
+			//nakup.tailInsert(casopisy);
 		});
 		
 		pridatNoviny.setOnAction(e -> {
 			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
 			ZoznamTovarov.getItems().add(noviny);
-			nakup.tailInsert(noviny);
+			//nakup.tailInsert(noviny);
 		});
 			
 		//tovaryPane.add(pridatTovar, 0, 1);

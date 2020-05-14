@@ -44,14 +44,19 @@ public class ZamestnanciScreen implements Runnable {
 				comboBox.setItems(ZoznamZamestnancov);
 				// textArea.setText(comboBox.getValue() + " selected");
 				if (comboBox.getValue() instanceof Dorucovatel) {
-					text.setText("Meno a priezvisko " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
-							+ "ID: " + comboBox.getValue().getID() + "\n" + "Mzda " + comboBox.getValue().getMzda());
+					text.setText("Dorucovatel \n Meno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
+							+ "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda());
 				}
 
 				if (comboBox.getValue() instanceof Pracovnik) {
-					text.setText("Meno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
-							+  "ID: " + comboBox.getValue().getID() + "\n" + "Mzda " + comboBox.getValue().getMzda() + "\n"
+					text.setText("Pracovnik \n Meno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
+							+  "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda() + "\n"
 							+ "Uvazok: " + ((Pracovnik) comboBox.getValue()).getUvazok());
+				}
+				
+				if (comboBox.getValue() instanceof VeduciPosty) {
+					text.setText("Veduci posty: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
+							+  "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda());
 				}
 
 				/*
@@ -78,9 +83,11 @@ public class ZamestnanciScreen implements Runnable {
 		Zamestnanec pracovnik2 = new Pracovnik("Peter", "Simko", 4581, "polovicny");
 		ZoznamZamestnancov.add(pracovnik2);
 		Zamestnanec veduci1 = new VeduciPosty("Jana", "Horvathova", 4578);
+		ZoznamZamestnancov.add(veduci1);
 		veduci1.add(dorucovatel1);
 		veduci1.add(pracovnik2);
 		veduci1.add(pracovnik1);
+		//veduci1.add(veduci1);
 		// veduci1.dostanVyplatu();
 
 		// zamestnanciPane.add(ZoznamZamestnancov, 1, 1);
@@ -106,7 +113,7 @@ public class ZamestnanciScreen implements Runnable {
 		});
 
 		// comboBox.setItems(ZoznamZamestnancov);
-		return new Scene(zamestnanciPane, 1000, 700);
+		return new Scene(zamestnanciPane, 450, 300);
 
 	}
 
