@@ -110,9 +110,7 @@ public class ZamestnanciScreen implements Runnable {
 			
 		});
 		spat.setOnAction(e -> {
-			// screen.zobrazVeduciScreen(hlavna, hlavny);
-			return;
-
+			hlavny.setScene(PostaGUI.veduciScena);
 		});
 
 		// comboBox.setItems(ZoznamZamestnancov);

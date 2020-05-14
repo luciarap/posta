@@ -14,7 +14,7 @@ public class VeduciScreen {
 	Scene uvod;
 	Scene LoginScene;
 	//Scene skrolScene;
-	Scene veduciScena;
+	//Scene veduciScena;
 
 	private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
@@ -36,12 +36,12 @@ public class VeduciScreen {
 		
 		
 		if (PostaGUI.zasielky == null) {
-			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(veduciScena, hlavny);
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PostaGUI.veduciScena, hlavny, "veduci");
 		}
 		Scene1.setOnAction(e -> hlavny.setScene(PostaGUI.zasielky));
 		
 		if (PostaGUI.zamestnanci == null) {
-			PostaGUI.zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(veduciScena, hlavny);
+			PostaGUI.zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(PostaGUI.veduciScena, hlavny);
 		}
 		Zamestnanci.setOnAction(e -> hlavny.setScene(PostaGUI.zamestnanci));
 

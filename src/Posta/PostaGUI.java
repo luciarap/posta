@@ -68,7 +68,7 @@ public class PostaGUI extends Application {
 				
 				if (veduciScena == null) {
 					try {
-						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno,skrolScene);
+						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno, skrolScene);
 					} catch (ZleUdajeException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

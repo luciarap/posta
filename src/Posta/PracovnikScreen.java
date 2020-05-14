@@ -33,7 +33,7 @@ public class PracovnikScreen {
 		
 		
 		if (PostaGUI.zasielky == null) {
-			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny);
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny, "pracovnik");
 		}
 		Scene1.setOnAction(e -> hlavny.setScene(PostaGUI.zasielky));
 
