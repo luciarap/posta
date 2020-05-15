@@ -69,7 +69,7 @@ public class TovaryScreen {
 	private static Button pridatNoviny = new Button("Pridat noviny");
 	static GridPane tovaryPane = new GridPane();
 	final Tooltip tooltip = new Tooltip();
-	Label stavHotovosti = new Label(Double.toString(ManazerHotovosti.getStavHotovosti()));
+	Label stavHotovosti = new Label("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
 	
 	public Scene Zobraz(Stage hlavny) throws ZleUdajeException  {
 		Text text = new Text();
@@ -81,6 +81,9 @@ public class TovaryScreen {
 		
 		tovaryPane.setStyle("-fx-background-color: linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		zoznamLabel.setStyle("-fx-font-size: 18px; "
+				+ "-fx-font-weight:bold;");
+		
+		stavHotovosti.setStyle("-fx-font-size: 18px; "
 				+ "-fx-font-weight:bold;");
 		//tovaryPane.add(ZoznamTovarov, 0, 0);
 		tovaryPane.add(znamkyLabel, 0, 1);
@@ -146,6 +149,8 @@ public class TovaryScreen {
 			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
 			try {
 				itemToRemove.predatTovar(itemToRemove, Integer.parseInt(pocetTxt.getText()));
+				stavHotovosti.setText("");
+				stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
 			} catch (NumberFormatException e1) {
 				System.out.println("Chyba");
 				// TODO Auto-generated catch block
@@ -169,7 +174,15 @@ public class TovaryScreen {
 		});
 		
 		pridatZnamky.setOnAction(e -> {
-			Znamky znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());
+			Znamky znamky = null;
+			
+			try {
+			znamky = new Znamky (nazovZnamkyTxt.getText(),Integer.parseInt(pocetZnamkyTxt.getText()), druhZnamkyTxt.getText());
+			} catch (NumberFormatException e1) {
+				alert.show();
+				e1.printStackTrace();
+			}
+			
 			if (znamky.isValid() == true) ZoznamTovarov.getItems().add(znamky);
 		});
 		
@@ -203,7 +216,9 @@ public class TovaryScreen {
 		});
 		
 		pridatPohladnice.setOnAction(e -> {
+			
 			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
+			
 			if (pohladnice.isValid() == true) ZoznamTovarov.getItems().add(pohladnice);
 			//else alert.show();
 			
@@ -211,14 +226,18 @@ public class TovaryScreen {
 		});
 		
 		pridatCasopisy.setOnAction(e -> {
+			
 			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
+			
 			if (casopisy.isValid() == true) ZoznamTovarov.getItems().add(casopisy);
 			//ZoznamTovarov.getItems().add(casopisy);
 			//nakup.tailInsert(casopisy);
 		});
 		
 		pridatNoviny.setOnAction(e -> {
+			
 			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
+			
 			if (noviny.isValid() == true) ZoznamTovarov.getItems().add(noviny);
 			//else alert.show();
 			
