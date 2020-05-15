@@ -66,7 +66,7 @@ public class VeduciScreen {
 		
 		//hlavny.setScene(hlavna);
 		// TODO Auto-generated method stub
-		return new Scene(veduciHBox, 500, 400);
+		return new Scene(veduciHBox, 500, 80);
 	}
 
 }

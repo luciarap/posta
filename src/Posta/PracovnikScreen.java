@@ -59,7 +59,7 @@ public class PracovnikScreen {
 		
 		//hlavny.setScene(hlavna);
 		// TODO Auto-generated method stub
-		return new Scene(PracovnikHBox, 500, 400);
+		return new Scene(PracovnikHBox, 380, 80);
 	}
 
 }

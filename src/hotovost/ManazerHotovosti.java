@@ -2,7 +2,7 @@ package hotovost;
 
 public class ManazerHotovosti {
 	
-	private static double stavHotovosti = 1000;
+	private static double stavHotovosti = 10000;
 	
 	/*public ManazerHotovosti() {
 		ManazerHotovosti.stavHotovosti = 10000;

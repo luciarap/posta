@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
@@ -104,11 +105,13 @@ public class ZasielkyScreen implements java.io.Serializable {
 		pane.add(rb1, 1, 10);
 		pane.add(rb2, 1, 11);
 		pane.add(invisible, 1, 12);
-		pane.add(listView, 0, 12);
+		pane.add(listView, 15, 15);
 		pane.add(dorucitZasielku, 0, 13);
 		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		pane.add(spat, 0, 14);
-		listView.setPrefSize(500, 500);
+		listView.setPrefSize(500, 700);
+		listView.setTranslateX(-30);
+		listView.setTranslateY(-500);
 		System.out.println(PostaGUI.povod);
 		spat.setOnAction(e -> {
 			if (PostaGUI.povod == "veduci") {
@@ -145,6 +148,16 @@ public class ZasielkyScreen implements java.io.Serializable {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
 			dorucovatel3.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
+			Iterator itr = woi.iterator();
+
+			while(itr.hasNext()) {
+				Zasielky element = (Zasielky) itr.next();
+			   if(element == itemToRemove)
+			   {
+			       itr.remove();
+			       break;
+			   }
+			}
 			System.out.println("Fungujem aj tu.");
 
 		});
@@ -167,6 +180,21 @@ public class ZasielkyScreen implements java.io.Serializable {
 										Integer.parseInt(suma.getText()), Integer.parseInt(hmotnost.getText()));
 								
 								listView.getItems().add(dobierka);
+								woi.add(dobierka);
+								try {
+
+									//DataInputStream in = new DataInputStream(ft);
+							         FileOutputStream fileOut =
+							         new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
+							         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+							         out.writeObject(woi);
+							         //out.writeObject(e);
+							         out.close();
+							         fileOut.close();
+							         System.out.printf("Data ulozene");
+							      } catch (IOException i) {
+							         i.printStackTrace();
+							      }
 							} catch (Exception e1) {
 								alert.show();
 								System.out.println("Chyba");
@@ -208,7 +236,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 		});
 		
 	
-		return new Scene(pane, 800, 800);
+		return new Scene(pane, 900, 800);
 		
 	}
 
