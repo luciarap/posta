@@ -4,6 +4,7 @@ import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
 import Zamestnanci.Zamestnanec;
+import hotovost.ManazerHotovosti;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,10 +31,16 @@ public class ZamestnanciScreen implements Runnable {
 	private Button spat = new Button("Sp‰ù");
 	private Button vyplata = new Button("Pridel vyplatu");
 	// TextArea textArea = new TextArea();
+	Label stavHotovosti = new Label();
 
 	Text text = new Text();
 
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) {
+		
+		stavHotovosti.setText("");
+		stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
+		stavHotovosti.setStyle("-fx-font-size: 13px; "
+				+ "-fx-font-weight:bold;");
 		// zamestnanciPane.add(textArea, 0, 1);
 		ComboBox<Zamestnanec> comboBox = new ComboBox<>(ZoznamZamestnancov);
 		Label selected = new Label("default item selected");
@@ -95,6 +102,7 @@ public class ZamestnanciScreen implements Runnable {
 		VeduciScreen screen = new VeduciScreen();
 		zamestnanciPane.add(spat, 0, 3);
 		zamestnanciPane.add(vyplata, 0, 4);
+		zamestnanciPane.add(stavHotovosti, 1, 0);
 		// update observable or something
 		// zamestnanciPane.add(selected, 0, 5);
 		vyplata.setOnAction(e -> {
@@ -102,6 +110,8 @@ public class ZamestnanciScreen implements Runnable {
 			Thread t1 = new Thread(m1);
 			t1.start(); // to do...*/
 			veduci1.dostanVyplatu();
+			stavHotovosti.setText("");
+			stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
 			comboBox.setItems(ZoznamZamestnancov);
 
 			veduci1.info();

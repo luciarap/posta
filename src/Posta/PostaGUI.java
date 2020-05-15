@@ -1,5 +1,7 @@
 package Posta;
 
+import java.io.FileInputStream;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -9,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -25,24 +29,29 @@ public class PostaGUI extends Application {
 	static Scene zasielky;
 	static Scene zamestnanci;
 	static String povod;
+	
 
 	public void start(Stage hlavneOkno) throws Exception {
+		FileInputStream inputstream = new FileInputStream("C:\\Users\\lucia\\Desktop\\oop1\\src\\letter.png"); 
+		Image image = new Image(inputstream);
+		ImageView imageView = new ImageView(image);
+	    imageView.setFitHeight(46); 
+	    imageView.setFitWidth(82); 
+	    imageView.setPreserveRatio(true);  
 		tovary = null;
 		zasielky = null;
 		veduciScena = null;
 		pracovnikScena = null;
 		zamestnanci = null;
-		
-		//hlavneOkno.getIcons().add(new Image(("file:letter.png")));
-		
+	
 		VeduciScreen veduciScreen = new VeduciScreen();
 		PracovnikScreen pracovnikScreen = new PracovnikScreen();
-		
 		
 		alert.setContentText("Nespravne meno alebo heslo.");
 		hlavneOkno.setTitle("Posta");
 		GridPane Login = new GridPane();
-		//Login.setStyle("-fx-background-color:  #6a5acd;");
+		Login.setStyle("-fx-background-color:  #ffffff;");
+		Login.setPrefSize(350, 200);
 		Label labelUserName = new Label("Username");
 		labelUserName.setFont((Font.font("Times New Roman", 15)));
 		final TextField txtUserName = new TextField();
@@ -55,10 +64,28 @@ public class PostaGUI extends Application {
 		LoginController loginController = new LoginController();
 
 		Login.add(labelUserName, 0, 0);
-		Login.add(txtUserName, 1, 0);
-		Login.add(lblPassword, 0, 1);
-		Login.add(pf, 1, 1);
+		Login.add(txtUserName, 0, 0);
+		Login.add(lblPassword, 0, 0);
+		Login.add(pf, 0, 0);
 		Login.add(buttonLogin, 0, 2);
+		Login.add(imageView, 0, 0);
+		
+		imageView.setTranslateX(140);
+		imageView.setTranslateY(5);
+		
+		labelUserName.setTranslateX(25);
+		labelUserName.setTranslateY(50);
+		txtUserName.setTranslateX(100);
+		txtUserName.setTranslateY(50);
+		
+		lblPassword.setTranslateX(25);
+		lblPassword.setTranslateY(85);
+		pf.setTranslateX(100);
+		pf.setTranslateY(85);
+		
+		buttonLogin.setTranslateX(140);
+		buttonLogin.setTranslateY(90);
+		  // imageView.setY(50);
 		
 		skrol.setContent(Login);
 		
@@ -105,7 +132,7 @@ public class PostaGUI extends Application {
 
 		});
 		
-		skrolScene = new Scene(skrol, 300, 150);
+		skrolScene = new Scene(skrol, 350, 200);
 		hlavneOkno.setScene(skrolScene);
 		hlavneOkno.show();
 	}
