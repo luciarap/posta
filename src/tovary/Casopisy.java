@@ -1,6 +1,8 @@
 package tovary;
 
 import Posta.ZleUdajeException;
+import hotovost.ManageMoney;
+import hotovost.ManazerHotovosti;
 import tovary.Noviny.DruhNovin;
 
 public class Casopisy extends Tovary {
@@ -69,36 +71,53 @@ public class Casopisy extends Tovary {
 
 	@Override
 	public void predatTovar(Tovary tovar, int pocet) {
-		/*if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
+		
+		double celkovaSuma;
+		
+		ManazerHotovosti manazer = new ManazerHotovosti();
+		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
+		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
+		
+		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
 		}
+		
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
+		
+	
 		switch (tovar.getDruh()) {
 		case "Zahradkar":
-			stavHotovosti += pocet*1.30;
-			return stavHotovosti;
+			celkovaSuma = pocet*1.30;
+			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result1); 
+		
 			
 		case "Byvanie":
-			stavHotovosti += pocet*2;
-			return stavHotovosti;
+			celkovaSuma = pocet*2;
+			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result2); 
 		
 		case "Tyzden":
-			stavHotovosti += pocet*1;
-			return stavHotovosti;
+			celkovaSuma = pocet*1;
+			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result3); 
 		
 		case "Kreativ":
-			stavHotovosti += pocet*2.80;
-			return stavHotovosti;
+			celkovaSuma = pocet*2.80;
+			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result4); 
 		
 		case "Geo":
-			stavHotovosti += pocet*3;
-			return stavHotovosti;
+			celkovaSuma = pocet*3;
+			double result5 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result5); 
+			
 		default: System.out.println("CHYBA");
 			
 			
 		}
-		return stavHotovosti;*/
+		//return stavHotovosti;*/
 		
 	}
 

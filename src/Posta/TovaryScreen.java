@@ -1,8 +1,6 @@
 package Posta;
 
-import java.io.Serializable;
-
-import Zamestnanci.VeduciPosty;
+import hotovost.ManazerHotovosti;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,15 +13,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tovary.Casopisy;
-import tovary.Element;
 import tovary.Noviny;
 import tovary.Pohladnice;
 import tovary.Tovary;
 import tovary.Znamky;
 import tovary.Zoznamy;
 import tovary.Zreby;
-import zasielky.Dobierka;
-import zasielky.Zasielky;
+
 
 public class TovaryScreen {
 
@@ -73,7 +69,7 @@ public class TovaryScreen {
 	private static Button pridatNoviny = new Button("Pridat noviny");
 	static GridPane tovaryPane = new GridPane();
 	final Tooltip tooltip = new Tooltip();
-	
+	Label stavHotovosti = new Label(Double.toString(ManazerHotovosti.getStavHotovosti()));
 	
 	public Scene Zobraz(Stage hlavny) throws ZleUdajeException  {
 		Text text = new Text();
@@ -133,6 +129,8 @@ public class TovaryScreen {
 		tovaryPane.add(text, 0, 9);
 		
 		tovaryPane.add(Spat, 0, 10);
+		//stavHotovosti.setTextOrigin(ManazerHotovosti.getStavHotovosti());
+		tovaryPane.add(stavHotovosti, 0, 11);
 		
 		Spat.setOnAction(e -> {
 			if (PostaGUI.povod == "veduci") {

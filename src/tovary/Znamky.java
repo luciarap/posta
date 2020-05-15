@@ -72,37 +72,58 @@ public class Znamky extends Tovary {
 	@Override
 	public void predatTovar(Tovary tovar, int pocet) {
 		
+		double celkovaSuma;
+		
+		ManazerHotovosti manazer = new ManazerHotovosti();
+		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
+		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
+		
+		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
+			objednatTovar(tovar, pocet);
+		}
+		
+		int aktualnyPocet = tovar.getPocet();
+		tovar.setPocet(aktualnyPocet - pocet);
+		
+		
+		
 	/*	if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
 		}
 		int aktualnyPocet = tovar.getPocet();
-		tovar.setPocet(aktualnyPocet - pocet);
+		tovar.setPocet(aktualnyPocet - pocet);*/
 		switch (tovar.getDruh()) {
 		case "T1":
-			stavHotovosti += pocet*0.80;
-			return stavHotovosti;
+			celkovaSuma = pocet*0.80;
+			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result1); 
+		
 			
 		case "T2":
-			stavHotovosti += pocet*0.65;
-			return stavHotovosti;
+			celkovaSuma = pocet*0.65;
+			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result2); 
 		
 		case "eur1":
-			stavHotovosti += pocet*1;
-			return stavHotovosti;
+			celkovaSuma = pocet*1;
+			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result3); 
 		
 		case "eur2":
-			stavHotovosti += pocet*2;
-			return stavHotovosti;
+			celkovaSuma = pocet*2;
+			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result4); 
 		
 		case "eur050":
-			stavHotovosti += pocet*0.50;
-			return stavHotovosti;
+			celkovaSuma = pocet*0.50;
+			double result5 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			ManazerHotovosti.setStavHotovosti(result5); 
 		default: System.out.println("CHYBA");
 			
 			
 		}
-		return stavHotovosti;
-		*/
+	//	return stavHotovosti;
+		
 	}
 
 
