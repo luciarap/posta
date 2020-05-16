@@ -2,6 +2,7 @@ package Posta;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,7 +22,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -135,6 +135,10 @@ public class ZasielkyScreen implements java.io.Serializable {
 	        for(int i=0;i<woi.size();i++) {
 	        	listView.getItems().add(woi.get(i));
 	        }
+	        
+	        fis.close();
+	        ois.close();
+	        
 	} catch (IOException i) {
 		System.out.println("CHYBA");
 	} catch (ClassNotFoundException e1) {
@@ -148,14 +152,39 @@ public class ZasielkyScreen implements java.io.Serializable {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
 			dorucovatel3.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
-			Iterator itr = woi.iterator();
-
+			Iterator<Zasielky> itr = woi.iterator();
+//to do, not working
 			while(itr.hasNext()) {
 				Zasielky element = (Zasielky) itr.next();
 			   if(element == itemToRemove)
 			   {
+				   System.out.println(element);
+				   System.out.println(itemToRemove);
+				   System.out.println(woi.size());
 			       itr.remove();
+			         FileOutputStream fileOut = null;
+					try {
+						fileOut = new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			         ObjectOutputStream out = null;
+					try {
+						out = new ObjectOutputStream(fileOut);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			       try {
+					out.writeObject(woi);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			       break;
+			       
+			       
 			   }
 			}
 			System.out.println("Fungujem aj tu.");
@@ -223,6 +252,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 						         //out.writeObject(e);
 						         out.close();
 						         fileOut.close();
+						        // new FileOutputStream(FILE_PATH).close();
 						         System.out.printf("Data ulozene");
 						      } catch (IOException i) {
 						         i.printStackTrace();
