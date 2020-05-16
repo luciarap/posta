@@ -84,8 +84,7 @@ public class TovaryScreen {
 		tovaryPane.setStyle("-fx-background-color: linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
 		zoznamLabel.setStyle("-fx-font-size: 18px; "
 				+ "-fx-font-weight:bold;");
-		stavHotovosti.setText("");
-		stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
+
 		stavHotovosti.setStyle("-fx-font-size: 18px; "
 				+ "-fx-font-weight:bold;");
 		//tovaryPane.add(ZoznamTovarov, 0, 0);

@@ -36,11 +36,9 @@ public class ZamestnanciScreen implements Runnable {
 	Text text = new Text();
 
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) {
-		
-		stavHotovosti.setText("");
-		stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
-		stavHotovosti.setStyle("-fx-font-size: 13px; "
+		stavHotovosti.setStyle("-fx-font-size: 18px; "
 				+ "-fx-font-weight:bold;");
+
 		// zamestnanciPane.add(textArea, 0, 1);
 		ComboBox<Zamestnanec> comboBox = new ComboBox<>(ZoznamZamestnancov);
 		Label selected = new Label("default item selected");
@@ -120,11 +118,12 @@ public class ZamestnanciScreen implements Runnable {
 			
 		});
 		spat.setOnAction(e -> {
+			stavHotovosti.setText("");
 			hlavny.setScene(PostaGUI.veduciScena);
 		});
 
 		// comboBox.setItems(ZoznamZamestnancov);
-		return new Scene(zamestnanciPane, 450, 300);
+		return new Scene(zamestnanciPane, 600, 300);
 
 	}
 
