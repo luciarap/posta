@@ -239,6 +239,9 @@ public class TovaryScreen implements java.io.Serializable {
 			} catch (NumberFormatException e1) {
 				alert.show();
 				e1.printStackTrace();
+			} catch (Exception e1) {
+				alert.show();
+				System.out.println("Chyba");
 			}
 			
 			if (znamky.isValid() == true) {
@@ -276,14 +279,11 @@ public class TovaryScreen implements java.io.Serializable {
 				} catch (ZleUdajeException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				} catch (Exception e1) {
+					alert.show();
+					System.out.println("Chyba");
 				}
 				
-			//}  catch (ZleUdajeException e1) {
-			//	alert.show();
-				// TODO Auto-generated catch block
-			//	e1.printStackTrace();
-			//	return;
-		//	}
 			if (zreby.isValid() == true) {
 				ZoznamTovarov.getItems().add(zreby);
 				woi.add(zreby);
@@ -309,8 +309,17 @@ public class TovaryScreen implements java.io.Serializable {
 		});
 		
 		pridatPohladnice.setOnAction(e -> {
-			
-			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
+			Pohladnice pohladnice = null;
+			try {
+			pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
+		} catch (NumberFormatException e1) {
+			alert.show();
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			alert.show();
+			System.out.println("Chyba");
+		}
 			
 			if (pohladnice.isValid() == true) {
 				ZoznamTovarov.getItems().add(pohladnice);
@@ -336,8 +345,17 @@ public class TovaryScreen implements java.io.Serializable {
 		});
 		
 		pridatCasopisy.setOnAction(e -> {
-			
-			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
+			Casopisy casopisy = null;
+			try {
+			casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
+			} catch (NumberFormatException e1) {
+				alert.show();
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e1) {
+				alert.show();
+				System.out.println("Chyba");
+			}
 			
 			if (casopisy.isValid() == true) {
 				ZoznamTovarov.getItems().add(casopisy);
@@ -362,9 +380,17 @@ public class TovaryScreen implements java.io.Serializable {
 		});
 		
 		pridatNoviny.setOnAction(e -> {
-			
-			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
-			
+			Noviny noviny = null;
+			try {
+			noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
+			} catch (NumberFormatException e1) {
+				alert.show();
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e1) {
+				alert.show();
+				System.out.println("Chyba");
+			}
 			if (noviny.isValid() == true) {
 				ZoznamTovarov.getItems().add(noviny);
 				woi.add(noviny);
