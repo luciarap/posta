@@ -9,6 +9,7 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 	private String priezvisko;
 	private int ID;
 	private double mzda;
+	private String pohlavie;
 	
 	private double stavHotovosti = 0;
 
@@ -20,16 +21,25 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 		this.stavHotovosti = stavHotovosti;
 	}
 
-	public Dorucovatel(String meno, String priezvisko, int ID) {
+	public Dorucovatel(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
 		this.ID = ID;
+		this.pohlavie = pohlavie;
 	}
 
 	/*public void pridelVyplatu() {
 		setMzda(700);
 	}*/
 	
+	public String getPohlavie() {
+		return pohlavie;
+	}
+
+	public void setPohlavie(String pohlavie) {
+		this.pohlavie = pohlavie;
+	}
+
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");

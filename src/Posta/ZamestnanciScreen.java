@@ -1,5 +1,8 @@
 package Posta;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
@@ -16,13 +19,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tovary.Noviny;
 
-public class ZamestnanciScreen implements Runnable {
+public class ZamestnanciScreen implements Runnable  {
+	
+
 
 	// ObservableList<String> ZoznamZamestnancov = new ObservableList<String>();
 	ObservableList<Zamestnanec> ZoznamZamestnancov = FXCollections.observableArrayList();
@@ -35,7 +42,14 @@ public class ZamestnanciScreen implements Runnable {
 
 	Text text = new Text();
 
-	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) {
+	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) throws FileNotFoundException {
+		
+		FileInputStream female = new FileInputStream("C:\\Users\\lucia\\Desktop\\oop1\\female.png"); 
+		FileInputStream male = new FileInputStream("C:\\Users\\lucia\\Desktop\\oop1\\male.png"); 
+		Image imageF = new Image(female);
+		Image imageM = new Image(male);
+		ImageView imageView = new ImageView();
+		
 		stavHotovosti.setStyle("-fx-font-size: 18px; "
 				+ "-fx-font-weight:bold;");
 
@@ -46,6 +60,11 @@ public class ZamestnanciScreen implements Runnable {
 		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				text.setFont((Font.font("Verdana", 20)));
+				
+				if (comboBox.getValue().getPohlavie() == "F") {
+					imageView.setImage(imageF);
+				}
+				else imageView.setImage(imageM);
 				comboBox.setItems(ZoznamZamestnancov);
 				// textArea.setText(comboBox.getValue() + " selected");
 				if (comboBox.getValue() instanceof Dorucovatel) {
@@ -79,15 +98,18 @@ public class ZamestnanciScreen implements Runnable {
 		comboBox.setOnAction(event);
 		zamestnanciPane.add(comboBox, 0, 0);
 		zamestnanciPane.add(text, 0, 5);
+		zamestnanciPane.add(imageView, 0, 6);
+		
+		
 
 		// ZoznamZamestnancov.
-		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579);
+		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579, "F");
 		ZoznamZamestnancov.add(dorucovatel1);
-		Zamestnanec pracovnik1 = new Pracovnik("Klaudia", "Novakova", 4580, "cely");
+		Zamestnanec pracovnik1 = new Pracovnik("Klaudia", "Novakova", 4580, "cely", "F");
 		ZoznamZamestnancov.add(pracovnik1);
-		Zamestnanec pracovnik2 = new Pracovnik("Peter", "Simko", 4581, "polovicny");
+		Zamestnanec pracovnik2 = new Pracovnik("Peter", "Simko", 4581, "polovicny", "M");
 		ZoznamZamestnancov.add(pracovnik2);
-		Zamestnanec veduci1 = new VeduciPosty("Jana", "Horvathova", 4578);
+		Zamestnanec veduci1 = new VeduciPosty("Jana", "Horvathova", 4578, "F");
 		ZoznamZamestnancov.add(veduci1);
 		veduci1.add(dorucovatel1);
 		veduci1.add(pracovnik2);

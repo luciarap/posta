@@ -13,6 +13,7 @@ public interface Zamestnanec { //COMPONENT
 	static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
 	public String getMeno();
 	public String getPriezvisko();
+	public String getPohlavie();
 	public void info();
 	
 	//default

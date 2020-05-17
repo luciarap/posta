@@ -15,10 +15,19 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	private String priezvisko;
 	private int ID;
 	private double mzda;
-	public VeduciPosty(String meno, String priezvisko, int ID) {
+	private String pohlavie;
+	public VeduciPosty(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
 		this.ID = ID;
+		this.pohlavie = pohlavie;
+	}
+	public String getPohlavie() {
+		return pohlavie;
+	}
+
+	public void setPohlavie(String pohlavie) {
+		this.pohlavie = pohlavie;
 	}
 	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();  
 	

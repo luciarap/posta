@@ -68,9 +68,9 @@ public class ZasielkyScreen implements java.io.Serializable {
 	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 		
-		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178);
-		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179);
-		Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny");
+		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178, "F");
+		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179, "F");
+		//Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny", "F");
 		
 		pane.setPadding(new Insets(10, 10, 10, 10));
 		pane.setMinSize(300, 300);

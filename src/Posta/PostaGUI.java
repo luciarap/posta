@@ -1,6 +1,7 @@
 package Posta;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -98,6 +99,9 @@ public class PostaGUI extends Application {
 					try {
 						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno, skrolScene);
 					} catch (ZleUdajeException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

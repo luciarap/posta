@@ -1,5 +1,7 @@
 package Posta;
 
+import java.io.FileNotFoundException;
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,7 +23,7 @@ public class VeduciScreen {
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
 
-	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException {
+	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException, FileNotFoundException {
 
 		//zamestnanci = null;
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();

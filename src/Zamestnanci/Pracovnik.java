@@ -10,6 +10,7 @@ public class Pracovnik implements Zamestnanec { //LEAF
 	private String priezvisko;
 	private int ID;
 	private double mzda;
+	private String pohlavie;
 	
 	private double stavHotovosti = 0;
 	String uvazok;
@@ -22,15 +23,24 @@ public class Pracovnik implements Zamestnanec { //LEAF
 		this.stavHotovosti = stavHotovosti;
 	}
 
-	public Pracovnik(String meno, String priezvisko, int ID, String uvazok) {
+	public Pracovnik(String meno, String priezvisko, int ID, String uvazok, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
 		this.ID = ID;
 		this.uvazok = uvazok;
+		this.pohlavie = pohlavie;
 	}
 
 
 	
+	public String getPohlavie() {
+		return pohlavie;
+	}
+
+	public void setPohlavie(String pohlavie) {
+		this.pohlavie = pohlavie;
+	}
+
 	public void predajTovar() {
 		
 	}
