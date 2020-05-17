@@ -1,11 +1,13 @@
 package Posta;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import hotovost.ManazerHotovosti;
 import javafx.scene.Scene;
@@ -199,12 +201,33 @@ public class TovaryScreen implements java.io.Serializable {
 			
 			ZoznamTovarov.getItems().remove(itemToRemove);
 			ZoznamTovarov.getItems().add(itemToRemove);
-			//itemToRemove.setPocet(Integer.parseInt(pocetTxt.getText()));
-			nakup.tailInsert(itemToRemove);
-			//nakup.print();
-			//zoznam.remove(itemToRemove);
 			
-			// text field pocet
+
+				   System.out.println(itemToRemove);
+				   System.out.println(woi.size());
+			         FileOutputStream fileOut = null;
+					try {
+						fileOut = new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			         ObjectOutputStream out = null;
+					try {
+						out = new ObjectOutputStream(fileOut);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			       try {
+					out.writeObject(woi);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			//nakup.tailInsert(itemToRemove);
+
 		});
 		
 		pridatZnamky.setOnAction(e -> {

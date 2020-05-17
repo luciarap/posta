@@ -153,7 +153,6 @@ public class ZasielkyScreen implements java.io.Serializable {
 			dorucovatel3.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
 			Iterator<Zasielky> itr = woi.iterator();
-//to do, not working
 			while(itr.hasNext()) {
 				Zasielky element = (Zasielky) itr.next();
 			   if(element == itemToRemove)
