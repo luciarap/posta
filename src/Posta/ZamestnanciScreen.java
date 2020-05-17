@@ -110,6 +110,7 @@ public class ZamestnanciScreen implements Runnable {
 			veduci1.dostanVyplatu();
 			stavHotovosti.setText("");
 			stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
+			
 			comboBox.setItems(ZoznamZamestnancov);
 
 			veduci1.info();

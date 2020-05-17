@@ -187,6 +187,7 @@ public class TovaryScreen implements java.io.Serializable {
 				itemToRemove.predatTovar(itemToRemove, Integer.parseInt(pocetTxt.getText()));
 				stavHotovosti.setText("");
 				stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
+				
 			} catch (NumberFormatException e1) {
 				System.out.println("Chyba");
 				// TODO Auto-generated catch block
