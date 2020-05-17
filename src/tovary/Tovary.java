@@ -2,7 +2,7 @@ package tovary;
 
 import Posta.ZleUdajeException;
 
-public abstract class Tovary { //abstract
+public abstract class Tovary implements java.io.Serializable { //abstract
 	private double cena;
 	private String nazov;
 	private int pocet;

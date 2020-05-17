@@ -1,5 +1,12 @@
 package Posta;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 import hotovost.ManazerHotovosti;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,10 +26,12 @@ import tovary.Tovary;
 import tovary.Znamky;
 import tovary.Zoznamy;
 import tovary.Zreby;
+import zasielky.Zasielky;
 
 
-public class TovaryScreen {
+public class TovaryScreen implements java.io.Serializable {
 
+	ArrayList<Tovary> woi=new ArrayList<>();
 	
 	static ListView ZoznamTovarov = new ListView();
 	private static Button pridatTovar = new Button("Pridat Tovar");
@@ -147,6 +156,29 @@ public class TovaryScreen {
 			
 		});
 		
+		try {
+	        FileInputStream fis=new FileInputStream("C:\\Users\\lucia\\tovary.ser");
+	        ObjectInputStream ois=new ObjectInputStream(fis);
+	        Zasielky wo=null;
+	        Zasielky[] woj=new Zasielky[5];
+
+	        //ArrayList<Zasielky> woi=new ArrayList<>();
+	        woi = (ArrayList<Tovary>)ois.readObject();
+
+	        for(int i=0;i<woi.size();i++) {
+	        	ZoznamTovarov.getItems().add(woi.get(i));
+	        }
+	        
+	        fis.close();
+	        ois.close();
+	        
+	} catch (IOException i) {
+		System.out.println("CHYBA");
+	} catch (ClassNotFoundException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+		
 		predatTovar.setOnAction(e -> {
 			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
 			try {
@@ -185,7 +217,25 @@ public class TovaryScreen {
 				e1.printStackTrace();
 			}
 			
-			if (znamky.isValid() == true) ZoznamTovarov.getItems().add(znamky);
+			if (znamky.isValid() == true) {
+				ZoznamTovarov.getItems().add(znamky);
+				woi.add(znamky);
+				try {
+
+					//DataInputStream in = new DataInputStream(ft);
+			         FileOutputStream fileOut =
+			         new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			         out.writeObject(woi);
+			         //out.writeObject(e);
+			         out.close();
+			         fileOut.close();
+			         System.out.printf("Data ulozene");
+			      } catch (IOException i) {
+			         i.printStackTrace();
+			      }
+			
+			}
 		});
 		
 		pridatZreby.setOnAction(e -> {
@@ -210,7 +260,24 @@ public class TovaryScreen {
 			//	e1.printStackTrace();
 			//	return;
 		//	}
-			if (zreby.isValid() == true) ZoznamTovarov.getItems().add(zreby);
+			if (zreby.isValid() == true) {
+				ZoznamTovarov.getItems().add(zreby);
+				woi.add(zreby);
+				try {
+
+					//DataInputStream in = new DataInputStream(ft);
+			         FileOutputStream fileOut =
+			         new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			         out.writeObject(woi);
+			         //out.writeObject(e);
+			         out.close();
+			         fileOut.close();
+			         System.out.printf("Data ulozene");
+			      } catch (IOException i) {
+			         i.printStackTrace();
+			      }
+			}
 			//else alert.show();
 			
 			
@@ -221,7 +288,24 @@ public class TovaryScreen {
 			
 			Pohladnice pohladnice = new Pohladnice (nazovPohladniceTxt.getText(), Integer.parseInt(pocetPohladniceTxt.getText()), druhPohladniceTxt.getText());
 			
-			if (pohladnice.isValid() == true) ZoznamTovarov.getItems().add(pohladnice);
+			if (pohladnice.isValid() == true) {
+				ZoznamTovarov.getItems().add(pohladnice);
+				woi.add(pohladnice);
+				try {
+
+					//DataInputStream in = new DataInputStream(ft);
+			         FileOutputStream fileOut =
+			         new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			         out.writeObject(woi);
+			         //out.writeObject(e);
+			         out.close();
+			         fileOut.close();
+			         System.out.printf("Data ulozene");
+			      } catch (IOException i) {
+			         i.printStackTrace();
+			      }
+			}
 			//else alert.show();
 			
 			//nakup.tailInsert(pohladnice);
@@ -231,7 +315,24 @@ public class TovaryScreen {
 			
 			Casopisy casopisy = new Casopisy (nazovCasopisyTxt.getText(), Integer.parseInt(pocetCasopisyTxt.getText()), druhCasopisyTxt.getText());
 			
-			if (casopisy.isValid() == true) ZoznamTovarov.getItems().add(casopisy);
+			if (casopisy.isValid() == true) {
+				ZoznamTovarov.getItems().add(casopisy);
+				woi.add(casopisy);
+				try {
+
+					//DataInputStream in = new DataInputStream(ft);
+			         FileOutputStream fileOut =
+			         new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			         out.writeObject(woi);
+			         //out.writeObject(e);
+			         out.close();
+			         fileOut.close();
+			         System.out.printf("Data ulozene");
+			      } catch (IOException i) {
+			         i.printStackTrace();
+			      }
+			}
 			//ZoznamTovarov.getItems().add(casopisy);
 			//nakup.tailInsert(casopisy);
 		});
@@ -240,7 +341,24 @@ public class TovaryScreen {
 			
 			Noviny noviny = new Noviny (nazovNovinyTxt.getText(), Integer.parseInt(pocetNovinyTxt.getText()), druhNovinyTxt.getText());
 			
-			if (noviny.isValid() == true) ZoznamTovarov.getItems().add(noviny);
+			if (noviny.isValid() == true) {
+				ZoznamTovarov.getItems().add(noviny);
+				woi.add(noviny);
+				try {
+
+					//DataInputStream in = new DataInputStream(ft);
+			         FileOutputStream fileOut =
+			         new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			         out.writeObject(woi);
+			         //out.writeObject(e);
+			         out.close();
+			         fileOut.close();
+			         System.out.printf("Data ulozene");
+			      } catch (IOException i) {
+			         i.printStackTrace();
+			      }
+			}
 			//else alert.show();
 			
 			//nakup.tailInsert(noviny);
