@@ -87,23 +87,27 @@ public class Zreby extends Tovary {
 			celkovaSuma = pocet*0.50;
 			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result1); 
+			break;
 		
 		case "Stastne cisla":
 			celkovaSuma = pocet*1;
 			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result2); 
+			break;
 		
 		case "Cierna perla":
 			celkovaSuma = pocet*5;
 			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result3); 
+			break;
 		
 		case "Stastie":
 			celkovaSuma = pocet*2;
 			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result4); 
+			break;
 			
-	//	default: System.out.println("CHYBA");
+		default: System.out.println("CHYBA");
 		}
 		//return stavHotovosti;
 	}

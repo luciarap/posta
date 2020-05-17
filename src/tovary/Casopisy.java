@@ -91,6 +91,7 @@ public class Casopisy extends Tovary {
 			celkovaSuma = pocet*1.30;
 			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result1); 
+			break;
 		
 			
 		case "Byvanie":
@@ -102,16 +103,19 @@ public class Casopisy extends Tovary {
 			celkovaSuma = pocet*1;
 			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result3); 
+			break;
 		
 		case "Kreativ":
 			celkovaSuma = pocet*2.80;
 			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result4); 
+			break;
 		
 		case "Geo":
 			celkovaSuma = pocet*3;
 			double result5 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result5); 
+			break;
 			
 		default: System.out.println("CHYBA");
 			

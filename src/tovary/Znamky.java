@@ -84,9 +84,6 @@ public class Znamky extends Tovary {
 		
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		
-		
-		
 	/*	if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
 		}
@@ -97,27 +94,36 @@ public class Znamky extends Tovary {
 			celkovaSuma = pocet*0.80;
 			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result1); 
+			break;
 		
 			
 		case "T2":
 			celkovaSuma = pocet*0.65;
 			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result2); 
+			break;
 		
 		case "eur1":
+			System.out.println("Pocet: " + pocet);
 			celkovaSuma = pocet*1;
+			System.out.println("Celkova: " + celkovaSuma);
 			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
+			System.out.println("Result: " + result3);
 			ManazerHotovosti.setStavHotovosti(result3); 
+			System.out.println(ManazerHotovosti.getStavHotovosti());
+			break;
 		
 		case "eur2":
 			celkovaSuma = pocet*2;
 			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result4); 
+			break;
 		
 		case "eur050":
 			celkovaSuma = pocet*0.50;
 			double result5 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result5); 
+			break;
 		default: System.out.println("CHYBA");
 			
 			

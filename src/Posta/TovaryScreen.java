@@ -169,7 +169,7 @@ public class TovaryScreen {
 			ZoznamTovarov.getItems().add(itemToRemove);
 			//itemToRemove.setPocet(Integer.parseInt(pocetTxt.getText()));
 			nakup.tailInsert(itemToRemove);
-			nakup.print();
+			//nakup.print();
 			//zoznam.remove(itemToRemove);
 			
 			// text field pocet

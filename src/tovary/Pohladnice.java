@@ -95,27 +95,32 @@ public class Pohladnice extends Tovary {
 			celkovaSuma = pocet*0.40;
 			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result1); 
+			break;
 		
 			
 		case "Narodeniny druh 2":
 			celkovaSuma = pocet*0.80;
 			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result2); 
+			break;
 		
 		case "Vianoce":
 			celkovaSuma = pocet*1;
 			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result3); 
+			break;
 			
 		case "Velka noc":
 			celkovaSuma = pocet*1;
 			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result4); 
+			break;
 		
 		case "Meniny":
 			celkovaSuma = pocet*0.50;
 			double result5 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result5); 
+			break;
 			
 		default: System.out.println("CHYBA");
 		}

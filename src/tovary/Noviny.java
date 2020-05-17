@@ -89,27 +89,32 @@ public class Noviny extends Tovary {
 			celkovaSuma = pocet*0.65;
 			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result1); 
+			break;
 		
 			
 		case "Hospodarske noviny":
 			celkovaSuma = pocet*1.20;
 			double result2 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result2); 
+			break;
 		
 		case "Pravda":
 			celkovaSuma = pocet*0.80;
 			double result3 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result3); 
+			break;
 		
 		case "Sme":
 			celkovaSuma = pocet*0.90;
 			double result4 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result4); 
+			break;
 		
 		case "Dnes":
 			celkovaSuma = pocet*1;
 			double result5 = manazer.add(ManazerHotovosti.getStavHotovosti(),celkovaSuma, pridaj);
 			ManazerHotovosti.setStavHotovosti(result5); 
+			break;
 		default: System.out.println("CHYBA");
 			
 			
