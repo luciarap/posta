@@ -195,7 +195,6 @@ public class ZasielkyScreen implements java.io.Serializable {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				RadioButton rb = (RadioButton) group.getSelectedToggle();
-
 				if (rb != null) {
 					String s = rb.getText();
 					System.out.println("Stlaceny button " + s);
@@ -234,12 +233,18 @@ public class ZasielkyScreen implements java.io.Serializable {
 					if (s == "Doporuceny List") {
 						
 						zapisZasielku.setOnAction(e -> { // lambda vyraz s odvodenim typu z kontextu
+							
+							try {
 
 							Zasielky zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
 									priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
 									Integer.parseInt(psc.getText()), mesto.getText());
 							listView.getItems().add(zasielka);
 							woi.add(zasielka);
+							} catch (Exception e1) {
+								alert.show();
+								System.out.println("Chyba");
+							}
 							
 							try {
 

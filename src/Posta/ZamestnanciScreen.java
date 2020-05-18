@@ -63,8 +63,11 @@ public class ZamestnanciScreen implements Runnable  {
 				
 				if (comboBox.getValue().getPohlavie() == "F") {
 					imageView.setImage(imageF);
+					comboBox.setTranslateY(-100);
 				}
-				else imageView.setImage(imageM);
+				else imageView.setImage(imageM); {
+					comboBox.setTranslateY(-100);
+				}
 				comboBox.setItems(ZoznamZamestnancov);
 				// textArea.setText(comboBox.getValue() + " selected");
 				if (comboBox.getValue() instanceof Dorucovatel) {
@@ -95,10 +98,18 @@ public class ZamestnanciScreen implements Runnable  {
 		};
 
 		// Set on action
+		zamestnanciPane.setPrefSize(600, 300);
 		comboBox.setOnAction(event);
 		zamestnanciPane.add(comboBox, 0, 0);
-		zamestnanciPane.add(text, 0, 5);
-		zamestnanciPane.add(imageView, 0, 6);
+		zamestnanciPane.add(text, 0, 0);
+		zamestnanciPane.add(imageView, 0, 0);
+		imageView.setTranslateX(3);
+		imageView.setTranslateY(60);
+
+		text.setTranslateX(200);
+		text.setTranslateY(60);
+		comboBox.setTranslateX(0);
+		comboBox.setTranslateY(0);
 		
 		
 
@@ -120,9 +131,15 @@ public class ZamestnanciScreen implements Runnable  {
 		// zamestnanciPane.add(ZoznamZamestnancov, 1, 1);
 		// TODO Auto-generated method stub
 		VeduciScreen screen = new VeduciScreen();
-		zamestnanciPane.add(spat, 0, 3);
-		zamestnanciPane.add(vyplata, 0, 4);
-		zamestnanciPane.add(stavHotovosti, 1, 0);
+		zamestnanciPane.add(spat, 0, 0);
+		spat.setTranslateX(0);
+		spat.setTranslateY(220);
+		zamestnanciPane.add(vyplata, 0, 0);
+		vyplata.setTranslateX(60);
+		vyplata.setTranslateY(220);
+		zamestnanciPane.add(stavHotovosti, 0, 0);
+		stavHotovosti.setTranslateX(0);
+		stavHotovosti.setTranslateY(260);
 		// update observable or something
 		// zamestnanciPane.add(selected, 0, 5);
 		vyplata.setOnAction(e -> {
@@ -146,7 +163,7 @@ public class ZamestnanciScreen implements Runnable  {
 		});
 
 		// comboBox.setItems(ZoznamZamestnancov);
-		return new Scene(zamestnanciPane, 600, 300);
+		return new Scene(zamestnanciPane, 600, 400);
 
 	}
 

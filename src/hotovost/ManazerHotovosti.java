@@ -2,7 +2,7 @@ package hotovost;
 
 public class ManazerHotovosti implements java.io.Serializable {
 	
-	private static double stavHotovosti = 10000;
+	private static double stavHotovosti = 100;
 	
 	/*public ManazerHotovosti() {
 		ManazerHotovosti.stavHotovosti = 10000;
