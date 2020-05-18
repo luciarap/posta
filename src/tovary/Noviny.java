@@ -78,6 +78,7 @@ public class Noviny extends Tovary {
 		
 		if (pocet > tovar.getPocet()) {
 			System.out.println("Nekorektne mnozstvo tovaru.");
+			//showAlert();
 			return;
 		}
 		

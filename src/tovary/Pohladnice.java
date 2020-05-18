@@ -81,6 +81,7 @@ public class Pohladnice extends Tovary {
 		
 		if (pocet > tovar.getPocet()) {
 			System.out.println("Nekorektne mnozstvo tovaru.");
+		//	showAlert();
 			return;
 		}
 		int aktualnyPocet = tovar.getPocet();

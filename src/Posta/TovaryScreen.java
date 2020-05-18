@@ -88,6 +88,8 @@ public class TovaryScreen implements java.io.Serializable {
 		Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
+		Alert alert2 = new Alert(AlertType.ERROR);
+		alert2.setContentText("Nekorektne mnozstvo tovaru");
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 
 		tovaryPane.setStyle("-fx-background-color: linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
@@ -179,6 +181,10 @@ public class TovaryScreen implements java.io.Serializable {
 
 		predatTovar.setOnAction(e -> {
 			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
+			if (itemToRemove.getPocet() < Integer.parseInt(pocetTxt.getText()) ) {
+				alert2.show();
+				return;
+			}
 			try {
 				itemToRemove.predatTovar(itemToRemove, Integer.parseInt(pocetTxt.getText()));
 				stavHotovosti.setText("");

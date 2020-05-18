@@ -1,12 +1,25 @@
 package tovary;
 
 import Posta.ZleUdajeException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public abstract class Tovary implements java.io.Serializable { //abstract
 	private double cena;
 	private String nazov;
 	private int pocet;
 	private String druh;
+	/*public void showAlert() {
+		alert.setContentText("Nekorektne mnozstvo tovaru");
+		alert.show();
+	}*/
+
+	/*public void setAlert(Alert alert) {
+		this.alert = alert;
+
+	}*/
+
+	//Alert alert = new Alert(AlertType.ERROR);
 	
 	public String getDruh() {
 		return druh;
