@@ -65,8 +65,8 @@ public class Znamky extends Tovary {
 	}
 
 	@Override
-	public void objednatTovar(Tovary tovar, int pocet) {
-		tovar.setPocet(pocet + 10);
+	public void odpisatTovar(Tovary tovar) {
+		//tovar.setPocet(pocet + 10);
 	}
 
 	@Override
@@ -78,8 +78,9 @@ public class Znamky extends Tovary {
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
 		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
 		
-		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
-			objednatTovar(tovar, pocet);
+		if (pocet > tovar.getPocet()) {
+			System.out.println("Nekorektne mnozstvo tovaru.");
+			return;
 		}
 		
 		int aktualnyPocet = tovar.getPocet();

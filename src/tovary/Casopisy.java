@@ -63,8 +63,8 @@ public class Casopisy extends Tovary {
 	    return isValid;
 	}
 	@Override
-	public void objednatTovar(Tovary tovar, int pocet) {
-		tovar.setPocet(pocet + 1);
+	public void odpisatTovar(Tovary tovar) {
+		
 	}
 
 
@@ -78,8 +78,12 @@ public class Casopisy extends Tovary {
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
 		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
 		
-		if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
+	/*	if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
 			objednatTovar(tovar, pocet);
+		}*/
+		if (pocet > tovar.getPocet()) {
+			System.out.println("Nekorektne mnozstvo tovaru.");
+			return;
 		}
 		
 		int aktualnyPocet = tovar.getPocet();

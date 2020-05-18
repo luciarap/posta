@@ -50,7 +50,7 @@ public abstract class Tovary implements java.io.Serializable { //abstract
 	
 	
 	//public abstract int predatTovar(Tovary tovar, int pocet);
-	public abstract void objednatTovar(Tovary tovar, int pocet);//ked bude pocet < 2 or sth
+	public abstract void odpisatTovar(Tovary tovar);//ked bude pocet < 2 or sth
 
 	public abstract void predatTovar(Tovary tovar, int pocet) throws ZleUdajeException;
 
