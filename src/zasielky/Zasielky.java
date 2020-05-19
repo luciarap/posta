@@ -39,6 +39,23 @@ public class Zasielky implements java.io.Serializable {
 	/*public String toString() {
 		return Adresa.meno +" "+ Adresa.priezvisko +" "+ Adresa.ulica +" "+ Adresa.cislo +" "+ Adresa.psc +" "+ Adresa.mesto ;
 	}*/
+	
+	public boolean CheckPodacieCislo(String podacieCislo) {
+		int i;
+		if (podacieCislo.length() == 13) {
+			if ((podacieCislo.startsWith("RE") && podacieCislo.endsWith("SK"))  {
+				for (i = 2; i <= 10; i++) {
+					if (podacieCislo.matches(".*\\d.*")) continue;
+					else return false;
+				}
+				
+				return true;
+			}
+
+		}
+		return false;
+		
+	}
 
 
 

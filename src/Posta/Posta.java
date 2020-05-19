@@ -1,6 +1,7 @@
 package Posta;
 
 
+import Exceptions.ZleUdajeException;
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;

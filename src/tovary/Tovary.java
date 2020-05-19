@@ -1,6 +1,6 @@
 package tovary;
 
-import Posta.ZleUdajeException;
+import Exceptions.ZleUdajeException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 

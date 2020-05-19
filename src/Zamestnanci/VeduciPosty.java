@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import Exceptions.PodacieCisloException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 import zasielky.Dobierka;
@@ -40,8 +41,11 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		// TODO Auto-generated constructor stub
 	}*/
 	//spravit Zapis metody pre rozne zasielky, radio button
-	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) { //test
+	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) throws PodacieCisloException { //test
 		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
+		if (zasielka.CheckPodacieCislo(podacieCislo) == false) {
+			throw new PodacieCisloException("Zle podacie cislo");
+		}
 		zasielka.podacieCislo = podacieCislo;
 		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(zasielka);
@@ -55,8 +59,11 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		return zasielka;
 	}
 	
-	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) { //test
+	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) throws PodacieCisloException { //test
 		Dobierka dobierka = new Dobierka(meno, priezvisko, ulica, cislo, psc, Mesto, suma, hmotnost);
+		if (dobierka.CheckPodacieCislo(podacieCislo) == false) {
+			throw new PodacieCisloException("Zle podacie cislo");
+		}
 		dobierka.podacieCislo = podacieCislo;
 		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(dobierka);
@@ -70,8 +77,11 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		return dobierka;
 	}
 	
-	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma) { //test
+	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma) throws PodacieCisloException { //test
 		PoistenyList pl = new PoistenyList(meno, priezvisko, ulica, cislo, psc, Mesto, suma);
+		if (pl.CheckPodacieCislo(podacieCislo) == false) {
+			throw new PodacieCisloException("Zle podacie cislo");
+		}
 		pl.podacieCislo = podacieCislo;
 		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(pl);

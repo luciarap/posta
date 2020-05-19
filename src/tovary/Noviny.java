@@ -1,6 +1,6 @@
 package tovary;
 
-import Posta.ZleUdajeException;
+import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 import tovary.Zreby.DruhZrebov;

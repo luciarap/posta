@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Exceptions.PodacieCisloException;
 import Zamestnanci.Dorucovatel;
 import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
@@ -34,9 +35,9 @@ import zasielky.PoistenyList;
 import zasielky.Zasielky;
 
 public class ZasielkyScreen implements java.io.Serializable {
-	
-	ArrayList<Zasielky> woi=new ArrayList<>();
-	
+
+	ArrayList<Zasielky> woi = new ArrayList<>();
+
 	Alert alert = new Alert(AlertType.ERROR);
 	GridPane pane = new GridPane();
 	private Button zapisZasielku = new Button("Zapis zasielku");
@@ -50,7 +51,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 	private TextField podacieCislo = new TextField();
 	private TextField suma = new TextField();
 	private TextField hmotnost = new TextField();
-	//private ScrollPane skrol = new ScrollPane();
+	// private ScrollPane skrol = new ScrollPane();
 	private Label menoLabel = new Label("Meno: ");
 	private Label priezviskoLabel = new Label("Priezvisko: ");
 	private Label ulicaLabel = new Label("Ulica: ");
@@ -68,15 +69,16 @@ public class ZasielkyScreen implements java.io.Serializable {
 	ListView listView = new ListView();
 	private Button spat = new Button("Sp‰ù");
 	final Tooltip tooltip = new Tooltip();
-	
+
 	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
-		
+
 		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178, "F");
 		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179, "F");
-		//Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny", "F");
+		// Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny",
+		// "F");
 		tooltip.setText("Pri dobierke napiste sumu dobierky, pri poistenom liste vysku poistenia");
-		
+
 		pane.setPadding(new Insets(10, 10, 10, 10));
 		pane.setMinSize(300, 300);
 		pane.setVgap(5);
@@ -88,7 +90,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 		invisible.setToggleGroup(group);
 		invisible.setSelected(true);
 		invisible.setVisible(false);
-		
+
 		pane.add(meno, 1, 0);
 		pane.add(menoLabel, 0, 0);
 		pane.add(priezviskoLabel, 0, 1);
@@ -124,74 +126,72 @@ public class ZasielkyScreen implements java.io.Serializable {
 			if (PostaGUI.povod == "veduci") {
 				hlavny.setScene(PostaGUI.veduciScena);
 			}
-			
-			else if (PostaGUI.povod == "pracovnik") 
+
+			else if (PostaGUI.povod == "pracovnik")
 				hlavny.setScene(PostaGUI.pracovnikScena);
-			
+
 		});
-		
+
 		try {
-	        FileInputStream fis=new FileInputStream("C:\\Users\\lucia\\doporucenyList.ser");
-	        ObjectInputStream ois=new ObjectInputStream(fis);
-	        Zasielky wo=null;
-	        Zasielky[] woj=new Zasielky[5];
+			FileInputStream fis = new FileInputStream("C:\\Users\\lucia\\doporucenyList.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Zasielky wo = null;
+			Zasielky[] woj = new Zasielky[5];
 
-	        //ArrayList<Zasielky> woi=new ArrayList<>();
-	        woi = (ArrayList<Zasielky>)ois.readObject();
+			// ArrayList<Zasielky> woi=new ArrayList<>();
+			woi = (ArrayList<Zasielky>) ois.readObject();
 
-	        for(int i=0;i<woi.size();i++) {
-	        	listView.getItems().add(woi.get(i));
-	        }
-	        
-	        fis.close();
-	        ois.close();
-	        
-	} catch (IOException i) {
-		System.out.println("CHYBA");
-	} catch (ClassNotFoundException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
-		
-		//spat.setOnAction(e -> hlavny.setScene(hlavna));	
-		
+			for (int i = 0; i < woi.size(); i++) {
+				listView.getItems().add(woi.get(i));
+			}
+
+			fis.close();
+			ois.close();
+
+		} catch (IOException i) {
+			System.out.println("CHYBA");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// spat.setOnAction(e -> hlavny.setScene(hlavna));
+
 		dorucitZasielku.setOnAction(event -> {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
 			dorucovatel3.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
 			Iterator<Zasielky> itr = woi.iterator();
-			while(itr.hasNext()) {
+			while (itr.hasNext()) {
 				Zasielky element = (Zasielky) itr.next();
-			   if(element == itemToRemove)
-			   {
-				   System.out.println(element);
-				   System.out.println(itemToRemove);
-				   System.out.println(woi.size());
-			       itr.remove();
-			         FileOutputStream fileOut = null;
+				if (element == itemToRemove) {
+					System.out.println(element);
+					System.out.println(itemToRemove);
+					System.out.println(woi.size());
+					itr.remove();
+					FileOutputStream fileOut = null;
 					try {
 						fileOut = new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			         ObjectOutputStream out = null;
+					ObjectOutputStream out = null;
 					try {
 						out = new ObjectOutputStream(fileOut);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			       try {
-					out.writeObject(woi);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					try {
+						out.writeObject(woi);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					break;
+
 				}
-			       break;
-			       
-			       
-			   }
 			}
 			System.out.println("Fungujem aj tu.");
 
@@ -208,114 +208,126 @@ public class ZasielkyScreen implements java.io.Serializable {
 					if (s == "Dobierka") {
 						zapisZasielku.setOnAction(e -> { // lambda vyraz s odvodenim typu z kontextu
 							try {
-								Dobierka dobierka = posta.zapisDobierku(podacieCislo.getText(), meno.getText(),
-										priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
-										Integer.parseInt(psc.getText()), mesto.getText(),
-										Integer.parseInt(suma.getText()), Integer.parseInt(hmotnost.getText()));
-								
-								listView.getItems().add(dobierka);
-								woi.add(dobierka);
+
+								try {
+									Dobierka dobierka = posta.zapisDobierku(podacieCislo.getText(), meno.getText(),
+											priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
+											Integer.parseInt(psc.getText()), mesto.getText(),
+											Integer.parseInt(suma.getText()), Integer.parseInt(hmotnost.getText()));
+									listView.getItems().add(dobierka);
+									woi.add(dobierka);
+								} catch (PodacieCisloException ex) {
+									ex.ShowAlert();
+								}
+
 								try {
 
-									//DataInputStream in = new DataInputStream(ft);
-							         FileOutputStream fileOut =
-							         new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
-							         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-							         out.writeObject(woi);
-							         //out.writeObject(e);
-							         out.close();
-							         fileOut.close();
-							         System.out.printf("Data ulozene");
-							      } catch (IOException i) {
-							         i.printStackTrace();
-							      }
+									// DataInputStream in = new DataInputStream(ft);
+									FileOutputStream fileOut = new FileOutputStream(
+											"C:\\Users\\lucia\\doporucenyList.ser");
+									ObjectOutputStream out = new ObjectOutputStream(fileOut);
+									out.writeObject(woi);
+									// out.writeObject(e);
+									out.close();
+									fileOut.close();
+									System.out.printf("Data ulozene");
+								} catch (IOException i) {
+									i.printStackTrace();
+								}
 							} catch (Exception e1) {
 								alert.show();
 								System.out.println("Chyba");
 							}
+
 						});
 
 					}
 
 					if (s == "Doporuceny List") {
-						
+
 						zapisZasielku.setOnAction(e -> { // lambda vyraz s odvodenim typu z kontextu
-							
+
 							try {
 
-							Zasielky zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
-									priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
-									Integer.parseInt(psc.getText()), mesto.getText());
-							listView.getItems().add(zasielka);
-							woi.add(zasielka);
-							} catch (Exception e1) {
-								alert.show();
-								System.out.println("Chyba");
-							}
-							
-							try {
-
-								//DataInputStream in = new DataInputStream(ft);
-						         FileOutputStream fileOut =
-						         new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
-						         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-						         out.writeObject(woi);
-						         //out.writeObject(e);
-						         out.close();
-						         fileOut.close();
-						        // new FileOutputStream(FILE_PATH).close();
-						         System.out.printf("Data ulozene");
-						      } catch (IOException i) {
-						         i.printStackTrace();
-						      }
-							System.out.println("Fungujem aj tu.");
-						});
-					
-					}
-					
-					if (s == "Poisteny list" ) {
-						
-						zapisZasielku.setOnAction(e -> {
-							
-							try {
-								PoistenyList poistenyList = posta.zapisPL(podacieCislo.getText(), meno.getText(),
-										priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
-										Integer.parseInt(psc.getText()), mesto.getText(),
-										Integer.parseInt(suma.getText()));
-								
-								listView.getItems().add(poistenyList);
-								woi.add(poistenyList);
 								try {
 
-									//DataInputStream in = new DataInputStream(ft);
-							         FileOutputStream fileOut =
-							         new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
-							         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-							         out.writeObject(woi);
-							         //out.writeObject(e);
-							         out.close();
-							         fileOut.close();
-							         System.out.printf("Data ulozene");
-							      } catch (IOException i) {
-							         i.printStackTrace();
-							      }
+									Zasielky zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
+											priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
+											Integer.parseInt(psc.getText()), mesto.getText());
+									listView.getItems().add(zasielka);
+									woi.add(zasielka);
+								} catch (PodacieCisloException ex) {
+									ex.ShowAlert();
+								}
 							} catch (Exception e1) {
 								alert.show();
 								System.out.println("Chyba");
 							}
-							
-							
-							
+
+							try {
+
+								// DataInputStream in = new DataInputStream(ft);
+								FileOutputStream fileOut = new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
+								ObjectOutputStream out = new ObjectOutputStream(fileOut);
+								out.writeObject(woi);
+								// out.writeObject(e);
+								out.close();
+								fileOut.close();
+								// new FileOutputStream(FILE_PATH).close();
+								System.out.printf("Data ulozene");
+							} catch (IOException i) {
+								i.printStackTrace();
+							}
+							System.out.println("Fungujem aj tu.");
 						});
-						
+
+					}
+
+					if (s == "Poisteny list") {
+
+						zapisZasielku.setOnAction(e -> {
+
+							try {
+
+								try {
+									PoistenyList poistenyList = posta.zapisPL(podacieCislo.getText(), meno.getText(),
+											priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
+											Integer.parseInt(psc.getText()), mesto.getText(),
+											Integer.parseInt(suma.getText()));
+
+									listView.getItems().add(poistenyList);
+									woi.add(poistenyList);
+								} catch (PodacieCisloException ex) {
+									ex.ShowAlert();
+								}
+								try {
+
+									// DataInputStream in = new DataInputStream(ft);
+									FileOutputStream fileOut = new FileOutputStream(
+											"C:\\Users\\lucia\\doporucenyList.ser");
+									ObjectOutputStream out = new ObjectOutputStream(fileOut);
+									out.writeObject(woi);
+									// out.writeObject(e);
+									out.close();
+									fileOut.close();
+									System.out.printf("Data ulozene");
+								} catch (IOException i) {
+									i.printStackTrace();
+								}
+							} catch (Exception e1) {
+								alert.show();
+								System.out.println("Chyba");
+							}
+
+						});
+
 					}
 				}
 			}
 		});
-		
-	
+
 		return new Scene(pane, 900, 800);
-		
+
 	}
 
 }

@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Exceptions.ZleUdajeException;
 import hotovost.ManazerHotovosti;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
