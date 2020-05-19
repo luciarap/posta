@@ -13,7 +13,7 @@ public class ZleUdajeException extends Exception {
 	}
 
 	public void ShowAlert() {
-		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu. Hover over selected text area to show a tip");
+		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu. Pre tip prejdite mysou po textovom poli Druh.");
 		alert.show();
 		// TODO Auto-generated method stub
 		

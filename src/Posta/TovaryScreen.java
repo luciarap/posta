@@ -79,6 +79,10 @@ public class TovaryScreen implements java.io.Serializable {
 	private static Button pridatNoviny = new Button("Pridat noviny");
 	static GridPane tovaryPane = new GridPane();
 	final Tooltip tooltip = new Tooltip();
+	final Tooltip tooltipZreby = new Tooltip();
+	final Tooltip tooltipPohladnice = new Tooltip();
+	final Tooltip tooltipCasopisy = new Tooltip();
+	final Tooltip tooltipNoviny = new Tooltip();
 
 	Label stavHotovosti = new Label();
 
@@ -106,24 +110,33 @@ public class TovaryScreen implements java.io.Serializable {
 		tovaryPane.add(nazovZnamkyTxt, 1, 1);
 		tovaryPane.add(pocetZnamkyTxt, 2, 1);
 		tovaryPane.add(druhZnamkyTxt, 3, 1);
-		tooltip.setText("je potrebne zadat spravny druh znamky. Druhy znamok su: T1, T2, eur1, eur2, eur050");
+		tooltip.setText("Je potrebne zadat spravny druh znamky. Druhy znamok su: T1, T2, eur1, eur2, eur050");
 		druhZnamkyTxt.setTooltip(tooltip);
 
 		tovaryPane.add(nazovZrebyTxt, 1, 2);
 		tovaryPane.add(pocetZrebyTxt, 2, 2);
 		tovaryPane.add(druhZrebyTxt, 3, 2);
+		tooltipZreby.setText("Je potrebne zadat spravnu druh zrebu. Druhy zrebov su: Stastie, Stastne cisla, Prasa v zite, Cierna perla.");
+		druhZrebyTxt.setTooltip(tooltipZreby);
 
 		tovaryPane.add(nazovPohladniceTxt, 1, 3);
 		tovaryPane.add(pocetPohladniceTxt, 2, 3);
 		tovaryPane.add(druhPohladniceTxt, 3, 3);
+		tooltipPohladnice.setText("Je potrebne zadat spravy druh pohladnice. Druhy pohladnic su: Vianoce, Meniny, Velka noc, Narodeniny druh 1, Narodeniny druh 2");
+		druhPohladniceTxt.setTooltip(tooltipPohladnice);
 
 		tovaryPane.add(nazovNovinyTxt, 1, 4);
 		tovaryPane.add(pocetNovinyTxt, 2, 4);
 		tovaryPane.add(druhNovinyTxt, 3, 4);
+		tooltipNoviny.setText("Je potrebne zadat spravny druh novin. Druhy novin su: Novy cas, Dnes, Hospodarske noviny, Pravda, Sme");
+		druhNovinyTxt.setTooltip(tooltipNoviny);
+		
 
 		tovaryPane.add(nazovCasopisyTxt, 1, 5);
 		tovaryPane.add(pocetCasopisyTxt, 2, 5);
 		tovaryPane.add(druhCasopisyTxt, 3, 5);
+		tooltipCasopisy.setText("Je potrebne zadat spravny druh casopisu. Druhy casopisov su: Geo, Kreativ, Byvanie, Tyzden, Zahradkar");
+		druhCasopisyTxt.setTooltip(tooltipCasopisy);
 
 		tovaryPane.add(nazovLabel, 1, 0);
 		tovaryPane.add(pocetLabel, 2, 0);

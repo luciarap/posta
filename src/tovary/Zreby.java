@@ -11,7 +11,7 @@ public class Zreby extends Tovary {
 	
 	public enum DruhZrebov {
 		  PrasaVZite("Prasa v zite"),
-		  StastneCisla("Stastne cislo"),
+		  StastneCisla("Stastne cisla"),
 		  CiernaPerla("Cierna perla"),
 		  Stastie("Stastie");
 		  
