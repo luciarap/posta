@@ -25,10 +25,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import zasielky.Dobierka;
+import zasielky.PoistenyList;
 import zasielky.Zasielky;
 
 public class ZasielkyScreen implements java.io.Serializable {
@@ -61,9 +63,11 @@ public class ZasielkyScreen implements java.io.Serializable {
 	RadioButton rb1 = new RadioButton();
 	final ToggleGroup group = new ToggleGroup();
 	RadioButton rb2 = new RadioButton("Dobierka");
+	RadioButton rb3 = new RadioButton("Poisteny list");
 	RadioButton invisible = new RadioButton("Invisible");
 	ListView listView = new ListView();
 	private Button spat = new Button("Spä");
+	final Tooltip tooltip = new Tooltip();
 	
 	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
@@ -71,6 +75,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178, "F");
 		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179, "F");
 		//Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny", "F");
+		tooltip.setText("Pri dobierke napiste sumu dobierky, pri poistenom liste vysku poistenia");
 		
 		pane.setPadding(new Insets(10, 10, 10, 10));
 		pane.setMinSize(300, 300);
@@ -79,6 +84,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 		rb1.setText("Doporuceny List");
 		rb2.setToggleGroup(group);
 		rb1.setToggleGroup(group);
+		rb3.setToggleGroup(group);
 		invisible.setToggleGroup(group);
 		invisible.setSelected(true);
 		invisible.setVisible(false);
@@ -104,11 +110,12 @@ public class ZasielkyScreen implements java.io.Serializable {
 		pane.add(zapisZasielku, 1, 9);
 		pane.add(rb1, 1, 10);
 		pane.add(rb2, 1, 11);
-		pane.add(invisible, 1, 12);
+		pane.add(rb3, 1, 12);
+		pane.add(invisible, 1, 13);
 		pane.add(listView, 15, 15);
-		pane.add(dorucitZasielku, 0, 13);
+		pane.add(dorucitZasielku, 0, 14);
 		pane.setStyle("-fx-background-color:  linear-gradient( #d3d3d3, #808080); -fx-font-size: 15px;");
-		pane.add(spat, 0, 14);
+		pane.add(spat, 1, 14);
 		listView.setPrefSize(500, 700);
 		listView.setTranslateX(-30);
 		listView.setTranslateY(-500);
@@ -264,6 +271,43 @@ public class ZasielkyScreen implements java.io.Serializable {
 							System.out.println("Fungujem aj tu.");
 						});
 					
+					}
+					
+					if (s == "Poisteny list" ) {
+						
+						zapisZasielku.setOnAction(e -> {
+							
+							try {
+								PoistenyList poistenyList = posta.zapisPL(podacieCislo.getText(), meno.getText(),
+										priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
+										Integer.parseInt(psc.getText()), mesto.getText(),
+										Integer.parseInt(suma.getText()));
+								
+								listView.getItems().add(poistenyList);
+								woi.add(poistenyList);
+								try {
+
+									//DataInputStream in = new DataInputStream(ft);
+							         FileOutputStream fileOut =
+							         new FileOutputStream("C:\\Users\\lucia\\doporucenyList.ser");
+							         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+							         out.writeObject(woi);
+							         //out.writeObject(e);
+							         out.close();
+							         fileOut.close();
+							         System.out.printf("Data ulozene");
+							      } catch (IOException i) {
+							         i.printStackTrace();
+							      }
+							} catch (Exception e1) {
+								alert.show();
+								System.out.println("Chyba");
+							}
+							
+							
+							
+						});
+						
 					}
 				}
 			}

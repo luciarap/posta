@@ -7,6 +7,7 @@ import java.util.List;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 import zasielky.Dobierka;
+import zasielky.PoistenyList;
 import zasielky.Zasielky;
 // Composite
 public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
@@ -67,6 +68,21 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		}
 		
 		return dobierka;
+	}
+	
+	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma) { //test
+		PoistenyList pl = new PoistenyList(meno, priezvisko, ulica, cislo, psc, Mesto, suma);
+		pl.podacieCislo = podacieCislo;
+		//zasielka.podacieCislo = generujPodacieCislo();
+		ar.add(pl);
+		
+		System.out.println("Zapisana nova dobierka s podacim cislo: " + pl.podacieCislo);
+		
+		for(Zasielky i : ar){
+			System.out.println(i);
+		}
+		
+		return pl;
 	}
 
 	@Override
