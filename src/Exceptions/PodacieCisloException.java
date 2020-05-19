@@ -13,7 +13,7 @@ public class PodacieCisloException extends Exception {
 		}
 
 		public void ShowAlert() {
-			alert.setContentText("Nepsravny format podacieho cisla.");
+			alert.setContentText("Podacie cislo ma nespravny format alebo uz bolo pouzite. Skontrolujte podacie cislo a skuste to znovu.");
 			alert.show();
 			// TODO Auto-generated method stub
 			

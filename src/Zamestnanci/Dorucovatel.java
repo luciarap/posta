@@ -46,7 +46,7 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 	}
 	
 	public void Dorucit(Zasielky zasielka) {
-		zasielka.jeDorucena = true;
+		//zasielka.jeDorucena = true;
 		odpisZasielky(ar, zasielka);
 	}
 

@@ -73,8 +73,8 @@ public class ZasielkyScreen implements java.io.Serializable {
 	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 
-		VeduciPosty posta = new VeduciPosty("Ivana", "Kocurikova", 4178, "F");
-		Dorucovatel dorucovatel3 = new Dorucovatel("Eva", "Benkova", 4179, "F");
+		VeduciPosty posta = new VeduciPosty("", "", 0, "N");
+		Dorucovatel dorucovatel = new Dorucovatel("", "", 0, "N");
 		// Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny",
 		// "F");
 		tooltip.setText("Pri dobierke napiste sumu dobierky, pri poistenom liste vysku poistenia");
@@ -159,7 +159,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 
 		dorucitZasielku.setOnAction(event -> {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
-			dorucovatel3.Dorucit(itemToRemove);
+			dorucovatel.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
 			Iterator<Zasielky> itr = woi.iterator();
 			while (itr.hasNext()) {

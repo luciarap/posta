@@ -43,56 +43,72 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	//spravit Zapis metody pre rozne zasielky, radio button
 	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) throws PodacieCisloException { //test
 		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
-		if (zasielka.CheckPodacieCislo(podacieCislo) == false) {
+		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
-		zasielka.podacieCislo = podacieCislo;
+		zasielka.setPodacieCislo(podacieCislo);
 		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(zasielka);
 		
-		System.out.println("Zapisana nova zasielka s podacim cislo: " + zasielka.podacieCislo);
+		//System.out.println("Zapisana nova zasielka s podacim cislo: " + zasielka.podacieCislo);
 		
-		for(Zasielky i : ar){
+		/*for(Zasielky i : ar){
 			System.out.println(i);
-		}
+		}*/
 		
 		return zasielka;
 	}
 	
 	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) throws PodacieCisloException { //test
 		Dobierka dobierka = new Dobierka(meno, priezvisko, ulica, cislo, psc, Mesto, suma, hmotnost);
-		if (dobierka.CheckPodacieCislo(podacieCislo) == false) {
+		if (dobierka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
-		dobierka.podacieCislo = podacieCislo;
+		dobierka.setPodacieCislo(podacieCislo);
 		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(dobierka);
 		
-		System.out.println("Zapisana nova dobierka s podacim cislo: " + dobierka.podacieCislo);
+		//System.out.println("Zapisana nova dobierka s podacim cislo: " + dobierka.podacieCislo);
 		
-		for(Zasielky i : ar){
+		/*for(Zasielky i : ar){
 			System.out.println(i);
-		}
+		}*/
 		
 		return dobierka;
 	}
 	
 	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma) throws PodacieCisloException { //test
 		PoistenyList pl = new PoistenyList(meno, priezvisko, ulica, cislo, psc, Mesto, suma);
-		if (pl.CheckPodacieCislo(podacieCislo) == false) {
+		if ((pl.CheckPodacieCislo(podacieCislo)) == false || (CheckDuplicate(podacieCislo) == false) ) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
-		pl.podacieCislo = podacieCislo;
+		pl.setPodacieCislo(podacieCislo);
 		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(pl);
 		
-		System.out.println("Zapisana nova dobierka s podacim cislo: " + pl.podacieCislo);
+		//System.out.println("Zapisana nova dobierka s podacim cislo: " + pl.podacieCislo);
 		
-		for(Zasielky i : ar){
+	/*	for(Zasielky i : ar){
 			System.out.println(i);
-		}
+		}*/
 		
 		return pl;
+	}
+	
+	public boolean CheckDuplicate(String podacieCislo) {
+		System.out.println("Cekujem duplikaty");
+		
+	      for (int counter = 0; counter < ar.size(); counter++) { 	
+        		System.out.println(ar.get(counter).getPodacieCislo());
+        		System.out.println(podacieCislo);
+	          	if (ar.get(counter).getPodacieCislo().contentEquals(podacieCislo)) {
+
+	          		return false;
+	          	}
+	      }
+	      
+	      return true;
+		
 	}
 
 	@Override
