@@ -4,8 +4,6 @@ public interface ManageMoney {
 	
 	double pridaj(double stavHotovosti, double suma);
 	
-	//double odrataj(double stavHotovosti, double suma);
-	
 	default void objednatPeniaze() {
 		double current = ManazerHotovosti.getStavHotovosti();
 		System.out.println(current);

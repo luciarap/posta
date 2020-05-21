@@ -1,10 +1,10 @@
 package Posta;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-
+/**
+ * Trieda, v ktorej sa nachádza zoznam používate¾ov, ich username a password
+ * @see LoginController využíva sa pri vyhodnocovaní prihlasovacích údajov
+ * @author Lucia Rapánová
+ *
+ */
 public class CheckLogin {
 	
 	private static String veduciUsername = "veduci";

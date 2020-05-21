@@ -16,8 +16,6 @@ public class VeduciScreen {
 
 	Scene uvod;
 	Scene LoginScene;
-	//Scene skrolScene;
-	//Scene veduciScena;
 
 	private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
@@ -26,7 +24,6 @@ public class VeduciScreen {
 
 	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException, FileNotFoundException {
 
-		//zamestnanci = null;
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		ZamestnanciScreen zamestnanciScreen = new ZamestnanciScreen();
@@ -65,10 +62,7 @@ public class VeduciScreen {
 		veduciHBox.getChildren().addAll(Scene2, Scene1, Zamestnanci, Logout);
 		
 		Logout.setOnAction(e -> hlavny.setScene(login));
-		//veduciScena = new Scene(veduciHBox, 500, 400);
 		
-		//hlavny.setScene(hlavna);
-		// TODO Auto-generated method stub
 		return new Scene(veduciHBox, 500, 80);
 	}
 

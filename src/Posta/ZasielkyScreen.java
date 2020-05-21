@@ -9,10 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import Exceptions.PodacieCisloException;
-import Zamestnanci.Dorucovatel;
-import Zamestnanci.Pracovnik;
 import Zamestnanci.VeduciPosty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -33,7 +30,11 @@ import javafx.stage.Stage;
 import zasielky.Dobierka;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class ZasielkyScreen implements java.io.Serializable {
 
 	ArrayList<Zasielky> woi = new ArrayList<>();
@@ -69,12 +70,17 @@ public class ZasielkyScreen implements java.io.Serializable {
 	ListView listView = new ListView();
 	private Button spat = new Button("Spä");
 	final Tooltip tooltip = new Tooltip();
-
+/**
+ * 
+ * @param hlavna
+ * @param hlavny
+ * @return
+ */
 	public Scene ZobrazZasielkyScreen(Scene hlavna, Stage hlavny) {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu.");
 
 		VeduciPosty posta = new VeduciPosty("", "", 0, "N");
-		Dorucovatel dorucovatel = new Dorucovatel("", "", 0, "N");
+		//Dorucovatel dorucovatel = new Dorucovatel("", "", 0, "N");
 		// Pracovnik pracovnik = new Pracovnik("Maria", "Kovacova", 4180, "polovicny",
 		// "F");
 		tooltip.setText("Pri dobierke napiste sumu dobierky, pri poistenom liste vysku poistenia");
@@ -159,7 +165,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 
 		dorucitZasielku.setOnAction(event -> {
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
-			dorucovatel.Dorucit(itemToRemove);
+			posta.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
 			Iterator<Zasielky> itr = woi.iterator();
 			while (itr.hasNext()) {
@@ -213,7 +219,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 									Dobierka dobierka = posta.zapisDobierku(podacieCislo.getText(), meno.getText(),
 											priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
 											Integer.parseInt(psc.getText()), mesto.getText(),
-											Integer.parseInt(suma.getText()), Integer.parseInt(hmotnost.getText()));
+											Integer.parseInt(suma.getText()), Double.parseDouble(hmotnost.getText()));
 									listView.getItems().add(dobierka);
 									woi.add(dobierka);
 								} catch (PodacieCisloException ex) {
@@ -224,7 +230,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 
 									// DataInputStream in = new DataInputStream(ft);
 									FileOutputStream fileOut = new FileOutputStream(
-											"C:\\Users\\lucia\\doporucenyList.ser");
+											"serializacia\\doporucenyList.ser");
 									ObjectOutputStream out = new ObjectOutputStream(fileOut);
 									out.writeObject(woi);
 									// out.writeObject(e);

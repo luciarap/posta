@@ -9,7 +9,7 @@ public class Zreby extends Tovary {
 	private boolean isValid = false;
 	private int flag = 0;
 	
-	public enum DruhZrebov {
+	private enum DruhZrebov {
 		  PrasaVZite("Prasa v zite"),
 		  StastneCisla("Stastne cisla"),
 		  CiernaPerla("Cierna perla"),

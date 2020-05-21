@@ -1,20 +1,13 @@
 package hotovost;
 
-public class ManazerHotovosti implements java.io.Serializable {
+public class ManazerHotovosti  {
 	
-	private static double stavHotovosti = 100;
-	
-	/*public ManazerHotovosti() {
-		ManazerHotovosti.stavHotovosti = 10000;
-	}*/
+	private static double stavHotovosti = 10000;
 	
 	public double add(double stav, double suma, ManageMoney manageMoney) {
 	    return manageMoney.pridaj(stav, suma);
 	}
 	
-	/*public double substract(double stav, double suma, ManageMoney manageMoney) {
-	    return manageMoney.odrataj(stav, suma);
-	}*/
 
 	public static double getStavHotovosti() {
 		return stavHotovosti;
@@ -24,7 +17,5 @@ public class ManazerHotovosti implements java.io.Serializable {
 		ManazerHotovosti.stavHotovosti = stavHotovosti;
 	}
 	
-
-	//public updateStav( )
 
 }

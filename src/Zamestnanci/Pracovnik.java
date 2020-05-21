@@ -13,7 +13,7 @@ public class Pracovnik implements Zamestnanec { //LEAF
 	private String pohlavie;
 	
 	private double stavHotovosti = 0;
-	String uvazok;
+	private String uvazok;
 
 	public double getStavHotovosti() {
 		return stavHotovosti;

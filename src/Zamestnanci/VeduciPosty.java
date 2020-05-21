@@ -18,6 +18,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	private int ID;
 	private double mzda;
 	private String pohlavie;
+	
 	public VeduciPosty(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
@@ -33,28 +34,23 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	}
 	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();  
 	
-	//private static double stavHotovostiNaPracovisku = 10000;
-	//static ArrayList<Zasielky> ar = new ArrayList<Zasielky>();
-
-	/*public VeduciPosty(String meno, String priezvisko) {
-		super(meno, priezvisko);
-		// TODO Auto-generated constructor stub
-	}*/
-	//spravit Zapis metody pre rozne zasielky, radio button
+	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
+		ar.remove(zasielka);
+		System.out.println("Zasielka bola dorucena.");
+	}
+	
+	public void Dorucit(Zasielky zasielka) {
+		odpisZasielky(ar, zasielka);
+	}
+	
 	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) throws PodacieCisloException { //test
 		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
 		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
 		zasielka.setPodacieCislo(podacieCislo);
-		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(zasielka);
 		
-		//System.out.println("Zapisana nova zasielka s podacim cislo: " + zasielka.podacieCislo);
-		
-		/*for(Zasielky i : ar){
-			System.out.println(i);
-		}*/
 		
 		return zasielka;
 	}
@@ -65,14 +61,8 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
 		dobierka.setPodacieCislo(podacieCislo);
-		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(dobierka);
 		
-		//System.out.println("Zapisana nova dobierka s podacim cislo: " + dobierka.podacieCislo);
-		
-		/*for(Zasielky i : ar){
-			System.out.println(i);
-		}*/
 		
 		return dobierka;
 	}
@@ -83,14 +73,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
 		pl.setPodacieCislo(podacieCislo);
-		//zasielka.podacieCislo = generujPodacieCislo();
 		ar.add(pl);
-		
-		//System.out.println("Zapisana nova dobierka s podacim cislo: " + pl.podacieCislo);
-		
-	/*	for(Zasielky i : ar){
-			System.out.println(i);
-		}*/
 		
 		return pl;
 	}

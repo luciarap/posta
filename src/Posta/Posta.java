@@ -2,19 +2,12 @@ package Posta;
 
 
 import Exceptions.ZleUdajeException;
-import Zamestnanci.Dorucovatel;
-import Zamestnanci.Pracovnik;
-import Zamestnanci.VeduciPosty;
-import Zamestnanci.Zamestnanec;
-import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
-import tovary.Casopisy;
-import tovary.Znamky;
-import tovary.Znamky.DruhZnamok;
 import tovary.Zreby;
-import tovary.Casopisy.DruhCasopisov;
 
-
+/**
+ * @deprecated priebehalo tu konzolové testovanie, keïže sa používa GUI, tento main sa už nepoužíva
+ */
 public class Posta {
 	//static double stavHotovosti = 100;
 	static double suma  = 50;

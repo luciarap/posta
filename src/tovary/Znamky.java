@@ -3,14 +3,13 @@ package tovary;
 import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
-import tovary.Zreby.DruhZrebov;
 
 public class Znamky extends Tovary {
 	
 	private boolean isValid = false;
 	private int flag = 0;
 	
-	public enum DruhZnamok {
+	private enum DruhZnamok {
 		  T1("T1"),
 		  T2("T2"),
 		  eur1("eur1"),

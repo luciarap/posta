@@ -15,7 +15,4 @@ public interface Zamestnanec { //COMPONENT
 	public String getPriezvisko();
 	public String getPohlavie();
 	public void info();
-	
-	//default
-	
 }

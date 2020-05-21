@@ -7,37 +7,54 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
+/**
+ * Táto trieda slúži na úvodnej scény, ak sa prihlási pracovník
+ * @author lucia
+ *
+ */
 public class PracovnikScreen {
 	GridPane pane = new GridPane();
-	//static Scene tovary;
-	//static Scene zasielky;
 	Scene uvod;
 	Scene LoginScene;
-//	Scene skrolScene;
 	Scene PracovnikScena;
-//	Scene zamestnanci;
 	private Button Scene2 = new Button("Tovary");
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
-
+		
+	/**
+	 * Metóda vybuduje scénu pre pracovníka
+	 * @param hlavny je hlavný Stage, ktorý sa používa
+	 * @param login je predošlá scéna, kde sa užívatelia prihlasujú
+	 * @return vytvorenú scénu pre pracovníka
+	 * @throws ZleUdajeException
+	 */
 	public Scene zobrazPracovnikScreen(Stage hlavny, Scene login) throws ZleUdajeException {
 
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
 		
-		
-		if (PostaGUI.tovary == null) {
-			PostaGUI.tovary = tovaryScreen.Zobraz(hlavny);
+		/**
+		 * kontrola, èi scéna už existuje
+		 */
+		if (PostaGUI.tovary == null) { 
+			/**
+			 * vytváranie scény
+			 */
+			PostaGUI.tovary = tovaryScreen.Zobraz(hlavny); 
 		}
 		Scene2.setOnAction(e -> {
 			PostaGUI.povod = "pracovnik";
 			hlavny.setScene(PostaGUI.tovary);
 		});
 		
-		
-		if (PostaGUI.zasielky == null) {
-			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny);
+		/**
+		 * kontrola, èi scéna už existuje
+		 */
+		if (PostaGUI.zasielky == null) { 
+			/**
+			 * vytváranie scény
+			 */
+			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PracovnikScena, hlavny); 
 		}
 		Scene1.setOnAction(e -> {
 			PostaGUI.povod = "pracovnik";
@@ -55,11 +72,6 @@ public class PracovnikScreen {
 		
 		Logout.setOnAction(e -> hlavny.setScene(login));
 		
-		//Logout.setOnAction(e -> hlavny.setScene(skrolScene));
-		//veduciScena = new Scene(veduciHBox, 500, 400);
-		
-		//hlavny.setScene(hlavna);
-		// TODO Auto-generated method stub
 		return new Scene(PracovnikHBox, 380, 80);
 	}
 

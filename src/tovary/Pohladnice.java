@@ -3,14 +3,13 @@ package tovary;
 import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
-import tovary.Noviny.DruhNovin;
 
 public class Pohladnice extends Tovary {
 	
 	private boolean isValid = false;
 	private int flag = 0;
 	
-	public enum DruhPohladnic {
+	private enum DruhPohladnic {
 		  Narodeniny1("Narodeniny druh 1"),
 		  Narodeniny2("Narodeniny druh 2"),
 		  Vianoce("Vianoce"),

@@ -52,10 +52,6 @@ public class Zasielky implements java.io.Serializable {
 		return "Zasielky: datum=" + datum + ", podacieCislo=" + podacieCislo;
 	}
 	
-	/*public String toString() {
-		return Adresa.meno +" "+ Adresa.priezvisko +" "+ Adresa.ulica +" "+ Adresa.cislo +" "+ Adresa.psc +" "+ Adresa.mesto ;
-	}*/
-	
 	public boolean CheckPodacieCislo(String podacieCislo) {
 		int i;
 		if (podacieCislo.length() == 13) {
