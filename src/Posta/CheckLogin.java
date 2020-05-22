@@ -1,4 +1,7 @@
 package Posta;
+
+import Controllers.LoginController;
+
 /**
  * Trieda, v ktorej sa nachádza zoznam používate¾ov, ich username a password
  * @see LoginController využíva sa pri vyhodnocovaní prihlasovacích údajov

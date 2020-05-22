@@ -1,7 +1,11 @@
 package zasielky;
 
 import java.util.Calendar;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class DoporucenyList extends Zasielky{
 
 	public DoporucenyList(String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) {

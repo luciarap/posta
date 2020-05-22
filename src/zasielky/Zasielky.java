@@ -1,7 +1,11 @@
 package zasielky;
 
 import java.util.Date;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class Zasielky implements java.io.Serializable {
 	private Date datum;
 	private String podacieCislo;
@@ -22,7 +26,11 @@ public class Zasielky implements java.io.Serializable {
 	public void setPodacieCislo(String podacieCislo) {
 		this.podacieCislo = podacieCislo;
 	}
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 	public class Adresa {
 		String meno;
 		String priezvisko;
@@ -31,7 +39,15 @@ public class Zasielky implements java.io.Serializable {
 		int psc;
 		String mesto;
 	}
-	
+	/**
+	 * 
+	 * @param meno
+	 * @param priezvisko
+	 * @param ulica
+	 * @param cislo
+	 * @param psc
+	 * @param Mesto
+	 */
 	public Zasielky(String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) {
 		Date date = new Date();
 		this.datum = date;
@@ -51,7 +67,11 @@ public class Zasielky implements java.io.Serializable {
 	public String toString() {
 		return "Zasielky: datum=" + datum + ", podacieCislo=" + podacieCislo;
 	}
-	
+	/**
+	 * 
+	 * @param podacieCislo
+	 * @return
+	 */
 	public boolean CheckPodacieCislo(String podacieCislo) {
 		int i;
 		if (podacieCislo.length() == 13) {

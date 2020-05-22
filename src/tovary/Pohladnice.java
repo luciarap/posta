@@ -3,12 +3,20 @@ package tovary;
 import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class Pohladnice extends Tovary {
 	
 	private boolean isValid = false;
 	private int flag = 0;
-	
+	/**
+	 * 
+	 * @author lucia
+	 *
+	 */
 	private enum DruhPohladnic {
 		  Narodeniny1("Narodeniny druh 1"),
 		  Narodeniny2("Narodeniny druh 2"),
@@ -30,11 +38,20 @@ public class Pohladnice extends Tovary {
 	            return this.nazovDruhu;
 	         }
 		}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isValid() {
 	    return isValid;
 	}
 	//private DruhPohladnic druh;
+	/**
+	 * 
+	 * @param nazov
+	 * @param pocet
+	 * @param druh
+	 */
 	public Pohladnice(String nazov, int pocet, String druh) {
 		super(nazov, pocet, druh);
 		

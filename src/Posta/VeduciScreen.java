@@ -10,7 +10,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
+/**
+ * áto trieda slúži na zobrazenie úvodnej scény, ak sa prihlási vedúci pošty
+ * @author Lucia Raoánová
+ *
+ */
 public class VeduciScreen {
 	GridPane pane = new GridPane();
 
@@ -21,7 +25,14 @@ public class VeduciScreen {
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
-
+/**
+ * 
+ * @param hlavny
+ * @param login
+ * @return
+ * @throws ZleUdajeException
+ * @throws FileNotFoundException
+ */
 	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException, FileNotFoundException {
 
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();

@@ -11,6 +11,11 @@ import zasielky.Dobierka;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
 // Composite
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	
 	private String meno;
@@ -18,7 +23,13 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	private int ID;
 	private double mzda;
 	private String pohlavie;
-	
+	/**
+	 * 
+	 * @param meno
+	 * @param priezvisko
+	 * @param ID
+	 * @param pohlavie
+	 */
 	public VeduciPosty(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
@@ -33,16 +44,34 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		this.pohlavie = pohlavie;
 	}
 	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();  
-	
+	/**
+	 * 
+	 * @param ar
+	 * @param zasielka
+	 */
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");
 	}
-	
+	/**
+	 * 
+	 * @param zasielka
+	 */
 	public void Dorucit(Zasielky zasielka) {
 		odpisZasielky(ar, zasielka);
 	}
-	
+	/**
+	 * 
+	 * @param podacieCislo
+	 * @param meno
+	 * @param priezvisko
+	 * @param ulica
+	 * @param cislo
+	 * @param psc
+	 * @param Mesto
+	 * @return
+	 * @throws PodacieCisloException
+	 */
 	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) throws PodacieCisloException { //test
 		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
 		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
@@ -54,7 +83,20 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		
 		return zasielka;
 	}
-	
+	/**
+	 * 
+	 * @param podacieCislo
+	 * @param meno
+	 * @param priezvisko
+	 * @param ulica
+	 * @param cislo
+	 * @param psc
+	 * @param Mesto
+	 * @param suma
+	 * @param hmotnost
+	 * @return
+	 * @throws PodacieCisloException
+	 */
 	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) throws PodacieCisloException { //test
 		Dobierka dobierka = new Dobierka(meno, priezvisko, ulica, cislo, psc, Mesto, suma, hmotnost);
 		if (dobierka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
@@ -66,7 +108,19 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		
 		return dobierka;
 	}
-	
+	/**
+	 * 
+	 * @param podacieCislo
+	 * @param meno
+	 * @param priezvisko
+	 * @param ulica
+	 * @param cislo
+	 * @param psc
+	 * @param Mesto
+	 * @param suma
+	 * @return
+	 * @throws PodacieCisloException
+	 */
 	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma) throws PodacieCisloException { //test
 		PoistenyList pl = new PoistenyList(meno, priezvisko, ulica, cislo, psc, Mesto, suma);
 		if ((pl.CheckPodacieCislo(podacieCislo)) == false || (CheckDuplicate(podacieCislo) == false) ) {
@@ -77,7 +131,11 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		
 		return pl;
 	}
-	
+	/**
+	 * 
+	 * @param podacieCislo
+	 * @return
+	 */
 	public boolean CheckDuplicate(String podacieCislo) {
 		System.out.println("Cekujem duplikaty");
 		
@@ -100,6 +158,9 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		return mzda;
 	}
 	@Override
+	/**
+	 * 
+	 */
 	public void add(Zamestnanec zamestnanec) {
 		zamestnanci.add(zamestnanec); 
 		
@@ -110,6 +171,9 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		
 	}
 	@Override
+	/**
+	 * 
+	 */
 	public void dostanVyplatu() {
 		mzda = 750;
 	       Iterator<Zamestnanec> it = zamestnanci.iterator();  

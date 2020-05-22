@@ -3,7 +3,11 @@ package Zamestnanci;
 import java.util.ArrayList;
 
 import zasielky.Zasielky;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class Pracovnik implements Zamestnanec { //LEAF
 	
 	private String meno;
@@ -22,7 +26,14 @@ public class Pracovnik implements Zamestnanec { //LEAF
 	public void setStavHotovosti(double stavHotovosti) {
 		this.stavHotovosti = stavHotovosti;
 	}
-
+/**
+ * 
+ * @param meno
+ * @param priezvisko
+ * @param ID
+ * @param uvazok
+ * @param pohlavie
+ */
 	public Pracovnik(String meno, String priezvisko, int ID, String uvazok, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
@@ -76,6 +87,9 @@ public class Pracovnik implements Zamestnanec { //LEAF
 	}
 
 	@Override
+	/**
+	 * 
+	 */
 	public void dostanVyplatu() {
 		if (uvazok == "cely") mzda = 600;
 		if (uvazok == "polovicny") mzda = 300;

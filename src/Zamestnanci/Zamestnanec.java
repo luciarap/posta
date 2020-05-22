@@ -3,7 +3,11 @@ package Zamestnanci;
 import java.util.ArrayList;
 
 import zasielky.Zasielky;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public interface Zamestnanec { //COMPONENT
 	public int getID();
 	public double getMzda();

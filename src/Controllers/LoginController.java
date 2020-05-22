@@ -1,4 +1,7 @@
-package Posta;
+package Controllers;
+
+import Posta.CheckLogin;
+
 /**
  *  V tejto triede sa nachádza controller, ktorý vyhodnocuje, ktorý používate¾ sa prihlásil
  * @author Lucia Rapánová

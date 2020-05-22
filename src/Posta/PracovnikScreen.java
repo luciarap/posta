@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 /**
- * Táto trieda slúži na úvodnej scény, ak sa prihlási pracovník
+ * Táto trieda slúži na zobrazenie úvodnej scény, ak sa prihlási pracovník
  * @author lucia
  *
  */

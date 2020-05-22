@@ -22,7 +22,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class ZamestnanciScreen  {
 
 	ObservableList<Zamestnanec> ZoznamZamestnancov = FXCollections.observableArrayList();
@@ -33,7 +37,13 @@ public class ZamestnanciScreen  {
 	Label stavHotovosti = new Label();
 
 	Text text = new Text();
-
+/**
+ * 
+ * @param hlavna
+ * @param hlavny
+ * @return
+ * @throws FileNotFoundException
+ */
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) throws FileNotFoundException {
 		
 		FileInputStream female = new FileInputStream("obrazky\\female.png"); 

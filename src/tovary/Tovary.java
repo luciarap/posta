@@ -3,7 +3,11 @@ package tovary;
 import Exceptions.ZleUdajeException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public abstract class Tovary implements java.io.Serializable { //abstract
 	private double cena;
 	private String nazov;
@@ -41,7 +45,12 @@ public abstract class Tovary implements java.io.Serializable { //abstract
 	public void setPocet(int pocet) {
 		this.pocet = pocet;
 	}
-
+/**
+ * 
+ * @param nazov
+ * @param pocet
+ * @param druh
+ */
 	public Tovary(String nazov, int pocet, String druh) {
 		this.nazov = nazov;
 		this.pocet = pocet;
@@ -52,8 +61,17 @@ public abstract class Tovary implements java.io.Serializable { //abstract
 	
 	
 	//public abstract int predatTovar(Tovary tovar, int pocet);
-	public abstract void odpisatTovar(Tovary tovar);//ked bude pocet < 2 or sth
-
+	/**
+	 * 
+	 * @param tovar
+	 */
+	public abstract void odpisatTovar(Tovary tovar);
+/**
+ * 
+ * @param tovar
+ * @param pocet
+ * @throws ZleUdajeException
+ */
 	public abstract void predatTovar(Tovary tovar, int pocet) throws ZleUdajeException;
 
 	@Override

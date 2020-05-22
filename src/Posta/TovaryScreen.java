@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Controllers.TovaryController;
 import Exceptions.ZleUdajeException;
 import hotovost.ManazerHotovosti;
 import javafx.scene.Scene;
@@ -97,7 +98,9 @@ public class TovaryScreen implements java.io.Serializable {
  * @throws ZleUdajeException ak bool nesprávne vyplnený druh tovaru
  */
 	public Scene Zobraz(Stage hlavny) throws ZleUdajeException {
+		TovaryController tovaryController = new TovaryController();
 		Text text = new Text();
+		Text info = new Text();
 		Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
@@ -162,9 +165,22 @@ public class TovaryScreen implements java.io.Serializable {
 		tovaryPane.add(pocetKsLabel, 0, 8);
 
 		tovaryPane.add(text, 0, 9);
+		tovaryPane.add(info, 0, 12);
 
 		tovaryPane.add(Spat, 0, 10);
 		tovaryPane.add(stavHotovosti, 0, 11);
+		
+		/**
+		 * naèítanie tovaru zo súboru do arraylistu, ktorý si drží zoznam tovarov
+		 */
+		woi = tovaryController.nacitajTovar(woi);
+		for (int i = 0; i < woi.size(); i++) {
+			ZoznamTovarov.getItems().add(woi.get(i)); 
+			/**
+			 * pridanie tovaru do GUI ListView
+			 */
+		}
+
 
 		Spat.setOnAction(e -> {
 			/**
@@ -179,33 +195,10 @@ public class TovaryScreen implements java.io.Serializable {
 
 		});
 
-		try {
-			FileInputStream fis = new FileInputStream("serializacia\\tovary.ser");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			Zasielky wo = null;
-			Zasielky[] woj = new Zasielky[5];
-/**
- * Zoznam tovarov je uložený v Arrayliste, ktorý je uložený v súbore
- */
-			woi = (ArrayList<Tovary>) ois.readObject();
-
-			for (int i = 0; i < woi.size(); i++) {
-				ZoznamTovarov.getItems().add(woi.get(i));
-			}
-
-			fis.close();
-			ois.close();
-
-		} catch (IOException i) {
-			System.out.println("CHYBA");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+	
 		predatTovar.setOnAction(e -> {
-			Tovary itemToRemove = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
-			if (itemToRemove.getPocet() < Integer.parseInt(pocetTxt.getText()) ) {
+			Tovary itemToSell = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
+			if (itemToSell.getPocet() < Integer.parseInt(pocetTxt.getText()) ) {
 				/**
 				 * Ak by sa pokúšal preda viac tovaru, ako je dostupného
 				 */
@@ -213,88 +206,40 @@ public class TovaryScreen implements java.io.Serializable {
 				return;
 			}
 			try {
-				itemToRemove.predatTovar(itemToRemove, Integer.parseInt(pocetTxt.getText()));
+				itemToSell.predatTovar(itemToSell, Integer.parseInt(pocetTxt.getText()));
 				stavHotovosti.setText("");
 				stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
 
 			} catch (NumberFormatException e1) {
-				System.out.println("Chyba");
+				System.out.println("Chyba" + e1);
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (ZleUdajeException e1) {
-				System.out.println("Chyba");
+				System.out.println("Chyba" + e1);
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (Exception e1) {
-				System.out.println("Chyba");
+				System.out.println("Chyba" + e1);
 			}
 
-			ZoznamTovarov.getItems().remove(itemToRemove);
-			ZoznamTovarov.getItems().add(itemToRemove);
-
-			if (itemToRemove.getPocet() == 0) {
+			ZoznamTovarov.getItems().remove(itemToSell);
+			ZoznamTovarov.getItems().add(itemToSell);
+			
+			if (itemToSell.getPocet() == 0) {
 				/**
 				 * Ak je poèet nula, tento tovar sa vymaže zo zoznamu aj zo súboru
 				 * Je potrebné prepísa súbor s novým zoznamom tovarov
 				 */
-				ZoznamTovarov.getItems().remove(itemToRemove);
-				Iterator<Tovary> itr = woi.iterator();
-				while (itr.hasNext()) {
-					Tovary element = (Tovary) itr.next();
-					if (element == itemToRemove) {
-						System.out.println(element);
-						System.out.println(itemToRemove);
-						System.out.println(woi.size());
-						itr.remove();
-						FileOutputStream fileOut = null;
-						try {
-							fileOut = new FileOutputStream("serializacia\\tovary.ser");
-						} catch (FileNotFoundException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						ObjectOutputStream out = null;
-						try {
-							out = new ObjectOutputStream(fileOut);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						try {
-							out.writeObject(woi);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						break;
-
-					}
-				}
+				ZoznamTovarov.getItems().remove(itemToSell);
+				
+				woi = tovaryController.odstranTovar(woi, itemToSell);
 
 			}
-
-			System.out.println(itemToRemove);
-			System.out.println(woi.size());
-			FileOutputStream fileOut = null;
-			try {
-				fileOut = new FileOutputStream("serializacia\\tovary.ser");
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			ObjectOutputStream out = null;
-			try {
-				out = new ObjectOutputStream(fileOut);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				out.writeObject(woi);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			/**
+			 * Predaj tovaru
+			 */
+			woi = tovaryController.predatTovar(woi, itemToSell);
+			info.setText("Predany tovar " + itemToSell);
 
 		});
 /**
@@ -302,9 +247,12 @@ public class TovaryScreen implements java.io.Serializable {
  * Tovar sa ukladá do array listu a následne do súboru, zobrazuje sa na GUI v listView
  */
 		pridatZnamky.setOnAction(e -> {
+			
 			Znamky znamky = null;
-
 			try {
+				/**
+				 * vytvorenie nového tovaru
+				 */
 				znamky = new Znamky(nazovZnamkyTxt.getText(), Integer.parseInt(pocetZnamkyTxt.getText()),
 						druhZnamkyTxt.getText());
 			} catch (NumberFormatException e1) {
@@ -314,23 +262,17 @@ public class TovaryScreen implements java.io.Serializable {
 				alert.show();
 				System.out.println("Chyba");
 			}
-
+			
+	/**
+	 * Ak je tovar korektný, uloží sa
+	 * @see tovary#Znamky#isValid()
+	 */
 			if (znamky.isValid() == true) {
 				ZoznamTovarov.getItems().add(znamky);
-				woi.add(znamky);
-				try {
-
-					FileOutputStream fileOut = new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(woi);
-					out.close();
-					fileOut.close();
-					System.out.printf("Data ulozene");
-				} catch (IOException i) {
-					i.printStackTrace();
-				}
-
+				woi = tovaryController.ulozTovar(woi, znamky);
+				info.setText("Pridany tovar: " + znamky);
 			}
+				
 		});
 
 		pridatZreby.setOnAction(e -> {
@@ -352,17 +294,9 @@ public class TovaryScreen implements java.io.Serializable {
 
 			if (zreby.isValid() == true) {
 				ZoznamTovarov.getItems().add(zreby);
-				woi.add(zreby);
-				try {
-					FileOutputStream fileOut = new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(woi);
-					out.close();
-					fileOut.close();
-					System.out.printf("Data ulozene");
-				} catch (IOException i) {
-					i.printStackTrace();
-				}
+				woi = tovaryController.ulozTovar(woi, zreby);
+				info.setText("Pridany tovar: " + zreby);
+
 			}
 
 		});
@@ -378,22 +312,14 @@ public class TovaryScreen implements java.io.Serializable {
 				e1.printStackTrace();
 			} catch (Exception e1) {
 				alert.show();
-				System.out.println("Chyba");
+				System.out.println("Chyba" + e1);
 			}
 
 			if (pohladnice.isValid() == true) {
 				ZoznamTovarov.getItems().add(pohladnice);
-				woi.add(pohladnice);
-				try {
-					FileOutputStream fileOut = new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(woi);
-					out.close();
-					fileOut.close();
-					System.out.printf("Data ulozene");
-				} catch (IOException i) {
-					i.printStackTrace();
-				}
+				woi = tovaryController.ulozTovar(woi, pohladnice);
+				info.setText("Pridany tovar: " + pohladnice);
+
 			}
 
 		});
@@ -414,17 +340,9 @@ public class TovaryScreen implements java.io.Serializable {
 
 			if (casopisy.isValid() == true) {
 				ZoznamTovarov.getItems().add(casopisy);
-				woi.add(casopisy);
-				try {
-					FileOutputStream fileOut = new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(woi);
-					out.close();
-					fileOut.close();
-					System.out.printf("Data ulozene");
-				} catch (IOException i) {
-					i.printStackTrace();
-				}
+				woi = tovaryController.ulozTovar(woi, casopisy);
+				info.setText("Pridany tovar: " + casopisy);
+
 			}
 
 		});
@@ -441,22 +359,13 @@ public class TovaryScreen implements java.io.Serializable {
 			} catch (Exception e1) {
 				alert.show();
 				System.out.println("Chyba");
-			}
+			}//toto cele
 			if (noviny.isValid() == true) {
 				ZoznamTovarov.getItems().add(noviny);
-				woi.add(noviny);
-				try {
-					FileOutputStream fileOut = new FileOutputStream("C:\\Users\\lucia\\tovary.ser");
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(woi);
-					// out.writeObject(e);
-					out.close();
-					fileOut.close();
-					System.out.printf("Data ulozene");
-				} catch (IOException i) {
-					i.printStackTrace();
-				}
-			}
+				woi = tovaryController.ulozTovar(woi, noviny);
+				info.setText("Pridany tovar: " + noviny);
+
+			}//po toto
 
 		});
 

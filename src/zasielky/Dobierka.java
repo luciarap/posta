@@ -1,5 +1,9 @@
 package zasielky;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public class Dobierka extends Zasielky {
 	private double suma;
 	private double hmotnost;

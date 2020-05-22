@@ -2,7 +2,11 @@ package Zamestnanci;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * 
+ * @author lucia
+ *
+ */
 public aspect AspectTestDruhy {
 	
 	Alert alert = new Alert(AlertType.ERROR);
