@@ -95,7 +95,7 @@ public class TovaryScreen implements java.io.Serializable {
  * Metóda na vybudovanie scény pre tovary
  * @param hlavny je hlavný Stage, ktorý sa používa
  * @return metóda vráti novú vytvorenú scénu
- * @throws ZleUdajeException ak bool nesprávne vyplnený druh tovaru
+ * @throws ZleUdajeException ak bol nesprávne vyplnený druh tovaru
  */
 	public Scene Zobraz(Stage hlavny) throws ZleUdajeException {
 		TovaryController tovaryController = new TovaryController();
@@ -195,7 +195,9 @@ public class TovaryScreen implements java.io.Serializable {
 
 		});
 
-	
+	/**
+	 * Predaj tovaru zmení poèet tovarov a aktualizuje stav hotovosti
+	 */
 		predatTovar.setOnAction(e -> {
 			Tovary itemToSell = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
 			if (itemToSell.getPocet() < Integer.parseInt(pocetTxt.getText()) ) {

@@ -9,20 +9,22 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javafx.stage.Stage;
 import tovary.Tovary;
 import tovary.Znamky;
 import zasielky.Zasielky;
 
 /**
- * 
- * @author lucia
+ * trieda obsahuje ovládacie prvky pre scénu s tovarmi
+ * @author Lucia Rapánová
+ * @see Posta#TovaryScreen#Zobraz(Stage hlavny)
  *
  */
 public class TovaryController {
 	/**
 	 * 
-	 * @param woi
-	 * @return
+	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * @return woi aktualizovaný arraylist tovarov
 	 */
 	public ArrayList<Tovary> nacitajTovar(ArrayList<Tovary> woi) {
 
@@ -47,9 +49,9 @@ public class TovaryController {
 
 	/**
 	 * 
-	 * @param woi
-	 * @param itemToRemove
-	 * @return
+	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * @param itemToRemove je tovar, ktorý sa odstraòuje
+	 * @return woi aktualizovaný arraylist tovarov
 	 */
 	public ArrayList<Tovary> odstranTovar(ArrayList<Tovary> woi, Tovary itemToRemove) {
 
@@ -115,9 +117,9 @@ public class TovaryController {
 
 	/**
 	 * 
-	 * @param woi
-	 * @param itemToSell
-	 * @return
+	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * @param itemToSell je tovar, ktorý sa predáva
+	 * @return woi aktualizovaný arraylist tovarov
 	 */
 	public ArrayList<Tovary> predatTovar(ArrayList<Tovary> woi, Tovary itemToSell) {
 
@@ -150,9 +152,9 @@ public class TovaryController {
 
 	/**
 	 * 
-	 * @param woi
-	 * @param tovar
-	 * @return
+	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * @param tovar je tovar, ktorý sa ukladá do súboru 
+	 * @return woi aktualizovaný arraylist tovarov
 	 */
 	public ArrayList<Tovary> ulozTovar(ArrayList<Tovary> woi, Tovary tovar) {
 
