@@ -5,6 +5,8 @@ package zasielky;
  *
  */
 public class Dobierka extends Zasielky {
+
+	private static final long serialVersionUID = 1L;
 	private double suma;
 	private double hmotnost;
 
@@ -39,6 +41,27 @@ public class Dobierka extends Zasielky {
 		this.suma = suma;
 		this.hmotnost = hmotnost;
 	}
+
+@Override
+public boolean CheckPodacieCislo(String podacieCislo) {
+	int i;
+	if (podacieCislo.length() == 13) {
+		if (podacieCislo.startsWith("RE") && podacieCislo.endsWith("SK"))  {
+			for (i = 2; i <= 10; i++) {
+				/**
+				 * znamená to, že kontroluje, èi je to èíslo
+				 */
+				if (podacieCislo.matches(".*\\d.*")) continue; 
+				else return false;
+			}
+			
+			return true;
+		}
+
+	}
+	return false;
+	
+}
 
 
 }

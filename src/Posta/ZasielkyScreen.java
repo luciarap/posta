@@ -30,6 +30,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import zasielky.Dobierka;
+import zasielky.DoporucenyList;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
 
@@ -214,7 +215,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 
 								try {
 
-									Zasielky zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
+									DoporucenyList zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
 											priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
 											Integer.parseInt(psc.getText()), mesto.getText());
 									listView.getItems().add(zasielka);

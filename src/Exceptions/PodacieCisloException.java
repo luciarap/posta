@@ -9,7 +9,8 @@ import javafx.scene.control.Alert.AlertType;
  *
  */
 public class PodacieCisloException extends Exception {
-		
+
+	private static final long serialVersionUID = 1L;
 		Alert alert = new Alert(AlertType.ERROR);
 		
 		public PodacieCisloException(String string) { 

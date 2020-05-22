@@ -9,7 +9,8 @@ import hotovost.ManazerHotovosti;
  *
  */
 public class Znamky extends Tovary {
-	
+
+	private static final long serialVersionUID = 1L;
 	private boolean isValid = false;
 	private int flag = 0;
 	/**

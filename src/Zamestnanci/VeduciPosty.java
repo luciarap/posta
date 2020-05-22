@@ -8,6 +8,7 @@ import Exceptions.PodacieCisloException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 import zasielky.Dobierka;
+import zasielky.DoporucenyList;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
 
@@ -56,9 +57,9 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 		odpisZasielky(ar, zasielka);
 	}
 
-	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+	public DoporucenyList zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto) throws PodacieCisloException { // test
-		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
+		DoporucenyList zasielka = new DoporucenyList(meno, priezvisko, ulica, cislo, psc, Mesto);
 		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}

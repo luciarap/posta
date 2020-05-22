@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Lucia Rapánová
  *
  */
-public class Zasielky implements java.io.Serializable {
+public abstract class Zasielky implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Date datum;
 	private String podacieCislo;
@@ -73,25 +73,8 @@ public class Zasielky implements java.io.Serializable {
 	 * @param podacieCislo je podacie èíslo, ktoré sa zapisuje do systému
 	 * @return funkcia vráti true, ak je podacie èíslo v správnom formáte, false, ak je nesprávne
 	 */
-	public boolean CheckPodacieCislo(String podacieCislo) {
-		int i;
-		if (podacieCislo.length() == 13) {
-			if (podacieCislo.startsWith("RE") && podacieCislo.endsWith("SK"))  {
-				for (i = 2; i <= 10; i++) {
-					/**
-					 * znamená to, že kontroluje, èi je to èíslo
-					 */
-					if (podacieCislo.matches(".*\\d.*")) continue; 
-					else return false;
-				}
-				
-				return true;
-			}
+	public abstract boolean CheckPodacieCislo(String podacieCislo);
 
-		}
-		return false;
-		
-	}
 
 
 

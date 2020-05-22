@@ -5,7 +5,8 @@ package zasielky;
  *
  */
 public class PoistenyList extends Zasielky {
-	
+
+	private static final long serialVersionUID = 1L;
 	double vyskaPoistneho;
 	/**
 	 * Konötruktor poistenÈho listu
@@ -24,6 +25,26 @@ public class PoistenyList extends Zasielky {
 		 * preùaûenie konötruktora
 		 */
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public boolean CheckPodacieCislo(String podacieCislo) {
+		int i;
+		if (podacieCislo.length() == 13) {
+			if (podacieCislo.startsWith("VC") && podacieCislo.endsWith("SK"))  {
+				for (i = 2; i <= 10; i++) {
+					/**
+					 * znamen· to, ûe kontroluje, Ëi je to ËÌslo
+					 */
+					if (podacieCislo.matches(".*\\d.*")) continue; 
+					else return false;
+				}
+				
+				return true;
+			}
+
+		}
+		return false;
+		
 	}
 	
 

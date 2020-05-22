@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Exceptions.PodacieCisloException;
 import zasielky.Dobierka;
+import zasielky.DoporucenyList;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
 
@@ -146,7 +147,7 @@ public class Pracovnik implements Zamestnanec { // LEAF
 	@Override
 	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto) throws PodacieCisloException {
-		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
+		DoporucenyList zasielka = new DoporucenyList(meno, priezvisko, ulica, cislo, psc, Mesto);
 		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}

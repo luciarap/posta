@@ -1,14 +1,15 @@
 package tovary;
 
 import Exceptions.ZleUdajeException;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+
 /**
  * Abstraktná nadtrieda Tovary
  * @author Lucia Rapánová
  *
  */
 public abstract class Tovary implements java.io.Serializable { 
+
+	private static final long serialVersionUID = 1L;
 	private double cena;
 	private String nazov;
 	private int pocet;
