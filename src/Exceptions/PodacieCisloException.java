@@ -2,7 +2,12 @@ package Exceptions;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * Trieda, ktorá dedí Exception
+ * Hádže chybu, ak bolo nesprávne vyplnené podacie èíslo
+ * @author Lucia Rapánová
+ *
+ */
 public class PodacieCisloException extends Exception {
 		
 		Alert alert = new Alert(AlertType.ERROR);
@@ -11,7 +16,9 @@ public class PodacieCisloException extends Exception {
 			super();
 			
 		}
-
+/**
+ * Metóda vypíše na obrazovku chybu
+ */
 		public void ShowAlert() {
 			alert.setContentText("Podacie cislo ma nespravny format alebo uz bolo pouzite. Skontrolujte podacie cislo a skuste to znovu.");
 			alert.show();

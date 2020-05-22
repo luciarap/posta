@@ -1,7 +1,7 @@
 package Posta;
 /**
- * Táto trieda sa používa na ošetrovanie výnimiek pri volaní funkcií
- * @author lucia
+ * Aspekt sa používa na ošetrovanie výnimiek pri volaní funkcií
+ * @author Lucia Rapánová
  *
  */
 public aspect AspectTest {
@@ -14,7 +14,7 @@ public aspect AspectTest {
 	
 	pointcut callZobrazZamestnanciScreen(): call(* ZamestnanciScreen.ZobrazZamestnanciScreen(..));
 	
-	pointcut callvalidateUser(): call(* LoginController.validateUser(..));
+	pointcut callvalidateUser(): call(* Controllers.LoginController.validateUser(..));
 	
 	after() throwing (Exception e): callZobrazZasielkyScreen() {
 		System.out.println("Threw an exception: " + e);

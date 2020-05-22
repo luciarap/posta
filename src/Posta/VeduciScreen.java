@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 /**
- * áto trieda slúži na zobrazenie úvodnej scény, ak sa prihlási vedúci pošty
+ * Táto trieda slúži na zobrazenie úvodnej scény, ak sa prihlási vedúci pošty
  * @author Lucia Raoánová
  *
  */
@@ -26,12 +26,12 @@ public class VeduciScreen {
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
 /**
- * 
- * @param hlavny
- * @param login
- * @return
- * @throws ZleUdajeException
- * @throws FileNotFoundException
+ * Metóda vybuduje scénu pre menu vedúceho pošty
+ * @param hlavny je hlavný stage, ktorý sa používa v GUI
+ * @param login je scéna s prihlasovacou obrazovkou
+ * @return vráti novú vytvorenú scénu pre menu Vedúceho pošty
+ * @throws ZleUdajeException ak nastala chyba pri vypåòaní údajov
+ * @throws FileNotFoundException ak nastala chyba pri naèítavaní súborov
  */
 	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException, FileNotFoundException {
 

@@ -12,9 +12,17 @@ import java.util.Iterator;
 import zasielky.Dobierka;
 import zasielky.Zasielky;
 
-
+/**
+ * Trieda obsahuje ovládacie prvky pre scénu so zásielkami
+ * @author Lucia Rapánová
+ *
+ */
 public class ZasielkyController {
-	
+	/**
+	 * Metóda naèíta tovar do súboru
+	 * @param woi array list, v ktorom sú uloené zásielky
+	 * @return vráti upravenı arraylist 
+	 */
 	public ArrayList<Zasielky> nacitajTovar(ArrayList<Zasielky> woi) {
 		
 		try {
@@ -22,11 +30,9 @@ public class ZasielkyController {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			Zasielky wo = null;
 			Zasielky[] woj = new Zasielky[5];
-
-			// ArrayList<Zasielky> woi=new ArrayList<>();
 			woi = (ArrayList<Zasielky>) ois.readObject();
-		//	fis.close();
-		//	ois.close();
+			fis.close();
+			ois.close();
 
 		} catch (IOException i) {
 			System.out.println("chyba pri nacitavani suboru " + i);
@@ -40,7 +46,12 @@ public class ZasielkyController {
 		
 	}
 	
-
+/**
+ * Metóda na odstránenie zásielky zo systému (zo súboru aj zo zoznamu)
+ * @param woi array list zásielok
+ * @param itemToRemove zásielka, ktorá sa má vymaza
+ * @return vráti upravenı array list
+ */
 	public ArrayList<Zasielky> dorucZasielku(ArrayList<Zasielky> woi, Zasielky itemToRemove) {
 		Iterator<Zasielky> itr = woi.iterator();
 		while (itr.hasNext()) {
@@ -77,7 +88,12 @@ public class ZasielkyController {
 		return woi;
 	}
 
-
+/**
+ * Metóda na uloenie zásielky do súboru
+ * @param woi array list zásielok
+ * @param zasielka zásielka, ktorá sa ukladá 
+ * @return vráti upravenı array list
+ */
 	public ArrayList<Zasielky> ulozZasielku(ArrayList<Zasielky> woi, Object zasielka) {
 		try {
 

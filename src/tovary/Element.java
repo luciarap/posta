@@ -1,5 +1,9 @@
 package tovary;
-
+/**
+ * @deprecated Generický zoznam napokon nebol v programe použitý
+ * @author Lucia Rapánová
+ * @param <T> generický element
+ */
 public class Element<T> {
 	private T data;
 	private Element<T> next;

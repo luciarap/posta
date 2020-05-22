@@ -2,9 +2,17 @@ package Zamestnanci;
 
 import java.util.ArrayList;
 
+import Exceptions.PodacieCisloException;
+import zasielky.Dobierka;
+import zasielky.PoistenyList;
 import zasielky.Zasielky;
-
-public class Dorucovatel implements Zamestnanec { //LEAF
+/**
+ * Trieda doruËovateæ je list v n·vrhovoom vzore Composite, implementuje interface Zamestnanec
+ * MÙûe doruËovaù a zapisovaù z·sielky
+ * @author Lucia Rap·nov·
+ *
+ */
+public class Dorucovatel implements Zamestnanec { 
 	private String meno;
 	private String priezvisko;
 	private int ID;
@@ -20,17 +28,19 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 	public void setStavHotovosti(double stavHotovosti) {
 		this.stavHotovosti = stavHotovosti;
 	}
-
+/**
+ * Konötruktor DoruËovateæa
+ * @param meno je meno doruËovateæa
+ * @param priezvisko je priezvisko doruËovateæa
+ * @param ID je unik·tne identifikaËnÈ Ëislo doruËovateæa
+ * @param pohlavie je pohlavie doruËovateæa
+ */
 	public Dorucovatel(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
 		this.ID = ID;
 		this.pohlavie = pohlavie;
 	}
-
-	/*public void pridelVyplatu() {
-		setMzda(700);
-	}*/
 	
 	public String getPohlavie() {
 		return pohlavie;
@@ -39,14 +49,13 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 	public void setPohlavie(String pohlavie) {
 		this.pohlavie = pohlavie;
 	}
-
+	
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");
 	}
 	
 	public void Dorucit(Zasielky zasielka) {
-		//zasielka.jeDorucena = true;
 		odpisZasielky(ar, zasielka);
 	}
 
@@ -104,6 +113,33 @@ public class Dorucovatel implements Zamestnanec { //LEAF
 	@Override
 	public String toString() {
 		return "meno: " + meno + ", priezvisko: " + priezvisko;
+	}
+
+	@Override
+	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+			String Mesto) throws PodacieCisloException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+			String Mesto, double suma, double hmotnost) throws PodacieCisloException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+			String Mesto, double suma) throws PodacieCisloException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean CheckDuplicate(String podacieCislo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

@@ -51,6 +51,7 @@ public class PostaGUI extends Application {
 	    imageView.setFitHeight(46); 
 	    imageView.setFitWidth(82); 
 	    imageView.setPreserveRatio(true);  
+	    hlavneOkno.getIcons().add(new Image("file:obrazky\\logo.png"));
 	    /**
 	     * sú to globálne premenné kvôli tomu, aby sa dalo zisti, èi boli tieto scény u vytvorené, alebo ich treba vytvori (pri odhlásení pouívate¾a)
 	     * 

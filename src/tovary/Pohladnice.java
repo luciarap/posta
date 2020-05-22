@@ -4,8 +4,8 @@ import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
 /**
- * 
- * @author lucia
+ * Trieda poh¾adnice dedí z nadtriedy Tovary
+ * @author Lucia Rapánová
  *
  */
 public class Pohladnice extends Tovary {
@@ -13,9 +13,8 @@ public class Pohladnice extends Tovary {
 	private boolean isValid = false;
 	private int flag = 0;
 	/**
-	 * 
-	 * @author lucia
-	 *
+	 * Druh poh¾adníc, ktoré sa dajú vytvori
+	 * @author Lucia Rapánová
 	 */
 	private enum DruhPohladnic {
 		  Narodeniny1("Narodeniny druh 1"),
@@ -29,7 +28,11 @@ public class Pohladnice extends Tovary {
 	        private DruhPohladnic(String nazov) {
 	            this.nazovDruhu = nazov;
 	        }
-	        
+	        /**
+	         * Slúži na porovananie, èi zadaný druh existuje - èi sa rovná nejakému existujúcemu druhu
+	         * @param otherName je názov druhu, s ktorým sa porovnáva, èi je druh korektný
+	         * @return true, ak sa názvy rovnajú, false, ak nie sú rovnaké
+	         */
 	        public boolean equalsName(String otherName) {
 	            return nazovDruhu.equals(otherName);
 	        }
@@ -38,19 +41,15 @@ public class Pohladnice extends Tovary {
 	            return this.nazovDruhu;
 	         }
 		}
-	/**
-	 * 
-	 * @return
-	 */
+	
 	public boolean isValid() {
 	    return isValid;
 	}
-	//private DruhPohladnic druh;
 	/**
-	 * 
-	 * @param nazov
-	 * @param pocet
-	 * @param druh
+	 * Konštruktor poh¾adníc, v ktorom sa kontroluje, èi bol zadaný korektný druh tovaru
+	 * @param nazov je názov poh¾adnice
+	 * @param pocet ko¾ko tovaru chceme vytvori
+	 * @param druh je druh tovaru (enum)
 	 */
 	public Pohladnice(String nazov, int pocet, String druh) {
 		super(nazov, pocet, druh);
@@ -75,16 +74,7 @@ public class Pohladnice extends Tovary {
 			System.out.println(e);
 			e.ShowAlert();
 		}
-		//this.druh = druh;
-		// TODO Auto-generated constructor stub
 	}
-
-
-	@Override
-	public void odpisatTovar(Tovary tovar) {
-		//.setPocet(pocet + 5);
-	}
-
 
 	@Override
 	public void predatTovar(Tovary tovar, int pocet) {
@@ -93,21 +83,21 @@ public class Pohladnice extends Tovary {
 		
 		ManazerHotovosti manazer = new ManazerHotovosti();
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
-		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
+		/**
+		 * lambda výraz na matematickú operáciu, ktorá aktualizuje stav hotovosti
+		 */
 		
 		if (pocet > tovar.getPocet()) {
 			System.out.println("Nekorektne mnozstvo tovaru.");
-		//	showAlert();
 			return;
 		}
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		
-		
-		/*if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
-			objednatTovar(tovar, pocet);*/
-
+		/**
+		 * polymorfizmus
+		 */
 		switch (tovar.getDruh()) {
+		
 		case "Narodeniny druh 1":
 			celkovaSuma = pocet*0.40;
 			double result1 = manazer.add(ManazerHotovosti.getStavHotovosti(), celkovaSuma, pridaj);
@@ -141,7 +131,6 @@ public class Pohladnice extends Tovary {
 			
 		default: System.out.println("CHYBA");
 		}
-		//return stavHotovosti;
 		
 	}
 

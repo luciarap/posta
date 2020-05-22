@@ -3,21 +3,21 @@ package Zamestnanci;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 /**
- * 
- * @author lucia
+ * Aspekt sa používa na ošetrovanie výnimiek pri volaní funkcií
+ * @author Lucia Rapánová
  *
  */
 public aspect AspectTestDruhy {
 	
 	Alert alert = new Alert(AlertType.ERROR);
 	
-	pointcut callDorucit(): call(* Dorucovatel.Dorucit(..));
+	pointcut callDorucit(): call(* Zamestnanec.Dorucit(..));
 
-	pointcut callodpisZasielky(): call(* Dorucovatel.odpisZasielky(..));
+	pointcut callodpisZasielky(): call(* Zamestnanec.odpisZasielky(..));
 	
-	pointcut calldostanVyplatu(): call(* Dorucovatel.odpisZasielky(..));
+	pointcut calldostanVyplatu(): call(* Zamestnanec.dostanVyplatu(..));
 	
-	pointcut calloadd(): call(* Dorucovatel.odpisZasielky(..));
+	pointcut calladd(): call(* Zamestnanec.add(..));
 	
 	after() throwing (Exception e): callDorucit() {
 		alert.setContentText("Chyba: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
@@ -28,19 +28,19 @@ public aspect AspectTestDruhy {
 	after() throwing (Exception e): callodpisZasielky() {
 		alert.setContentText("Chyba: " + e + "\n" + "Nebola zvolena ziadna zasielka");
 		alert.show();
-		System.out.println("Threw an exception: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
+		System.out.println("Threw an exception: " + e);
 	}
 	
 	after() throwing (Exception e): calldostanVyplatu() {
 		alert.setContentText("Chyba: " + e + "\n" + "nespravna volba, vyplata sa neda pridelit");
 		alert.show();
-		System.out.println("Threw an exception: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
+		System.out.println("Threw an exception: " + e);
 	}
 	
-	after() throwing (Exception e): calloadd() {
+	after() throwing (Exception e): calladd() {
 		alert.setContentText("Chyba: " + e + "\n" + "nespravna volba, nebolo vykonane pridanie");
 		alert.show();
-		System.out.println("Threw an exception: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
+		System.out.println("Threw an exception: " + e);
 	}
 
 }

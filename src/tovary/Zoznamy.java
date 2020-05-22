@@ -1,7 +1,11 @@
 package tovary;
 
 import java.util.ArrayList;
-
+/**
+ * @deprecated Generický zoznam napokon nebol v projekte použitý
+ * @author Lucia Rapánová
+ * @param <T> generický element
+ */
 public class Zoznamy<T> {
 	private Element<T> head;
 	private Element<T> tail;

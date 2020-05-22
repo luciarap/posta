@@ -23,8 +23,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 /**
- * 
- * @author lucia
+ * Táto trieda slúži na vybudovanie scénu so zoznamom zamestnancov
+ * @author Lucia Rapánová
  *
  */
 public class ZamestnanciScreen  {
@@ -38,11 +38,11 @@ public class ZamestnanciScreen  {
 
 	Text text = new Text();
 /**
- * 
- * @param hlavna
- * @param hlavny
- * @return
- * @throws FileNotFoundException
+ * Metóda vybuduje scénu so zoznamom zamestnancov
+ * @param hlavna je hlavná scéna / hlavné menu pre vedúceho
+ * @param hlavny je hlavný stage, ktorý sa používa v GUI
+ * @return vráti novú scénu 
+ * @throws FileNotFoundException ak sa vyskytne chyba pri naèítaní súboru
  */
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) throws FileNotFoundException {
 		
@@ -56,8 +56,9 @@ public class ZamestnanciScreen  {
 				+ "-fx-font-weight:bold;");
 
 		ComboBox<Zamestnanec> comboBox = new ComboBox<>(ZoznamZamestnancov);
-		Label selected = new Label("default item selected");
-
+	/**
+	 * Zobrazovanie informácií o zamestancoch na základe zvoleného zamestnanca v Combo boxe
+	 */
 		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				text.setFont((Font.font("Verdana", 20)));
@@ -115,7 +116,6 @@ public class ZamestnanciScreen  {
 		veduci1.add(pracovnik2);
 		veduci1.add(pracovnik1);
 
-		VeduciScreen screen = new VeduciScreen();
 		zamestnanciPane.add(spat, 0, 0);
 		spat.setTranslateX(0);
 		spat.setTranslateY(220);
@@ -125,7 +125,9 @@ public class ZamestnanciScreen  {
 		zamestnanciPane.add(stavHotovosti, 0, 0);
 		stavHotovosti.setTranslateX(0);
 		stavHotovosti.setTranslateY(260);
-
+	/**
+	 * Pride¾ovanie výplat funguje na základe návrhového vzoru Composite
+	 */
 		vyplata.setOnAction(e -> {
 
 			veduci1.dostanVyplatu();

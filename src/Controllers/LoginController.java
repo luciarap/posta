@@ -9,7 +9,7 @@ import Posta.CheckLogin;
 public class LoginController {
 	
 	/**
-	 * 
+	 * Metódaslúži na vyhodnotenie, èi boli údaje pri prihlasovaní správne
 	 * @param username používate¾ské meno
 	 * @param password heslo používate¾a
 	 * @see CheckLogin zoznam užívate¾ov

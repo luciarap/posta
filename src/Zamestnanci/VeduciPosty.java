@@ -10,25 +10,25 @@ import hotovost.ManazerHotovosti;
 import zasielky.Dobierka;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
-// Composite
+
 /**
- * 
- * @author lucia
- *
+ * Composite
+ * @author Lucia Rapánová
  */
-public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
-	
+public class VeduciPosty implements Zamestnanec, ManageMoney {
+
 	private String meno;
 	private String priezvisko;
 	private int ID;
 	private double mzda;
 	private String pohlavie;
+
 	/**
-	 * 
-	 * @param meno
-	 * @param priezvisko
-	 * @param ID
-	 * @param pohlavie
+	 * Konštruktor vedúceho pošty
+	 * @param meno       je meno vedúceho pošty
+	 * @param priezvisko je priezvisko vedúceho pošty
+	 * @param ID         je ID vedúceho pošty
+	 * @param pohlavie   je pohlavie vedúceho pošty
 	 */
 	public VeduciPosty(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
@@ -36,6 +36,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		this.ID = ID;
 		this.pohlavie = pohlavie;
 	}
+
 	public String getPohlavie() {
 		return pohlavie;
 	}
@@ -43,113 +44,66 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 	public void setPohlavie(String pohlavie) {
 		this.pohlavie = pohlavie;
 	}
-	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();  
-	/**
-	 * 
-	 * @param ar
-	 * @param zasielka
-	 */
+
+	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();
+
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");
 	}
-	/**
-	 * 
-	 * @param zasielka
-	 */
+
 	public void Dorucit(Zasielky zasielka) {
 		odpisZasielky(ar, zasielka);
 	}
-	/**
-	 * 
-	 * @param podacieCislo
-	 * @param meno
-	 * @param priezvisko
-	 * @param ulica
-	 * @param cislo
-	 * @param psc
-	 * @param Mesto
-	 * @return
-	 * @throws PodacieCisloException
-	 */
-	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) throws PodacieCisloException { //test
+
+	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+			String Mesto) throws PodacieCisloException { // test
 		Zasielky zasielka = new Zasielky(meno, priezvisko, ulica, cislo, psc, Mesto);
 		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
 		zasielka.setPodacieCislo(podacieCislo);
 		ar.add(zasielka);
-		
-		
+
 		return zasielka;
 	}
-	/**
-	 * 
-	 * @param podacieCislo
-	 * @param meno
-	 * @param priezvisko
-	 * @param ulica
-	 * @param cislo
-	 * @param psc
-	 * @param Mesto
-	 * @param suma
-	 * @param hmotnost
-	 * @return
-	 * @throws PodacieCisloException
-	 */
-	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) throws PodacieCisloException { //test
+
+	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+			String Mesto, double suma, double hmotnost) throws PodacieCisloException { // test
 		Dobierka dobierka = new Dobierka(meno, priezvisko, ulica, cislo, psc, Mesto, suma, hmotnost);
 		if (dobierka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
 		dobierka.setPodacieCislo(podacieCislo);
 		ar.add(dobierka);
-		
-		
+
 		return dobierka;
 	}
-	/**
-	 * 
-	 * @param podacieCislo
-	 * @param meno
-	 * @param priezvisko
-	 * @param ulica
-	 * @param cislo
-	 * @param psc
-	 * @param Mesto
-	 * @param suma
-	 * @return
-	 * @throws PodacieCisloException
-	 */
-	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma) throws PodacieCisloException { //test
+
+	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
+			String Mesto, double suma) throws PodacieCisloException { // test
 		PoistenyList pl = new PoistenyList(meno, priezvisko, ulica, cislo, psc, Mesto, suma);
-		if ((pl.CheckPodacieCislo(podacieCislo)) == false || (CheckDuplicate(podacieCislo) == false) ) {
+		if ((pl.CheckPodacieCislo(podacieCislo)) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");
 		}
 		pl.setPodacieCislo(podacieCislo);
 		ar.add(pl);
-		
+
 		return pl;
 	}
-	/**
-	 * 
-	 * @param podacieCislo
-	 * @return
-	 */
-	public boolean CheckDuplicate(String podacieCislo) {
-		System.out.println("Cekujem duplikaty");
-		
-	      for (int counter = 0; counter < ar.size(); counter++) { 	
-        		System.out.println(ar.get(counter).getPodacieCislo());
-        		System.out.println(podacieCislo);
-	          	if (ar.get(counter).getPodacieCislo().contentEquals(podacieCislo)) {
 
-	          		return false;
-	          	}
-	      }
-	      
-	      return true;
-		
+	public boolean CheckDuplicate(String podacieCislo) {
+
+		for (int counter = 0; counter < ar.size(); counter++) {
+			System.out.println(ar.get(counter).getPodacieCislo());
+			System.out.println(podacieCislo);
+			if (ar.get(counter).getPodacieCislo().contentEquals(podacieCislo)) {
+
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	@Override
@@ -157,43 +111,37 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		// TODO Auto-generated method stub
 		return mzda;
 	}
+
 	@Override
-	/**
-	 * 
-	 */
 	public void add(Zamestnanec zamestnanec) {
-		zamestnanci.add(zamestnanec); 
-		
+		zamestnanci.add(zamestnanec);
+
 	}
+
 	@Override
 	public void odstranZamestnanca(Zamestnanec zamestnanec) {
-		zamestnanci.remove(zamestnanec); 
-		
+		zamestnanci.remove(zamestnanec);
+
 	}
+
 	@Override
-	/**
-	 * 
-	 */
 	public void dostanVyplatu() {
 		mzda = 750;
-	       Iterator<Zamestnanec> it = zamestnanci.iterator();  
-	        
-	          while(it.hasNext())  {  
-	            Zamestnanec zamestnanec = it.next();  
-	            zamestnanec.dostanVyplatu();  
-	            double current = ManazerHotovosti.getStavHotovosti();
-	            current -= mzda;
-	            if (current < 0) {
-	            	System.out.println("Pred " + ManazerHotovosti.getStavHotovosti());
-	            	objednatPeniaze();
-	            }
-	            else {
-	            ManazerHotovosti.setStavHotovosti(current);
-	            System.out.println("Po: " + ManazerHotovosti.getStavHotovosti());
-	            }
-	         }
+		Iterator<Zamestnanec> it = zamestnanci.iterator();
 
-	//to do
+		while (it.hasNext()) {
+			Zamestnanec zamestnanec = it.next();
+			zamestnanec.dostanVyplatu();
+			double current = ManazerHotovosti.getStavHotovosti();
+			current -= mzda;
+			if (current < 0) {
+				System.out.println("Pred " + ManazerHotovosti.getStavHotovosti());
+				objednatPeniaze();
+			} else {
+				ManazerHotovosti.setStavHotovosti(current);
+				System.out.println("Po: " + ManazerHotovosti.getStavHotovosti());
+			}
+		}
 	}
 
 	@Override
@@ -213,18 +161,18 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 
 	@Override
 	public void info() {
-	       System.out.println("_______________");  
-	       System.out.println("ID: "+ getID());  
-	       System.out.println("Meno: " + getMeno());  
-	       System.out.println("Priezvisko: " + getPriezvisko());  
-	       System.out.println("Mzda: " + getMzda());  
-	       System.out.println("_______________");  
-	       Iterator<Zamestnanec> it = zamestnanci.iterator();  
-	        
-	          while(it.hasNext())  {  
-	            Zamestnanec zamestnanec = it.next();  
-	            zamestnanec.info();  
-	         }
+		System.out.println("_______________");
+		System.out.println("ID: " + getID());
+		System.out.println("Meno: " + getMeno());
+		System.out.println("Priezvisko: " + getPriezvisko());
+		System.out.println("Mzda: " + getMzda());
+		System.out.println("_______________");
+		Iterator<Zamestnanec> it = zamestnanci.iterator();
+
+		while (it.hasNext()) {
+			Zamestnanec zamestnanec = it.next();
+			zamestnanec.info();
+		}
 	}
 
 	@Override
@@ -237,11 +185,5 @@ public class VeduciPosty implements Zamestnanec, ManageMoney { //COMPOSITE
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
-	
-
-	
-
 
 }

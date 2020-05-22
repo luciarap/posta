@@ -35,7 +35,6 @@ import zasielky.Zasielky;
 
 /**
  * Táto trieda slúži na vybudovanie scény so zásielkami
- * 
  * @author Lucia Rapánová
  *
  */
@@ -75,7 +74,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 	final Tooltip tooltip = new Tooltip();
 
 	/**
-	 * 
+	 * Metóda vybuduje scénu pre zásielky
 	 * @param hlavna je hlavná scéna - úvodná obrazovka
 	 * @param hlavny je hlavný stage, ktorý sa používa v GUI
 	 * @return Metóda vráti novú vytvorenú scénu

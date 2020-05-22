@@ -3,12 +3,19 @@ package tovary;
 import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
-
+/**
+ * Trieda žreby dedí z nadtriedy Tovary
+ * @author Lucia Rapánová
+ *
+ */
 public class Zreby extends Tovary {
 	
 	private boolean isValid = false;
 	private int flag = 0;
-	
+	/**
+	 * Druh žrebov, ktoré sa dajú vytvori
+	 * @author Lucia Rapánová
+	 */
 	private enum DruhZrebov {
 		  PrasaVZite("Prasa v zite"),
 		  StastneCisla("Stastne cisla"),
@@ -20,7 +27,11 @@ public class Zreby extends Tovary {
 	        private DruhZrebov(String nazov) {
 	            this.nazovDruhu = nazov;
 	        }
-	        
+	        /**
+	         * Slúži na porovananie, èi zadaný druh existuje - èi sa rovná nejakému existujúcemu druhu
+	         * @param otherName je názov druhu, s ktorým sa porovnáva, èi je druh korektný
+	         * @return true, ak sa názvy rovnajú, false, ak nie sú rovnaké
+	         */
 	        public boolean equalsName(String otherName) {
 	            return nazovDruhu.equals(otherName);
 	        }
@@ -30,6 +41,13 @@ public class Zreby extends Tovary {
 	         }
 
 		}
+	/**
+	 * Konštruktor žrebov, v ktorom sa kontroluje, èi bol zadaný korektný druh tovaru
+	 * @param nazov je názov žrebu
+	 * @param pocet ko¾ko tovaru chceme vytvori
+	 * @param druh je druh tovaru (enum)
+	 * @throws ZleUdajeException pri zle zadaných údajoch
+	 */
 	public Zreby(String nazov, int pocet, String druh) throws ZleUdajeException{
 		super(nazov, pocet, druh);
 		
@@ -52,17 +70,12 @@ public class Zreby extends Tovary {
 			isValid = false;
 			System.out.println(e);
 			e.ShowAlert();
-			//alert tu ako, osetrenie
 		}
 
 	}
 
 	public boolean isValid() {
 	    return isValid;
-	}
-	@Override
-	public void odpisatTovar(Tovary tovar) {
-		//tovar.setPocet(pocet + 50);
 	}
 
 	@Override
@@ -72,17 +85,20 @@ public class Zreby extends Tovary {
 		
 		ManazerHotovosti manazer = new ManazerHotovosti();
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
-		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
+		/**
+		 * lambda výraz na matematickú operáciu, ktorá aktualizuje stav hotovosti
+		 */
 
 		if (pocet > tovar.getPocet()) {
 			System.out.println("Nekorektne mnozstvo tovaru.");
-			//showAlert();
 			return;
 		}
 		
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
-		
+		/**
+		 * polymorfizmus
+		 */
 		switch (tovar.getDruh()) {
 		
 		case "Prasa v zite":
@@ -111,7 +127,6 @@ public class Zreby extends Tovary {
 			
 		default: System.out.println("CHYBA");
 		}
-		//return stavHotovosti;
 	}
 	
 

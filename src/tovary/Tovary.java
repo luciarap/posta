@@ -4,11 +4,11 @@ import Exceptions.ZleUdajeException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 /**
- * 
- * @author lucia
+ * Abstraktná nadtrieda Tovary
+ * @author Lucia Rapánová
  *
  */
-public abstract class Tovary implements java.io.Serializable { //abstract
+public abstract class Tovary implements java.io.Serializable { 
 	private double cena;
 	private String nazov;
 	private int pocet;
@@ -45,12 +45,12 @@ public abstract class Tovary implements java.io.Serializable { //abstract
 	public void setPocet(int pocet) {
 		this.pocet = pocet;
 	}
-/**
- * 
- * @param nazov
- * @param pocet
- * @param druh
- */
+	/**
+	 * Konštruktor Tovarov
+	 * @param nazov je názov tovaru
+	 * @param pocet je poèet tovarov
+	 * @param druh je druh tovaru
+	 */
 	public Tovary(String nazov, int pocet, String druh) {
 		this.nazov = nazov;
 		this.pocet = pocet;
@@ -58,33 +58,17 @@ public abstract class Tovary implements java.io.Serializable { //abstract
 		
 	}
 	
-	
-	
-	//public abstract int predatTovar(Tovary tovar, int pocet);
 	/**
-	 * 
-	 * @param tovar
+	 * Metóda na predaj tovaru zmení poèet kusov tovaru a aktualituje stav hotovosti
+	 * @param tovar je tovar, ktorý sa predáva
+	 * @param pocet je poèet tovaru na predaj
+	 * @throws ZleUdajeException ak sa vyskytne chyba pri zadávaní údajov
 	 */
-	public abstract void odpisatTovar(Tovary tovar);
-/**
- * 
- * @param tovar
- * @param pocet
- * @throws ZleUdajeException
- */
 	public abstract void predatTovar(Tovary tovar, int pocet) throws ZleUdajeException;
 
 	@Override
 	public String toString() {
 		return "Tovary:  nazov=" + nazov + ", pocet=" + pocet;
 	}
-
-
-	
-	
-
 }
 
-//ked sa preda tovar zapisu sa peniaze vzdy ine - polymorfizmus?
-//predatTovar
-//pridaj tovar

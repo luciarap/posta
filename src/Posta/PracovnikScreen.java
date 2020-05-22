@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 /**
  * Táto trieda slúži na zobrazenie úvodnej scény, ak sa prihlási pracovník
- * @author lucia
+ * @author Lucia Rapánová
  *
  */
 public class PracovnikScreen {
@@ -26,7 +26,7 @@ public class PracovnikScreen {
 	 * @param hlavny je hlavný Stage, ktorý sa používa
 	 * @param login je predošlá scéna, kde sa užívatelia prihlasujú
 	 * @return vytvorenú scénu pre pracovníka
-	 * @throws ZleUdajeException
+	 * @throws ZleUdajeException pri zle zadaných dátach
 	 */
 	public Scene zobrazPracovnikScreen(Stage hlavny, Scene login) throws ZleUdajeException {
 

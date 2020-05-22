@@ -2,7 +2,12 @@ package Exceptions;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * Trieda, ktorá dedí Exception
+ * Hádže chybu, ak boli nesprávne vyplnené údaje o druhu tovaru
+ * @author lucia
+ *
+ */
 public class ZleUdajeException extends Exception {
 	
 	Alert alert = new Alert(AlertType.ERROR);
@@ -11,7 +16,9 @@ public class ZleUdajeException extends Exception {
 		super();
 		
 	}
-
+/**
+ * Metóda vypíše na obrazovku chybu
+ */
 	public void ShowAlert() {
 		alert.setContentText("Nespravne vyplnene udaje. Prosim opravte udaje a skuste to znovu. Pre tip prejdite mysou po textovom poli Druh.");
 		alert.show();

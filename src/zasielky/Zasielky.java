@@ -2,19 +2,15 @@ package zasielky;
 
 import java.util.Date;
 /**
- * 
+ * Hlavná trieda Zásielky
  * @author Lucia Rapánová
  *
  */
 public class Zasielky implements java.io.Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Date datum;
 	private String podacieCislo;
-	//public boolean jeDorucena;
-	
+
 	public Date getDatum() {
 		return datum;
 	}
@@ -30,6 +26,7 @@ public class Zasielky implements java.io.Serializable {
 	public void setPodacieCislo(String podacieCislo) {
 		this.podacieCislo = podacieCislo;
 	}
+	
 /**
  * Vnorená trieda Adresa obsahuje údaje o adrese - meno, priezvisko, ulica, èíslo, psè, mesto
  * @author Lucia Rapánová
@@ -44,7 +41,7 @@ public class Zasielky implements java.io.Serializable {
 		String mesto;
 	}
 	/**
-	 * 
+	 * Konštruktor zásielky
 	 * @param meno je meno adresáta
 	 * @param priezvisko je priezvisko adresáta
 	 * @param ulica je ulica adresáta
@@ -82,7 +79,7 @@ public class Zasielky implements java.io.Serializable {
 			if (podacieCislo.startsWith("RE") && podacieCislo.endsWith("SK"))  {
 				for (i = 2; i <= 10; i++) {
 					/**
-					 * znamená to, že konstroluje, èi je to èíslo
+					 * znamená to, že kontroluje, èi je to èíslo
 					 */
 					if (podacieCislo.matches(".*\\d.*")) continue; 
 					else return false;

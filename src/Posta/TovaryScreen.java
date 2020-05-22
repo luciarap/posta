@@ -361,13 +361,13 @@ public class TovaryScreen implements java.io.Serializable {
 			} catch (Exception e1) {
 				alert.show();
 				System.out.println("Chyba");
-			}//toto cele
+			}
 			if (noviny.isValid() == true) {
 				ZoznamTovarov.getItems().add(noviny);
 				woi = tovaryController.ulozTovar(woi, noviny);
 				info.setText("Pridany tovar: " + noviny);
 
-			}//po toto
+			}
 
 		});
 

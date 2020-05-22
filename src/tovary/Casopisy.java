@@ -3,12 +3,19 @@ package tovary;
 import Exceptions.ZleUdajeException;
 import hotovost.ManageMoney;
 import hotovost.ManazerHotovosti;
-
+/**
+ * Trieda èasopisy dedí z nadtriedy Tovary
+ * @author Lucia Rapánová
+ *
+ */
 public class Casopisy extends Tovary {
-	
+
 	private boolean isValid = false;
 	private int flag = 0;
-	
+	/**
+	 * Druh èasopisov, ktoré sa dajú vytvori
+	 * @author Lucia Rapánová
+	 */
 	private enum DruhCasopisov {
 		  Zahradkar("Zahradkar"),
 		  Byvanie("Byvanie"),
@@ -21,7 +28,11 @@ public class Casopisy extends Tovary {
         private DruhCasopisov(String nazov) {
             this.nazovDruhu = nazov;
         }
-        
+        /**
+         * Slúži na porovananie, èi zadaný druh existuje - èi sa rovná nejakému existujúcemu druhu
+         * @param otherName je názov druhu, s ktorým sa porovnáva, èi je druh korektný
+         * @return true, ak sa názvy rovnajú, false, ak nie sú rovnaké
+         */
         public boolean equalsName(String otherName) {
             return nazovDruhu.equals(otherName);
         }
@@ -30,7 +41,12 @@ public class Casopisy extends Tovary {
             return this.nazovDruhu;
          }
 		}
-	//private DruhCasopisov druh;
+/**
+ * Konštruktor èasopisov, v ktorom sa kontroluje, èi bol zadaný korektný druh tovaru
+ * @param nazov je názov èasopisu
+ * @param pocet ko¾ko tovaru chceme vytvori
+ * @param druh je druh tovaru (enum)
+ */
 	public Casopisy(String nazov, int pocet, String druh) {
 		super(nazov, pocet, druh);
 		
@@ -54,19 +70,11 @@ public class Casopisy extends Tovary {
 				System.out.println(e);
 				e.ShowAlert();
 			}
-		//this.druh = druh;
-		// TODO Auto-generated constructor stub
 	}
 
 	public boolean isValid() {
 	    return isValid;
 	}
-	@Override
-	public void odpisatTovar(Tovary tovar) {
-		
-	}
-
-
 
 	@Override
 	public void predatTovar(Tovary tovar, int pocet) {
@@ -75,21 +83,21 @@ public class Casopisy extends Tovary {
 		
 		ManazerHotovosti manazer = new ManazerHotovosti();
 		ManageMoney pridaj = (double stavHotovosti, double suma) -> stavHotovosti = stavHotovosti + suma; 
-		System.out.println("PredatTovar pred predajom " + ManazerHotovosti.getStavHotovosti());
+		/**
+		 * lambda výraz na matematickú operáciu, ktorá aktualizuje stav hotovosti
+		 */
 		
-	/*	if (pocet > tovar.getPocet() || tovar.getPocet() < 5) {
-			objednatTovar(tovar, pocet);
-		}*/
 		if (pocet > tovar.getPocet()) {
 			System.out.println("Nekorektne mnozstvo tovaru.");
-			//showAlert();
 			return;
 		}
 		
 		int aktualnyPocet = tovar.getPocet();
 		tovar.setPocet(aktualnyPocet - pocet);
 		
-	
+	/**
+	 * polymorfizmus
+	 */
 		switch (tovar.getDruh()) {
 		case "Zahradkar":
 			celkovaSuma = pocet*1.30;
@@ -122,10 +130,8 @@ public class Casopisy extends Tovary {
 			break;
 			
 		default: System.out.println("CHYBA");
-			
-			
+		
 		}
-		//return stavHotovosti;*/
 		
 	}
 

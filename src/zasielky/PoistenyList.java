@@ -1,25 +1,28 @@
 package zasielky;
 /**
- * 
- * @author lucia
+ * Trieda Poisten˝ lisr dedÌ z nadtriedy Z·sielky
+ * @author Lucia Rap·nov·
  *
  */
 public class PoistenyList extends Zasielky {
 	
 	double vyskaPoistneho;
-/**
- * 
- * @param meno
- * @param priezvisko
- * @param ulica
- * @param cislo
- * @param psc
- * @param Mesto
- * @param vyskaPoistneho
- */
+	/**
+	 * Konötruktor poistenÈho listu
+	 * @param meno je meno adres·ta
+	 * @param priezvisko je priezvisko adres·ta
+	 * @param ulica je ulica adres·ta
+	 * @param cislo je ËÌslo domu adres·ta
+	 * @param psc je PS» adres·ta
+	 * @param Mesto je mesto adres·ta
+	 * @param vyskaPoistneho je suma v˝öky poistenia
+	 */
 	public PoistenyList(String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double vyskaPoistneho) {
 		super(meno, priezvisko, ulica, cislo, psc, Mesto);
-		this.vyskaPoistneho = vyskaPoistneho; //pretazenie konstruktora
+		this.vyskaPoistneho = vyskaPoistneho; 
+		/**
+		 * preùaûenie konötruktora
+		 */
 		// TODO Auto-generated constructor stub
 	}
 	

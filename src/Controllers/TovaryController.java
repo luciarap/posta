@@ -15,14 +15,14 @@ import tovary.Znamky;
 import zasielky.Zasielky;
 
 /**
- * trieda obsahuje ovládacie prvky pre scénu s tovarmi
+ * Trieda obsahuje ovládacie prvky pre scénu s tovarmi
  * @author Lucia Rapánová
  * @see Posta#TovaryScreen#Zobraz(Stage hlavny)
  *
  */
 public class TovaryController {
 	/**
-	 * 
+	 * Metóda naèíta tovar zo súboru do arraylistu
 	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @return woi aktualizovaný arraylist tovarov
 	 */
@@ -48,7 +48,7 @@ public class TovaryController {
 	}
 
 	/**
-	 * 
+	 * Metóda odstráni tovar zo súboru
 	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @param itemToRemove je tovar, ktorý sa odstraòuje
 	 * @return woi aktualizovaný arraylist tovarov
@@ -116,7 +116,7 @@ public class TovaryController {
 	}
 
 	/**
-	 * 
+	 * Metóda aktualizuje informácie o tovare v súbore
 	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @param itemToSell je tovar, ktorý sa predáva
 	 * @return woi aktualizovaný arraylist tovarov
@@ -151,7 +151,7 @@ public class TovaryController {
 	}
 
 	/**
-	 * 
+	 * Metóda uloží tovar do súboru
 	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @param tovar je tovar, ktorý sa ukladá do súboru 
 	 * @return woi aktualizovaný arraylist tovarov
