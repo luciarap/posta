@@ -31,8 +31,10 @@ import tovary.Znamky;
 import tovary.Zoznamy;
 import tovary.Zreby;
 import zasielky.Zasielky;
+
 /**
  * T·to trieda sl˙ûi na spr·vu obrazovky pre tovary, na ich prid·vanie a predaj
+ * 
  * @author Lucia Rap·nov·
  *
  */
@@ -41,7 +43,7 @@ public class TovaryScreen implements java.io.Serializable {
 	ArrayList<Tovary> woi = new ArrayList<>();
 
 	static ListView ZoznamTovarov = new ListView();
-	private static Button pridatTovar = new Button("Pridat Tovar");
+	// private static Button pridatTovar = new Button("Pridat Tovar");
 	private static Button predatTovar = new Button("Predat Tovar");
 	private static Button Spat = new Button("Sp‰ù");
 	static Label zoznamLabel = new Label("Tovary");
@@ -91,17 +93,19 @@ public class TovaryScreen implements java.io.Serializable {
 	final Tooltip tooltipNoviny = new Tooltip();
 
 	Label stavHotovosti = new Label();
-/**
- * MetÛda na vybudovanie scÈny pre tovary
- * @param hlavny je hlavn˝ Stage, ktor˝ sa pouûÌva
- * @return metÛda vr·ti nov˙ vytvoren˙ scÈnu
- * @throws ZleUdajeException ak bol nespr·vne vyplnen˝ druh tovaru
- */
+
+	/**
+	 * MetÛda na vybudovanie scÈny pre tovary
+	 * 
+	 * @param hlavny je hlavn˝ Stage, ktor˝ sa pouûÌva
+	 * @return metÛda vr·ti nov˙ vytvoren˙ scÈnu
+	 * @throws ZleUdajeException ak bol nespr·vne vyplnen˝ druh tovaru
+	 */
 	public Scene Zobraz(Stage hlavny) throws ZleUdajeException {
 		TovaryController tovaryController = new TovaryController();
 		Text text = new Text();
 		Text info = new Text();
-		Zoznamy<Object> nakup = new Zoznamy<Object>();
+		// Zoznamy<Object> nakup = new Zoznamy<Object>();
 		ZoznamTovarov.setPrefSize(400, 400);
 		Alert alert = new Alert(AlertType.ERROR);
 		Alert alert2 = new Alert(AlertType.ERROR);
@@ -127,26 +131,29 @@ public class TovaryScreen implements java.io.Serializable {
 		tovaryPane.add(nazovZrebyTxt, 1, 2);
 		tovaryPane.add(pocetZrebyTxt, 2, 2);
 		tovaryPane.add(druhZrebyTxt, 3, 2);
-		tooltipZreby.setText("Je potrebne zadat spravnu druh zrebu. Druhy zrebov su: Stastie, Stastne cisla, Prasa v zite, Cierna perla.");
+		tooltipZreby.setText(
+				"Je potrebne zadat spravnu druh zrebu. Druhy zrebov su: Stastie, Stastne cisla, Prasa v zite, Cierna perla.");
 		druhZrebyTxt.setTooltip(tooltipZreby);
 
 		tovaryPane.add(nazovPohladniceTxt, 1, 3);
 		tovaryPane.add(pocetPohladniceTxt, 2, 3);
 		tovaryPane.add(druhPohladniceTxt, 3, 3);
-		tooltipPohladnice.setText("Je potrebne zadat spravy druh pohladnice. Druhy pohladnic su: Vianoce, Meniny, Velka noc, Narodeniny druh 1, Narodeniny druh 2");
+		tooltipPohladnice.setText(
+				"Je potrebne zadat spravy druh pohladnice. Druhy pohladnic su: Vianoce, Meniny, Velka noc, Narodeniny druh 1, Narodeniny druh 2");
 		druhPohladniceTxt.setTooltip(tooltipPohladnice);
 
 		tovaryPane.add(nazovNovinyTxt, 1, 4);
 		tovaryPane.add(pocetNovinyTxt, 2, 4);
 		tovaryPane.add(druhNovinyTxt, 3, 4);
-		tooltipNoviny.setText("Je potrebne zadat spravny druh novin. Druhy novin su: Novy cas, Dnes, Hospodarske noviny, Pravda, Sme");
+		tooltipNoviny.setText(
+				"Je potrebne zadat spravny druh novin. Druhy novin su: Novy cas, Dnes, Hospodarske noviny, Pravda, Sme");
 		druhNovinyTxt.setTooltip(tooltipNoviny);
-		
 
 		tovaryPane.add(nazovCasopisyTxt, 1, 5);
 		tovaryPane.add(pocetCasopisyTxt, 2, 5);
 		tovaryPane.add(druhCasopisyTxt, 3, 5);
-		tooltipCasopisy.setText("Je potrebne zadat spravny druh casopisu. Druhy casopisov su: Geo, Kreativ, Byvanie, Tyzden, Zahradkar");
+		tooltipCasopisy.setText(
+				"Je potrebne zadat spravny druh casopisu. Druhy casopisov su: Geo, Kreativ, Byvanie, Tyzden, Zahradkar");
 		druhCasopisyTxt.setTooltip(tooltipCasopisy);
 
 		tovaryPane.add(nazovLabel, 1, 0);
@@ -169,22 +176,22 @@ public class TovaryScreen implements java.io.Serializable {
 
 		tovaryPane.add(Spat, 0, 10);
 		tovaryPane.add(stavHotovosti, 0, 11);
-		
+
 		/**
 		 * naËÌtanie tovaru zo s˙boru do arraylistu, ktor˝ si drûÌ zoznam tovarov
 		 */
 		woi = tovaryController.nacitajTovar(woi);
 		for (int i = 0; i < woi.size(); i++) {
-			ZoznamTovarov.getItems().add(woi.get(i)); 
+			ZoznamTovarov.getItems().add(woi.get(i));
 			/**
 			 * pridanie tovaru do GUI ListView
 			 */
 		}
 
-
 		Spat.setOnAction(e -> {
 			/**
-			 * n·vrat na predoöl˙ obrazovku, ak je prihl·sen˝ ved˙ci, zobrazÌ veduciScena, ak je prihl·sen˝ pracovnÌk, zobrazÌ scÈnu pre pracovnÌka
+			 * n·vrat na predoöl˙ obrazovku, ak je prihl·sen˝ ved˙ci, zobrazÌ veduciScena,
+			 * ak je prihl·sen˝ pracovnÌk, zobrazÌ scÈnu pre pracovnÌka
 			 */
 			if (PostaGUI.povod == "veduci") {
 				hlavny.setScene(PostaGUI.veduciScena);
@@ -195,12 +202,12 @@ public class TovaryScreen implements java.io.Serializable {
 
 		});
 
-	/**
-	 * Predaj tovaru zmenÌ poËet tovarov a aktualizuje stav hotovosti
-	 */
+		/**
+		 * Predaj tovaru zmenÌ poËet tovarov a aktualizuje stav hotovosti
+		 */
 		predatTovar.setOnAction(e -> {
 			Tovary itemToSell = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
-			if (itemToSell.getPocet() < Integer.parseInt(pocetTxt.getText()) ) {
+			if (itemToSell.getPocet() < Integer.parseInt(pocetTxt.getText())) {
 				/**
 				 * Ak by sa pok˙öal predaù viac tovaru, ako je dostupnÈho
 				 */
@@ -226,14 +233,14 @@ public class TovaryScreen implements java.io.Serializable {
 
 			ZoznamTovarov.getItems().remove(itemToSell);
 			ZoznamTovarov.getItems().add(itemToSell);
-			
+
 			if (itemToSell.getPocet() == 0) {
 				/**
-				 * Ak je poËet nula, tento tovar sa vymaûe zo zoznamu aj zo s˙boru
-				 * Je potrebnÈ prepÌsaù s˙bor s nov˝m zoznamom tovarov
+				 * Ak je poËet nula, tento tovar sa vymaûe zo zoznamu aj zo s˙boru Je potrebnÈ
+				 * prepÌsaù s˙bor s nov˝m zoznamom tovarov
 				 */
 				ZoznamTovarov.getItems().remove(itemToSell);
-				
+
 				woi = tovaryController.odstranTovar(woi, itemToSell);
 
 			}
@@ -244,12 +251,12 @@ public class TovaryScreen implements java.io.Serializable {
 			info.setText("Predany tovar " + itemToSell);
 
 		});
-/**
- * Nasleduj˙ jednotlivÈ funkcie na prid·vanie tovaru
- * Tovar sa uklad· do array listu a n·sledne do s˙boru, zobrazuje sa na GUI v listView
- */
+		/**
+		 * Nasleduj˙ jednotlivÈ funkcie na prid·vanie tovaru Tovar sa uklad· do array
+		 * listu a n·sledne do s˙boru, zobrazuje sa na GUI v listView
+		 */
 		pridatZnamky.setOnAction(e -> {
-			
+
 			Znamky znamky = null;
 			try {
 				/**
@@ -264,17 +271,18 @@ public class TovaryScreen implements java.io.Serializable {
 				alert.show();
 				System.out.println("Chyba");
 			}
-			
-	/**
-	 * Ak je tovar korektn˝, uloûÌ sa
-	 * @see tovary#Znamky#isValid()
-	 */
+
+			/**
+			 * Ak je tovar korektn˝, uloûÌ sa
+			 * 
+			 * @see tovary#Znamky#isValid()
+			 */
 			if (znamky.isValid() == true) {
 				ZoznamTovarov.getItems().add(znamky);
 				woi = tovaryController.ulozTovar(woi, znamky);
 				info.setText("Pridany tovar: " + znamky);
 			}
-				
+
 		});
 
 		pridatZreby.setOnAction(e -> {

@@ -16,13 +16,14 @@ import zasielky.Zasielky;
 
 /**
  * Trieda obsahuje ovládacie prvky pre scénu s tovarmi
+ * 
  * @author Lucia Rapánová
- * @see Posta#TovaryScreen#Zobraz(Stage hlavny)
  *
  */
 public class TovaryController {
 	/**
 	 * Metóda naèíta tovar zo súboru do arraylistu
+	 * 
 	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @return woi aktualizovaný arraylist tovarov
 	 */
@@ -31,8 +32,10 @@ public class TovaryController {
 		try {
 			FileInputStream fis = new FileInputStream("serializacia\\tovary.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			Tovary wo = null;
-			Tovary[] woj = new Tovary[5];
+		//	Tovary wo = null;
+		//	Tovary[] woj = new Tovary[5];
+		//	fis.close();
+		//	ois.close();
 			/**
 			 * Zoznam tovarov je uložený v Arrayliste, ktorý je uložený v súbore
 			 */
@@ -49,7 +52,8 @@ public class TovaryController {
 
 	/**
 	 * Metóda odstráni tovar zo súboru
-	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * 
+	 * @param woi          je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @param itemToRemove je tovar, ktorý sa odstraòuje
 	 * @return woi aktualizovaný arraylist tovarov
 	 */
@@ -117,7 +121,8 @@ public class TovaryController {
 
 	/**
 	 * Metóda aktualizuje informácie o tovare v súbore
-	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * 
+	 * @param woi        je arraylist, do ktorého sa ukladá zoznam tovarov
 	 * @param itemToSell je tovar, ktorý sa predáva
 	 * @return woi aktualizovaný arraylist tovarov
 	 */
@@ -152,8 +157,9 @@ public class TovaryController {
 
 	/**
 	 * Metóda uloží tovar do súboru
-	 * @param woi je arraylist, do ktorého sa ukladá zoznam tovarov
-	 * @param tovar je tovar, ktorý sa ukladá do súboru 
+	 * 
+	 * @param woi   je arraylist, do ktorého sa ukladá zoznam tovarov
+	 * @param tovar je tovar, ktorý sa ukladá do súboru
 	 * @return woi aktualizovaný arraylist tovarov
 	 */
 	public ArrayList<Tovary> ulozTovar(ArrayList<Tovary> woi, Tovary tovar) {

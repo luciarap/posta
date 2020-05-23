@@ -9,8 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 /**
  * Táto trieda slúži na zobrazenie úvodnej scény, ak sa prihlási vedúci pošty
+ * 
  * @author Lucia Raoánová
  *
  */
@@ -24,21 +26,22 @@ public class VeduciScreen {
 	private Button Scene1 = new Button("Zasielky");
 	private Button Logout = new Button("Log Out");
 	private Button Zamestnanci = new Button("Zamestnanci");
-/**
- * Metóda vybuduje scénu pre menu vedúceho pošty
- * @param hlavny je hlavný stage, ktorý sa používa v GUI
- * @param login je scéna s prihlasovacou obrazovkou
- * @return vráti novú vytvorenú scénu pre menu Vedúceho pošty
- * @throws ZleUdajeException ak nastala chyba pri vypåòaní údajov
- * @throws FileNotFoundException ak nastala chyba pri naèítavaní súborov
- */
+
+	/**
+	 * Metóda vybuduje scénu pre menu vedúceho pošty
+	 * 
+	 * @param hlavny je hlavný stage, ktorý sa používa v GUI
+	 * @param login  je scéna s prihlasovacou obrazovkou
+	 * @return vráti novú vytvorenú scénu pre menu Vedúceho pošty
+	 * @throws ZleUdajeException     ak nastala chyba pri vypåòaní údajov
+	 * @throws FileNotFoundException ak nastala chyba pri naèítavaní súborov
+	 */
 	public Scene zobrazVeduciScreen(Stage hlavny, Scene login) throws ZleUdajeException, FileNotFoundException {
 
 		ZasielkyScreen zasielkyScreen = new ZasielkyScreen();
 		TovaryScreen tovaryScreen = new TovaryScreen();
 		ZamestnanciScreen zamestnanciScreen = new ZamestnanciScreen();
-		
-		
+
 		if (PostaGUI.tovary == null) {
 			PostaGUI.tovary = tovaryScreen.Zobraz(hlavny);
 		}
@@ -46,8 +49,7 @@ public class VeduciScreen {
 			PostaGUI.povod = "veduci";
 			hlavny.setScene(PostaGUI.tovary);
 		});
-		
-		
+
 		if (PostaGUI.zasielky == null) {
 			PostaGUI.zasielky = zasielkyScreen.ZobrazZasielkyScreen(PostaGUI.veduciScena, hlavny);
 		}
@@ -55,7 +57,7 @@ public class VeduciScreen {
 			PostaGUI.povod = "veduci";
 			hlavny.setScene(PostaGUI.zasielky);
 		});
-		
+
 		if (PostaGUI.zamestnanci == null) {
 			PostaGUI.zamestnanci = zamestnanciScreen.ZobrazZamestnanciScreen(PostaGUI.veduciScena, hlavny);
 		}
@@ -70,9 +72,9 @@ public class VeduciScreen {
 		Zamestnanci.setPrefSize(130, 20);
 		Logout.setPrefSize(100, 20);
 		veduciHBox.getChildren().addAll(Scene2, Scene1, Zamestnanci, Logout);
-		
+
 		Logout.setOnAction(e -> hlavny.setScene(login));
-		
+
 		return new Scene(veduciHBox, 500, 80);
 	}
 

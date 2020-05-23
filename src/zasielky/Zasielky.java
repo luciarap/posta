@@ -1,8 +1,10 @@
 package zasielky;
 
 import java.util.Date;
+
 /**
  * Hlavná trieda Zásielky
+ * 
  * @author Lucia Rapánová
  *
  */
@@ -26,28 +28,32 @@ public abstract class Zasielky implements java.io.Serializable {
 	public void setPodacieCislo(String podacieCislo) {
 		this.podacieCislo = podacieCislo;
 	}
-	
-/**
- * Vnorená trieda Adresa obsahuje údaje o adrese - meno, priezvisko, ulica, èíslo, psè, mesto
- * @author Lucia Rapánová
- *
- */
+
+	/**
+	 * Vnorená trieda Adresa obsahuje údaje o adrese - meno, priezvisko, ulica,
+	 * èíslo, psè, mesto
+	 * 
+	 * @author Lucia Rapánová
+	 *
+	 */
 	public class Adresa {
-		String meno;
-		String priezvisko;
-		String ulica;
-		int cislo;
-		int psc;
-		String mesto;
+		private String meno;
+		private String priezvisko;
+		private String ulica;
+		private int cislo;
+		private int psc;
+		private String mesto;
 	}
+
 	/**
 	 * Konštruktor zásielky
-	 * @param meno je meno adresáta
+	 * 
+	 * @param meno       je meno adresáta
 	 * @param priezvisko je priezvisko adresáta
-	 * @param ulica je ulica adresáta
-	 * @param cislo je èíslo domu adresáta
-	 * @param psc je poètové smerové èíslo adresáta
-	 * @param Mesto je mesto bydliska adresáta
+	 * @param ulica      je ulica adresáta
+	 * @param cislo      je èíslo domu adresáta
+	 * @param psc        je poètové smerové èíslo adresáta
+	 * @param Mesto      je mesto bydliska adresáta
 	 */
 	public Zasielky(String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto) {
 		Date date = new Date();
@@ -59,25 +65,25 @@ public abstract class Zasielky implements java.io.Serializable {
 		adresa.cislo = cislo;
 		adresa.psc = psc;
 		adresa.mesto = Mesto;
-		
-		System.out.println(adresa.meno +" "+ adresa.priezvisko +"\n"+ adresa.ulica +" "+ adresa.cislo +"\n"+ adresa.psc +" "+ adresa.mesto);
+
+		System.out.println(adresa.meno + " " + adresa.priezvisko + "\n" + adresa.ulica + " " + adresa.cislo + "\n"
+				+ adresa.psc + " " + adresa.mesto);
 	}
 
 	@Override
 	public String toString() {
 		return "Zasielky: datum=" + datum + ", podacieCislo=" + podacieCislo;
 	}
+
 	/**
 	 * Metóda, ktorá slúži na overovanie, èi je podacie èíslo v správnom formáte
-	 * Správny formát zaèína písmenami RE, konèí SK, zvyšné sú èísla a dokopy obsahuje 13 znakov
+	 * Správny formát zaèína písmenami RE, konèí SK, zvyšné sú èísla a dokopy
+	 * obsahuje 13 znakov Ak je to poistený list, tak formát zaèína s písmena VC
+	 * 
 	 * @param podacieCislo je podacie èíslo, ktoré sa zapisuje do systému
-	 * @return funkcia vráti true, ak je podacie èíslo v správnom formáte, false, ak je nesprávne
+	 * @return funkcia vráti true, ak je podacie èíslo v správnom formáte, false, ak
+	 *         je nesprávne
 	 */
 	public abstract boolean CheckPodacieCislo(String podacieCislo);
 
-
-
-
 }
-
-

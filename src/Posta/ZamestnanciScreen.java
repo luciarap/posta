@@ -22,12 +22,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 /**
  * Táto trieda slúži na vybudovanie scénu so zoznamom zamestnancov
+ * 
  * @author Lucia Rapánová
  *
  */
-public class ZamestnanciScreen  {
+public class ZamestnanciScreen {
 
 	ObservableList<Zamestnanec> ZoznamZamestnancov = FXCollections.observableArrayList();
 
@@ -37,59 +39,64 @@ public class ZamestnanciScreen  {
 	Label stavHotovosti = new Label();
 
 	Text text = new Text();
-/**
- * Metóda vybuduje scénu so zoznamom zamestnancov
- * @param hlavna je hlavná scéna / hlavné menu pre vedúceho
- * @param hlavny je hlavný stage, ktorý sa používa v GUI
- * @return vráti novú scénu 
- * @throws FileNotFoundException ak sa vyskytne chyba pri naèítaní súboru
- */
+
+	/**
+	 * Metóda vybuduje scénu so zoznamom zamestnancov
+	 * 
+	 * @param hlavna je hlavná scéna / hlavné menu pre vedúceho
+	 * @param hlavny je hlavný stage, ktorý sa používa v GUI
+	 * @return vráti novú scénu
+	 * @throws FileNotFoundException ak sa vyskytne chyba pri naèítaní súboru
+	 */
 	public Scene ZobrazZamestnanciScreen(Scene hlavna, Stage hlavny) throws FileNotFoundException {
-		
-		FileInputStream female = new FileInputStream("obrazky\\female.png"); 
-		FileInputStream male = new FileInputStream("obrazky\\male.png"); 
+
+		FileInputStream female = new FileInputStream("obrazky\\female.png");
+		FileInputStream male = new FileInputStream("obrazky\\male.png");
 		Image imageF = new Image(female);
 		Image imageM = new Image(male);
 		ImageView imageView = new ImageView();
-		
-		stavHotovosti.setStyle("-fx-font-size: 18px; "
-				+ "-fx-font-weight:bold;");
+
+		stavHotovosti.setStyle("-fx-font-size: 18px; " + "-fx-font-weight:bold;");
 
 		ComboBox<Zamestnanec> comboBox = new ComboBox<>(ZoznamZamestnancov);
-	/**
-	 * Zobrazovanie informácií o zamestancoch na základe zvoleného zamestnanca v Combo boxe
-	 */
+		/**
+		 * Zobrazovanie informácií o zamestancoch na základe zvoleného zamestnanca v
+		 * Combo boxe
+		 */
 		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				text.setFont((Font.font("Verdana", 20)));
-				
+
 				if (comboBox.getValue().getPohlavie() == "F") {
 					imageView.setImage(imageF);
 					comboBox.setTranslateY(-100);
-				}
-				else imageView.setImage(imageM); {
+				} else
+					imageView.setImage(imageM);
+				{
 					comboBox.setTranslateY(-100);
 				}
 				comboBox.setItems(ZoznamZamestnancov);
 				if (comboBox.getValue() instanceof Dorucovatel) {
-					text.setText("Dorucovatel \nMeno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
-							+ "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda());
+					text.setText("Dorucovatel \nMeno a priezvisko: " + comboBox.getValue().getMeno() + " "
+							+ comboBox.getValue().getPriezvisko() + "\n" + "ID: " + comboBox.getValue().getID() + "\n"
+							+ "Mzda: " + comboBox.getValue().getMzda());
 				}
 
 				if (comboBox.getValue() instanceof Pracovnik) {
-					text.setText("Pracovnik \nMeno a priezvisko: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
-							+  "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda() + "\n"
-							+ "Uvazok: " + ((Pracovnik) comboBox.getValue()).getUvazok());
+					text.setText("Pracovnik \nMeno a priezvisko: " + comboBox.getValue().getMeno() + " "
+							+ comboBox.getValue().getPriezvisko() + "\n" + "ID: " + comboBox.getValue().getID() + "\n"
+							+ "Mzda: " + comboBox.getValue().getMzda() + "\n" + "Uvazok: "
+							+ ((Pracovnik) comboBox.getValue()).getUvazok());
 				}
-				
+
 				if (comboBox.getValue() instanceof VeduciPosty) {
-					text.setText("Veduci posty: " + comboBox.getValue().getMeno() + " " + comboBox.getValue().getPriezvisko() + "\n"
-							+  "ID: " + comboBox.getValue().getID() + "\n" + "Mzda: " + comboBox.getValue().getMzda());
+					text.setText("Veduci posty: " + comboBox.getValue().getMeno() + " "
+							+ comboBox.getValue().getPriezvisko() + "\n" + "ID: " + comboBox.getValue().getID() + "\n"
+							+ "Mzda: " + comboBox.getValue().getMzda());
 				}
-				
+
 			}
 		};
-
 
 		zamestnanciPane.setPrefSize(600, 300);
 		comboBox.setOnAction(event);
@@ -103,7 +110,7 @@ public class ZamestnanciScreen  {
 		text.setTranslateY(60);
 		comboBox.setTranslateX(0);
 		comboBox.setTranslateY(0);
-		
+
 		Zamestnanec dorucovatel1 = new Dorucovatel("Eva", "Benkova", 4579, "F");
 		ZoznamZamestnancov.add(dorucovatel1);
 		Zamestnanec pracovnik1 = new Pracovnik("Klaudia", "Novakova", 4580, "cely", "F");
@@ -125,21 +132,21 @@ public class ZamestnanciScreen  {
 		zamestnanciPane.add(stavHotovosti, 0, 0);
 		stavHotovosti.setTranslateX(0);
 		stavHotovosti.setTranslateY(260);
-	/**
-	 * Pride¾ovanie výplat funguje na základe návrhového vzoru Composite
-	 */
+		/**
+		 * Pride¾ovanie výplat funguje na základe návrhového vzoru Composite
+		 */
 		vyplata.setOnAction(e -> {
 
 			veduci1.dostanVyplatu();
 			stavHotovosti.setText("");
 			stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
-			
+
 			comboBox.setItems(ZoznamZamestnancov);
 
 			veduci1.info();
 			vyplata.setDisable(true);
 			vyplata.setStyle("-fx-background-color: #d3d3d3");
-			
+
 		});
 		spat.setOnAction(e -> {
 			stavHotovosti.setText("");
@@ -149,6 +156,5 @@ public class ZamestnanciScreen  {
 		return new Scene(zamestnanciPane, 600, 400);
 
 	}
-
 
 }

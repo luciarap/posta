@@ -81,60 +81,72 @@ public interface Zamestnanec { // COMPONENT
 
 	/**
 	 * Odpísanie zásielky z arraylistu zásielok
+	 * 
 	 * @param ar       je array list zásielok
 	 * @param zasielka je zásielka, ktorá sa má odstráni
 	 */
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka);
-	
+
 	/**
 	 * Zapísanie doporuèeného listu
+	 * 
 	 * @param podacieCislo je podacie èíslo zásielky
-	 * @param meno je meno adresáta
-	 * @param priezvisko je priezvisko adresáta
-	 * @param ulica je ulica adresáta
-	 * @param cislo je èíslo domu adresáta
-	 * @param psc je PSÈ adresáta
-	 * @param Mesto je mesto adresáta
+	 * @param meno         je meno adresáta
+	 * @param priezvisko   je priezvisko adresáta
+	 * @param ulica        je ulica adresáta
+	 * @param cislo        je èíslo domu adresáta
+	 * @param psc          je PSÈ adresáta
+	 * @param Mesto        je mesto adresáta
 	 * @return vráti novú inštanciu daného objektu
-	 * @throws PodacieCisloException vyhodí chybu, ak bol zadanı nekorektnı formát podacieho èísla
+	 * @throws PodacieCisloException vyhodí chybu, ak bol zadanı nekorektnı formát
+	 *                               podacieho èísla
 	 */
 	public Zasielky zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto) throws PodacieCisloException;
+
 	/**
 	 * Zapísanie dobierky
+	 * 
 	 * @param podacieCislo je podacie èíslo dobierky
-	 * @param meno je meno adresáta
-	 * @param priezvisko je priezvisko adresáta
-	 * @param ulica je ulica adresáta
-	 * @param cislo je èíslo domu adresáta
-	 * @param psc je PSÈ adresáta
-	 * @param Mesto je mesto adresáta
-	 * @param suma je suma dobierky
-	 * @param hmotnost je hmotnos dobierky
+	 * @param meno         je meno adresáta
+	 * @param priezvisko   je priezvisko adresáta
+	 * @param ulica        je ulica adresáta
+	 * @param cislo        je èíslo domu adresáta
+	 * @param psc          je PSÈ adresáta
+	 * @param Mesto        je mesto adresáta
+	 * @param suma         je suma dobierky
+	 * @param hmotnost     je hmotnos dobierky
 	 * @return vráti novú inštanciu daného objektu
-	 * @throws PodacieCisloException vyhodí chybu, ak bol zadanı nekorektnı formát podacieho èísla
+	 * @throws PodacieCisloException vyhodí chybu, ak bol zadanı nekorektnı formát
+	 *                               podacieho èísla
 	 */
 	Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto, double suma, double hmotnost) throws PodacieCisloException;
+
 	/**
 	 * Zapísanie poisteného listu
+	 * 
 	 * @param podacieCislo je podacie èíslo poisteného listu
-	 * @param meno je meno adresáta
-	 * @param priezvisko je priezvisko adresáta
-	 * @param ulica je ulica adresáta
-	 * @param cislo je èíslo domu adresáta
-	 * @param psc je PSÈ adresáta
-	 * @param Mesto je mesto adresáta
-	 * @param suma je vıška poistenia
+	 * @param meno         je meno adresáta
+	 * @param priezvisko   je priezvisko adresáta
+	 * @param ulica        je ulica adresáta
+	 * @param cislo        je èíslo domu adresáta
+	 * @param psc          je PSÈ adresáta
+	 * @param Mesto        je mesto adresáta
+	 * @param suma         je vıška poistenia
 	 * @return vráti novú inštanciu daného objektu
-	 * @throws PodacieCisloException vyhodí chybu, ak bol zadanı nekorektnı formát podacieho èísla
+	 * @throws PodacieCisloException vyhodí chybu, ak bol zadanı nekorektnı formát
+	 *                               podacieho èísla
 	 */
 	PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto, double suma) throws PodacieCisloException;
+
 	/**
 	 * Skontroluje, èi podacie èíslo u existuje
+	 * 
 	 * @param podacieCislo je podacie èíslo, ktoré sa bude kontrolova
-	 * @return true, ak podacie èíslo ešte neexistuje, false, ak sa u našlo existujúce podacie èíslo
+	 * @return true, ak podacie èíslo ešte neexistuje, false, ak sa u našlo
+	 *         existujúce podacie èíslo
 	 */
 	public boolean CheckDuplicate(String podacieCislo);
 }

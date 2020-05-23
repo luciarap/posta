@@ -1,15 +1,6 @@
 package Posta;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import Controllers.ZasielkyController;
 import Exceptions.PodacieCisloException;
 import Zamestnanci.VeduciPosty;
@@ -36,6 +27,7 @@ import zasielky.Zasielky;
 
 /**
  * Táto trieda slúži na vybudovanie scény so zásielkami
+ * 
  * @author Lucia Rapánová
  *
  */
@@ -76,6 +68,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 
 	/**
 	 * Metóda vybuduje scénu pre zásielky
+	 * 
 	 * @param hlavna je hlavná scéna - úvodná obrazovka
 	 * @param hlavny je hlavný stage, ktorý sa používa v GUI
 	 * @return Metóda vráti novú vytvorenú scénu
@@ -157,20 +150,20 @@ public class ZasielkyScreen implements java.io.Serializable {
 			 * pridanie tovaru do GUI ListView
 			 */
 		}
-	/**
-	 * pri doruèení sa zásielka vymaže zo súboru, z arraylistu aj z listView
-	 */
+		/**
+		 * pri doruèení sa zásielka vymaže zo súboru, z arraylistu aj z listView
+		 */
 		dorucitZasielku.setOnAction(event -> {
-			
+
 			Zasielky itemToRemove = (Zasielky) listView.getSelectionModel().getSelectedItem();
 			posta.Dorucit(itemToRemove);
 			listView.getItems().remove(itemToRemove);
 			woi = zasielkyController.dorucZasielku(woi, itemToRemove);
 
 		});
-	/**
-	 * zápis zásielok pod¾a vybratého druhu zásielky
-	 */
+		/**
+		 * zápis zásielok pod¾a vybratého druhu zásielky
+		 */
 		group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
 			@Override
@@ -179,7 +172,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 				if (rb != null) {
 					String s = rb.getText();
 					System.out.println("Stlaceny button " + s);
-					
+
 					if (s == "Dobierka") {
 
 						zapisZasielku.setOnAction(e -> {
@@ -215,9 +208,10 @@ public class ZasielkyScreen implements java.io.Serializable {
 
 								try {
 
-									DoporucenyList zasielka = posta.zapisZasielku(podacieCislo.getText(), meno.getText(),
-											priezvisko.getText(), ulica.getText(), Integer.parseInt(cislo.getText()),
-											Integer.parseInt(psc.getText()), mesto.getText());
+									DoporucenyList zasielka = posta.zapisZasielku(podacieCislo.getText(),
+											meno.getText(), priezvisko.getText(), ulica.getText(),
+											Integer.parseInt(cislo.getText()), Integer.parseInt(psc.getText()),
+											mesto.getText());
 									listView.getItems().add(zasielka);
 									woi.add(zasielka);
 									woi = zasielkyController.ulozZasielku(woi, zasielka);

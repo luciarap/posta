@@ -6,19 +6,21 @@ import Exceptions.PodacieCisloException;
 import zasielky.Dobierka;
 import zasielky.PoistenyList;
 import zasielky.Zasielky;
+
 /**
- * Trieda doruËovateæ je list v n·vrhovoom vzore Composite, implementuje interface Zamestnanec
- * MÙûe doruËovaù a zapisovaù z·sielky
+ * Trieda doruËovateæ je list v n·vrhovoom vzore Composite, implementuje
+ * interface Zamestnanec MÙûe doruËovaù a zapisovaù z·sielky
+ * 
  * @author Lucia Rap·nov·
  *
  */
-public class Dorucovatel implements Zamestnanec { 
+public class Dorucovatel implements Zamestnanec {
 	private String meno;
 	private String priezvisko;
 	private int ID;
 	private double mzda;
 	private String pohlavie;
-	
+
 	private double stavHotovosti = 0;
 
 	public double getStavHotovosti() {
@@ -28,20 +30,22 @@ public class Dorucovatel implements Zamestnanec {
 	public void setStavHotovosti(double stavHotovosti) {
 		this.stavHotovosti = stavHotovosti;
 	}
-/**
- * Konötruktor DoruËovateæa
- * @param meno je meno doruËovateæa
- * @param priezvisko je priezvisko doruËovateæa
- * @param ID je unik·tne identifikaËnÈ Ëislo doruËovateæa
- * @param pohlavie je pohlavie doruËovateæa
- */
+
+	/**
+	 * Konötruktor DoruËovateæa
+	 * 
+	 * @param meno       je meno doruËovateæa
+	 * @param priezvisko je priezvisko doruËovateæa
+	 * @param ID         je unik·tne identifikaËnÈ Ëislo doruËovateæa
+	 * @param pohlavie   je pohlavie doruËovateæa
+	 */
 	public Dorucovatel(String meno, String priezvisko, int ID, String pohlavie) {
 		this.meno = meno;
 		this.priezvisko = priezvisko;
 		this.ID = ID;
 		this.pohlavie = pohlavie;
 	}
-	
+
 	public String getPohlavie() {
 		return pohlavie;
 	}
@@ -49,12 +53,12 @@ public class Dorucovatel implements Zamestnanec {
 	public void setPohlavie(String pohlavie) {
 		this.pohlavie = pohlavie;
 	}
-	
+
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");
 	}
-	
+
 	public void Dorucit(Zasielky zasielka) {
 		odpisZasielky(ar, zasielka);
 	}
@@ -68,19 +72,19 @@ public class Dorucovatel implements Zamestnanec {
 	@Override
 	public void add(Zamestnanec zamestnanec) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void odstranZamestnanca(Zamestnanec zamestnanec) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dostanVyplatu() {
 		mzda = 650;
-		
+
 	}
 
 	@Override
@@ -100,14 +104,14 @@ public class Dorucovatel implements Zamestnanec {
 		// TODO Auto-generated method stub
 		return priezvisko;
 	}
-	
+
 	public void info() {
-	       System.out.println("_______________");  
-	       System.out.println("ID: "+ getID());  
-	       System.out.println("Meno: " + getMeno());  
-	       System.out.println("Priezvisko: " + getPriezvisko());  
-	       System.out.println("Mzda: " + getMzda());  
-	       System.out.println("_______________");  
+		System.out.println("_______________");
+		System.out.println("ID: " + getID());
+		System.out.println("Meno: " + getMeno());
+		System.out.println("Priezvisko: " + getPriezvisko());
+		System.out.println("Mzda: " + getMzda());
+		System.out.println("_______________");
 	}
 
 	@Override
@@ -141,10 +145,5 @@ public class Dorucovatel implements Zamestnanec {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
-	
-
-	
 
 }

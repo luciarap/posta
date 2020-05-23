@@ -4,17 +4,18 @@ import Exceptions.ZleUdajeException;
 
 /**
  * Abstraktná nadtrieda Tovary
+ * 
  * @author Lucia Rapánová
  *
  */
-public abstract class Tovary implements java.io.Serializable { 
+public abstract class Tovary implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private double cena;
 	private String nazov;
 	private int pocet;
 	private String druh;
-	
+
 	public String getDruh() {
 		return druh;
 	}
@@ -46,21 +47,24 @@ public abstract class Tovary implements java.io.Serializable {
 	public void setPocet(int pocet) {
 		this.pocet = pocet;
 	}
+
 	/**
 	 * Konštruktor Tovarov
+	 * 
 	 * @param nazov je názov tovaru
 	 * @param pocet je poèet tovarov
-	 * @param druh je druh tovaru
+	 * @param druh  je druh tovaru
 	 */
 	public Tovary(String nazov, int pocet, String druh) {
 		this.nazov = nazov;
 		this.pocet = pocet;
 		this.druh = druh;
-		
+
 	}
-	
+
 	/**
-	 * Metóda na predaj tovaru zmení poèet kusov tovaru a aktualituje stav hotovosti
+	 * Metóda na predaj tovaru zmení poèet kusov tovaru a aktualizuje stav hotovosti
+	 * 
 	 * @param tovar je tovar, ktorý sa predáva
 	 * @param pocet je poèet tovaru na predaj
 	 * @throws ZleUdajeException ak sa vyskytne chyba pri zadávaní údajov
@@ -72,4 +76,3 @@ public abstract class Tovary implements java.io.Serializable {
 		return "Tovary:  nazov=" + nazov + ", pocet=" + pocet;
 	}
 }
-

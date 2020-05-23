@@ -14,6 +14,7 @@ import zasielky.Zasielky;
 
 /**
  * Composite
+ * 
  * @author Lucia Rapánová
  */
 public class VeduciPosty implements Zamestnanec, ManageMoney {
@@ -26,6 +27,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 
 	/**
 	 * Konštruktor vedúceho pošty
+	 * 
 	 * @param meno       je meno vedúceho pošty
 	 * @param priezvisko je priezvisko vedúceho pošty
 	 * @param ID         je ID vedúceho pošty
@@ -57,8 +59,8 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 		odpisZasielky(ar, zasielka);
 	}
 
-	public DoporucenyList zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
-			String Mesto) throws PodacieCisloException { // test
+	public DoporucenyList zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo,
+			int psc, String Mesto) throws PodacieCisloException { // test
 		DoporucenyList zasielka = new DoporucenyList(meno, priezvisko, ulica, cislo, psc, Mesto);
 		if (zasielka.CheckPodacieCislo(podacieCislo) == false || (CheckDuplicate(podacieCislo) == false)) {
 			throw new PodacieCisloException("Zle podacie cislo");

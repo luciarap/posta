@@ -1,6 +1,8 @@
 package zasielky;
+
 /**
  * Trieda Dobierka dedÌ z nadtriedy Zasielky
+ * 
  * @author Lucia Rap·nov·
  *
  */
@@ -25,43 +27,47 @@ public class Dobierka extends Zasielky {
 	public void setHmotnost(double hmotnost) {
 		this.hmotnost = hmotnost;
 	}
-/**
- * Konötruktor dobierky
-	 * @param meno je meno adres·ta
+
+	/**
+	 * Konötruktor dobierky
+	 * 
+	 * @param meno       je meno adres·ta
 	 * @param priezvisko je priezvisko adres·ta
-	 * @param ulica je ulica adres·ta
-	 * @param cislo je ËÌslo domu adres·ta
-	 * @param psc je PS» adres·ta
-	 * @param Mesto je mesto adres·ta
-	 * @param suma je suma dobierky
-	 * @param hmotnost je hmotnosù dobierky
- */
-	public Dobierka(String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma, double hmotnost) {
+	 * @param ulica      je ulica adres·ta
+	 * @param cislo      je ËÌslo domu adres·ta
+	 * @param psc        je PS» adres·ta
+	 * @param Mesto      je mesto adres·ta
+	 * @param suma       je suma dobierky
+	 * @param hmotnost   je hmotnosù dobierky
+	 */
+	public Dobierka(String meno, String priezvisko, String ulica, int cislo, int psc, String Mesto, double suma,
+			double hmotnost) {
 		super(meno, priezvisko, ulica, cislo, psc, Mesto);
 		this.suma = suma;
 		this.hmotnost = hmotnost;
 	}
 
-@Override
-public boolean CheckPodacieCislo(String podacieCislo) {
-	int i;
-	if (podacieCislo.length() == 13) {
-		if (podacieCislo.startsWith("RE") && podacieCislo.endsWith("SK"))  {
-			for (i = 2; i <= 10; i++) {
-				/**
-				 * znamen· to, ûe kontroluje, Ëi je to ËÌslo
-				 */
-				if (podacieCislo.matches(".*\\d.*")) continue; 
-				else return false;
+	@Override
+	public boolean CheckPodacieCislo(String podacieCislo) {
+		int i;
+		if (podacieCislo.length() == 13) {
+			if (podacieCislo.startsWith("RE") && podacieCislo.endsWith("SK")) {
+				for (i = 2; i <= 10; i++) {
+					/**
+					 * znamen· to, ûe kontroluje, Ëi je to ËÌslo
+					 */
+					if (podacieCislo.matches(".*\\d.*"))
+						continue;
+					else
+						return false;
+				}
+
+				return true;
 			}
-			
-			return true;
+
 		}
+		return false;
 
 	}
-	return false;
-	
-}
-
 
 }

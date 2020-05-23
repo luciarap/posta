@@ -1,6 +1,7 @@
 package tovary;
 
 import java.util.ArrayList;
+
 /**
  * @deprecated Generický zoznam napokon nebol v projekte použitý
  * @author Lucia Rapánová
@@ -9,20 +10,19 @@ import java.util.ArrayList;
 public class Zoznamy<T> {
 	private Element<T> head;
 	private Element<T> tail;
-	
+
 	public void tailInsert(T e) {
 		Element<T> sll_e = new Element<T>(e);
 		if (head == null) {
 			head = sll_e;
 			tail = head;
-		}
-		else {
+		} else {
 			tail.setNext(sll_e);
 			tail = sll_e;
 		}
 		tail.setNext(null);
 	}
-	
+
 	public void print() {
 		Element<T> sll_e = head;
 

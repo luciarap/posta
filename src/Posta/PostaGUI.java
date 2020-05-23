@@ -22,13 +22,14 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
- * Simulácia poštového systému.
- * Táto trieda je hlavné GUI, odkia¾ sa púša aplikácia
+ * Simulácia poštového systému. Táto trieda je hlavné GUI, odkia¾ sa púša
+ * aplikácia
+ * 
  * @author Lucia Rapánová
  *
  */
 public class PostaGUI extends Application {
-	
+
 	private ScrollPane skrol = new ScrollPane();
 
 	Scene skrolScene;
@@ -39,32 +40,34 @@ public class PostaGUI extends Application {
 	static Scene zasielky;
 	static Scene zamestnanci;
 	static String povod;
-	
+
 	/**
 	 * @param hlavneOkno je jeden hlavný stage, ktorý sa púša v aplikácii
-	 * @see Controllers#LoginController#validateUser(String username, String password) vyhodnocovanie používate¾ských údajov
+	 * @see Controllers#LoginController#validateUser(String username, String
+	 *      password) vyhodnocovanie používate¾ských údajov
 	 */
 	public void start(Stage hlavneOkno) throws Exception {
-		FileInputStream inputstream = new FileInputStream("obrazky\\letter.png"); 
+		FileInputStream inputstream = new FileInputStream("obrazky\\letter.png");
 		Image image = new Image(inputstream);
 		ImageView imageView = new ImageView(image);
-	    imageView.setFitHeight(46); 
-	    imageView.setFitWidth(82); 
-	    imageView.setPreserveRatio(true);  
-	    hlavneOkno.getIcons().add(new Image("file:obrazky\\logo.png"));
-	    /**
-	     * sú to globálne premenné kvôli tomu, aby sa dalo zisti, èi boli tieto scény už vytvorené, alebo ich treba vytvori (pri odhlásení používate¾a)
-	     * 
-	     */
+		imageView.setFitHeight(46);
+		imageView.setFitWidth(82);
+		imageView.setPreserveRatio(true);
+		hlavneOkno.getIcons().add(new Image("file:obrazky\\logo.png"));
+		/**
+		 * sú to globálne premenné kvôli tomu, aby sa dalo zisti, èi boli tieto scény
+		 * už vytvorené, alebo ich treba vytvori (pri odhlásení používate¾a)
+		 * 
+		 */
 		tovary = null;
 		zasielky = null;
 		veduciScena = null;
 		pracovnikScena = null;
 		zamestnanci = null;
-	
+
 		VeduciScreen veduciScreen = new VeduciScreen();
 		PracovnikScreen pracovnikScreen = new PracovnikScreen();
-		
+
 		alert.setContentText("Nespravne meno alebo heslo.");
 		hlavneOkno.setTitle("Posta");
 		GridPane Login = new GridPane();
@@ -78,7 +81,7 @@ public class PostaGUI extends Application {
 		final PasswordField pf = new PasswordField();
 		Button buttonLogin = new Button("Login");
 		buttonLogin.setFont((Font.font("Times New Roman", 15)));
-		
+
 		LoginController loginController = new LoginController();
 
 		Login.add(labelUserName, 0, 0);
@@ -87,30 +90,30 @@ public class PostaGUI extends Application {
 		Login.add(pf, 0, 0);
 		Login.add(buttonLogin, 0, 2);
 		Login.add(imageView, 0, 0);
-		
+
 		imageView.setTranslateX(140);
 		imageView.setTranslateY(5);
-		
+
 		labelUserName.setTranslateX(25);
 		labelUserName.setTranslateY(50);
 		txtUserName.setTranslateX(100);
 		txtUserName.setTranslateY(50);
-		
+
 		lblPassword.setTranslateX(25);
 		lblPassword.setTranslateY(85);
 		pf.setTranslateX(100);
 		pf.setTranslateY(85);
-		
+
 		buttonLogin.setTranslateX(140);
 		buttonLogin.setTranslateY(90);
-		
+
 		skrol.setContent(Login);
-		
+
 		buttonLogin.setOnAction(e -> {
-		
-			if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "veduci") {
-				
-				if (veduciScena == null) { 
+
+			if (loginController.validateUser(txtUserName.getText(), pf.getText()) == "veduci") {
+
+				if (veduciScena == null) {
 					try {
 						veduciScena = veduciScreen.zobrazVeduciScreen(hlavneOkno, skrolScene);
 					} catch (ZleUdajeException e1) {
@@ -122,30 +125,29 @@ public class PostaGUI extends Application {
 
 				hlavneOkno.setScene(veduciScena);
 			}
-			
-			else if (loginController.validateUser(txtUserName.getText(),pf.getText()) == "pracovnik") {
-				
-				if (pracovnikScena == null) { 
-				
-				try {
-					pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno, skrolScene);
-				} catch (ZleUdajeException e1) {
+
+			else if (loginController.validateUser(txtUserName.getText(), pf.getText()) == "pracovnik") {
+
+				if (pracovnikScena == null) {
+
+					try {
+						pracovnikScena = pracovnikScreen.zobrazPracovnikScreen(hlavneOkno, skrolScene);
+					} catch (ZleUdajeException e1) {
 						e1.printStackTrace();
 					}
-				
+
 				}
-				
+
 				hlavneOkno.setScene(pracovnikScena);
-			}
-			else {
+			} else {
 				alert.show();
 			}
-			
+
 			txtUserName.setText("");
 			pf.setText("");
 
 		});
-		
+
 		skrolScene = new Scene(skrol, 350, 200);
 		hlavneOkno.setScene(skrolScene);
 		hlavneOkno.show();
