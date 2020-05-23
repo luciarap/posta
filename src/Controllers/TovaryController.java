@@ -32,10 +32,10 @@ public class TovaryController {
 		try {
 			FileInputStream fis = new FileInputStream("serializacia\\tovary.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-		//	Tovary wo = null;
-		//	Tovary[] woj = new Tovary[5];
-		//	fis.close();
-		//	ois.close();
+			// Tovary wo = null;
+			// Tovary[] woj = new Tovary[5];
+			// fis.close();
+			// ois.close();
 			/**
 			 * Zoznam tovarov je uloenı v Arrayliste, ktorı je uloenı v súbore
 			 */
@@ -179,6 +179,20 @@ public class TovaryController {
 
 		return woi;
 
+	}
+
+	/**
+	 * Metóda na zistenie, èi bolo zadané správne mnostvo tovaru na predaj
+	 * 
+	 * @param aktPocet      je momentálny poèet tovaru
+	 * @param pocetNaPredaj je poèet, ktorı chceme preda
+	 * @return vráti false, ak je poèet menší ako poèet, ko¾ko cheme preda, true,
+	 *         ak je v poriadku
+	 */
+	public boolean SkontrolujPocet(int aktPocet, int pocetNaPredaj) {
+		if (aktPocet < pocetNaPredaj)
+			return false;
+		return true;
 	}
 
 }

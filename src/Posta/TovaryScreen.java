@@ -207,13 +207,12 @@ public class TovaryScreen implements java.io.Serializable {
 		 */
 		predatTovar.setOnAction(e -> {
 			Tovary itemToSell = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
-			if (itemToSell.getPocet() < Integer.parseInt(pocetTxt.getText())) {
-				/**
-				 * Ak by sa pokúšal preda viac tovaru, ako je dostupného
-				 */
+			
+			if (tovaryController.SkontrolujPocet(itemToSell.getPocet(), Integer.parseInt(pocetTxt.getText())) == false) {
 				alert2.show();
 				return;
 			}
+
 			try {
 				itemToSell.predatTovar(itemToSell, Integer.parseInt(pocetTxt.getText()));
 				stavHotovosti.setText("");

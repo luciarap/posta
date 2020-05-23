@@ -106,6 +106,7 @@ public class ZasielkyScreen implements java.io.Serializable {
 		pane.add(podacieCisloLabel, 0, 6);
 		pane.add(podacieCislo, 1, 6);
 		pane.add(suma, 1, 7);
+		suma.setTooltip(tooltip);
 		pane.add(hmotnost, 1, 8);
 		pane.add(sumaLabel, 0, 7);
 		pane.add(hmotnostLabel, 0, 8);

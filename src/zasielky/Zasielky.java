@@ -72,7 +72,7 @@ public abstract class Zasielky implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Zasielky: datum=" + datum + ", podacieCislo=" + podacieCislo;
+		return "Zasielky: datum =" + datum + ", podacie cislo =" + podacieCislo;
 	}
 
 	/**
