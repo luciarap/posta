@@ -1,13 +1,6 @@
 package Posta;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import Controllers.TovaryController;
 import Exceptions.ZleUdajeException;
@@ -28,9 +21,7 @@ import tovary.Noviny;
 import tovary.Pohladnice;
 import tovary.Tovary;
 import tovary.Znamky;
-import tovary.Zoznamy;
 import tovary.Zreby;
-import zasielky.Zasielky;
 
 /**
  * Táto trieda slúži na správu obrazovky pre tovary, na ich pridávanie a predaj
@@ -39,6 +30,8 @@ import zasielky.Zasielky;
  *
  */
 public class TovaryScreen implements java.io.Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	ArrayList<Tovary> woi = new ArrayList<>();
 
@@ -207,9 +200,15 @@ public class TovaryScreen implements java.io.Serializable {
 		 */
 		predatTovar.setOnAction(e -> {
 			Tovary itemToSell = (Tovary) ZoznamTovarov.getSelectionModel().getSelectedItem();
-			
-			if (tovaryController.SkontrolujPocet(itemToSell.getPocet(), Integer.parseInt(pocetTxt.getText())) == false) {
-				alert2.show();
+			try {
+				if (tovaryController.SkontrolujPocet(itemToSell.getPocet(),
+						Integer.parseInt(pocetTxt.getText())) == false) {
+					alert2.show();
+					return;
+				}
+			} catch (NullPointerException e1) {
+				alert.show();
+				System.out.println("Chyba" + e1);
 				return;
 			}
 
@@ -219,15 +218,19 @@ public class TovaryScreen implements java.io.Serializable {
 				stavHotovosti.setText("Stav hotovosti: " + Double.toString(ManazerHotovosti.getStavHotovosti()));
 
 			} catch (NumberFormatException e1) {
+				alert.show();
 				System.out.println("Chyba" + e1);
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (ZleUdajeException e1) {
+				alert.show();
 				System.out.println("Chyba" + e1);
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			} catch (Exception e1) {
+			} catch (NullPointerException e1) {
+				alert.show();
 				System.out.println("Chyba" + e1);
+				return;
 			}
 
 			ZoznamTovarov.getItems().remove(itemToSell);

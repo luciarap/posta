@@ -33,6 +33,8 @@ import zasielky.Zasielky;
  */
 public class ZasielkyScreen implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	ArrayList<Zasielky> woi = new ArrayList<>();
 
 	Alert alert = new Alert(AlertType.ERROR);

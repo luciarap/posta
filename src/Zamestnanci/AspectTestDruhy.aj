@@ -24,25 +24,25 @@ public aspect AspectTestDruhy {
 	after() throwing (Exception e): callDorucit() {
 		alert.setContentText("Chyba: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
 		alert.show();
-		System.out.println("Threw an exception: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
+		System.out.println("Vynimka: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
 	}
 
 	after() throwing (Exception e): callodpisZasielky() {
 		alert.setContentText("Chyba: " + e + "\n" + "Nebola zvolena ziadna zasielka");
 		alert.show();
-		System.out.println("Threw an exception: " + e);
+		System.out.println("Vynimka: " + e);
 	}
 
 	after() throwing (Exception e): calldostanVyplatu() {
 		alert.setContentText("Chyba: " + e + "\n" + "nespravna volba, vyplata sa neda pridelit");
 		alert.show();
-		System.out.println("Threw an exception: " + e);
+		System.out.println("Vynimka: " + e);
 	}
 
 	after() throwing (Exception e): calladd() {
 		alert.setContentText("Chyba: " + e + "\n" + "nespravna volba, nebolo vykonane pridanie");
 		alert.show();
-		System.out.println("Threw an exception: " + e);
+		System.out.println("Vynimka: " + e);
 	}
 
 }

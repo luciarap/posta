@@ -1,5 +1,8 @@
 package Posta;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 /**
  * Aspekt sa používa na ošetrovanie výnimiek pri volaní funkcií
  * 
@@ -7,6 +10,8 @@ package Posta;
  *
  */
 public aspect AspectTest {
+	
+	Alert alert = new Alert(AlertType.ERROR);
 
 	pointcut callZobrazZasielkyScreen(): call(* ZasielkyScreen.ZobrazZasielkyScreen(..));
 
@@ -19,23 +24,33 @@ public aspect AspectTest {
 	pointcut callvalidateUser(): call(* Controllers.LoginController.validateUser(..));
 
 	after() throwing (Exception e): callZobrazZasielkyScreen() {
-		System.out.println("Threw an exception: " + e);
+		alert.setContentText("Chyba: " + e);
+		alert.show();
+		System.out.println("Vynimka: " + e);
 	}
 
 	after() throwing (Exception e): callvalidateUser() {
-		System.out.println("Threw an exception: " + e);
+		alert.setContentText("Chyba: " + e);
+		alert.show();
+		System.out.println("Vynimka: " + e);
 	}
 
 	after() throwing (Exception e): callzobrazPracovnikScreen() {
-		System.out.println("Threw an exception: " + e);
+		alert.setContentText("Chyba: " + e);
+		alert.show();
+		System.out.println("Vynimka: " + e);
 	}
 
 	after() throwing (Exception e): callzobrazVeduciScreen() {
-		System.out.println("Threw an exception: " + e);
+		alert.setContentText("Chyba: " + e);
+		alert.show();
+		System.out.println("Vynimka: " + e);
 	}
 
 	after() throwing (Exception e): callZobrazZamestnanciScreen() {
-		System.out.println("Threw an exception: " + e);
+		alert.setContentText("Chyba: " + e);
+		alert.show();
+		System.out.println("Vynimka: " + e);
 	}
 
 }

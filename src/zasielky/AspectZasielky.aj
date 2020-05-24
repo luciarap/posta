@@ -18,7 +18,7 @@ public aspect AspectZasielky {
 	after() throwing (Exception e): callCheckPodacieCislo() {
 		alert.setContentText("Chyba: " + e);
 		alert.show();
-		System.out.println("Threw an exception: " + e);
+		System.out.println("Vynimka: " + e);
 	}
 
 }
