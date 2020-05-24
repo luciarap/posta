@@ -18,7 +18,7 @@ public aspect AspectTovary {
 	after() throwing (Exception e): callPredatTovar() {
 		alert.setContentText("Chyba: " + e + "\n" + "Neboli zvolene ziadne udaje.");
 		alert.show();
-		System.out.println("Vynimka: " + e + "\n" + "Nebola zvolena ziadna zasielka na dorucenie");
+		System.out.println("Vynimka: " + e);
 	}
 
 }
