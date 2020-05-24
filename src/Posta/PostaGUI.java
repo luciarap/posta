@@ -43,8 +43,7 @@ public class PostaGUI extends Application {
 
 	/**
 	 * @param hlavneOkno je jeden hlavnı stage, ktorı sa púša v aplikácii
-	 * @see Controllers#LoginController#validateUser(String username, String
-	 *      password) vyhodnocovanie pouívate¾skıch údajov
+	 * @see Controllers#LoginController#validateUser(String username, String password) vyhodnocovanie pouívate¾skıch údajov
 	 */
 	public void start(Stage hlavneOkno) throws Exception {
 		FileInputStream inputstream = new FileInputStream("obrazky\\letter.png");
