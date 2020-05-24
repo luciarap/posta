@@ -27,6 +27,11 @@ public class Pohladnice extends Tovary {
 
 		private String nazovDruhu;
 
+		/**
+		 * Konštruktor na enum
+		 * 
+		 * @param nazov je názov druhu tovaru
+		 */
 		private DruhPohladnic(String nazov) {
 			this.nazovDruhu = nazov;
 		}
@@ -47,6 +52,10 @@ public class Pohladnice extends Tovary {
 		}
 	}
 
+	/**
+	 * 
+	 * @return vracia boolean hodnotu, èi je druh tovaru korektný
+	 */
 	public boolean isValid() {
 		return isValid;
 	}

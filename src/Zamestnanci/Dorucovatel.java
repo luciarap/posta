@@ -8,7 +8,7 @@ import zasielky.PoistenyList;
 import zasielky.Zasielky;
 
 /**
- * Trieda doruËovateæ je list v n·vrhovoom vzore Composite, implementuje
+ * Trieda doruËovateæ je list v n·vrhovom vzore Composite, implementuje
  * interface Zamestnanec MÙûe doruËovaù a zapisovaù z·sielky
  * 
  * @author Lucia Rap·nov·
@@ -20,16 +20,6 @@ public class Dorucovatel implements Zamestnanec {
 	private int ID;
 	private double mzda;
 	private String pohlavie;
-
-	private double stavHotovosti = 0;
-
-	public double getStavHotovosti() {
-		return stavHotovosti;
-	}
-
-	public void setStavHotovosti(double stavHotovosti) {
-		this.stavHotovosti = stavHotovosti;
-	}
 
 	/**
 	 * Konötruktor DoruËovateæa
@@ -46,19 +36,18 @@ public class Dorucovatel implements Zamestnanec {
 		this.pohlavie = pohlavie;
 	}
 
+	@Override
 	public String getPohlavie() {
 		return pohlavie;
 	}
 
-	public void setPohlavie(String pohlavie) {
-		this.pohlavie = pohlavie;
-	}
-
+	@Override
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");
 	}
 
+	@Override
 	public void Dorucit(Zasielky zasielka) {
 		odpisZasielky(ar, zasielka);
 	}
@@ -105,6 +94,7 @@ public class Dorucovatel implements Zamestnanec {
 		return priezvisko;
 	}
 
+	@Override
 	public void info() {
 		System.out.println("_______________");
 		System.out.println("ID: " + getID());

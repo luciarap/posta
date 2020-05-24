@@ -26,6 +26,11 @@ public class Casopisy extends Tovary {
 
 		private String nazovDruhu;
 
+		/**
+		 * Konštruktor na enum
+		 * 
+		 * @param nazov je názov druhu tovaru
+		 */
 		private DruhCasopisov(String nazov) {
 			this.nazovDruhu = nazov;
 		}
@@ -41,6 +46,10 @@ public class Casopisy extends Tovary {
 			return nazovDruhu.equals(otherName);
 		}
 
+		/**
+		 * 
+		 * @return vracia boolean hodnotu, èi je druh tovaru korektný
+		 */
 		public String toString() {
 			return this.nazovDruhu;
 		}

@@ -13,18 +13,34 @@ public abstract class Zasielky implements java.io.Serializable {
 	private Date datum;
 	private String podacieCislo;
 
+	/**
+	 * 
+	 * @return dátum zapísania zásielky
+	 */
 	public Date getDatum() {
 		return datum;
 	}
 
+	/**
+	 * 
+	 * @param datum je dátum zapisovania zásielky
+	 */
 	public void setDatum(Date datum) {
 		this.datum = datum;
 	}
 
+	/**
+	 * 
+	 * @return podacie èíslo zásielky
+	 */
 	public String getPodacieCislo() {
 		return podacieCislo;
 	}
 
+	/**
+	 * 
+	 * @param podacieCislo je podacie èíslo zásielky
+	 */
 	public void setPodacieCislo(String podacieCislo) {
 		this.podacieCislo = podacieCislo;
 	}

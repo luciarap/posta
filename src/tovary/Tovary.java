@@ -16,34 +16,66 @@ public abstract class Tovary implements java.io.Serializable {
 	private int pocet;
 	private String druh;
 
+	/**
+	 * 
+	 * @return druh tovaru
+	 */
 	public String getDruh() {
 		return druh;
 	}
 
+	/**
+	 * 
+	 * @param druh je druh tovaru
+	 */
 	public void setDruh(String druh) {
 		this.druh = druh;
 	}
 
+	/**
+	 * 
+	 * @return cenu tovaru
+	 */
 	public double getCena() {
 		return cena;
 	}
 
+	/**
+	 * 
+	 * @param cena je cena tovaru
+	 */
 	public void setCena(double cena) {
 		this.cena = cena;
 	}
 
+	/**
+	 * 
+	 * @return názov tovaru
+	 */
 	public String getNazov() {
 		return nazov;
 	}
 
+	/**
+	 * 
+	 * @param nazov je názov tovaru
+	 */
 	public void setNazov(String nazov) {
 		this.nazov = nazov;
 	}
 
+	/**
+	 * 
+	 * @return poèet tovaru
+	 */
 	public int getPocet() {
 		return pocet;
 	}
 
+	/**
+	 * 
+	 * @param pocet nastaví poèet tovaru
+	 */
 	public void setPocet(int pocet) {
 		this.pocet = pocet;
 	}

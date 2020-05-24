@@ -39,26 +39,22 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 		this.ID = ID;
 		this.pohlavie = pohlavie;
 	}
-
+	@Override
 	public String getPohlavie() {
 		return pohlavie;
 	}
 
-	public void setPohlavie(String pohlavie) {
-		this.pohlavie = pohlavie;
-	}
-
 	List<Zamestnanec> zamestnanci = new ArrayList<Zamestnanec>();
-
+	@Override
 	public void odpisZasielky(ArrayList<Zasielky> ar, Zasielky zasielka) {
 		ar.remove(zasielka);
 		System.out.println("Zasielka bola dorucena.");
 	}
-
+	@Override
 	public void Dorucit(Zasielky zasielka) {
 		odpisZasielky(ar, zasielka);
 	}
-
+	@Override
 	public DoporucenyList zapisZasielku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo,
 			int psc, String Mesto) throws PodacieCisloException { // test
 		DoporucenyList zasielka = new DoporucenyList(meno, priezvisko, ulica, cislo, psc, Mesto);
@@ -70,7 +66,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 
 		return zasielka;
 	}
-
+	@Override
 	public Dobierka zapisDobierku(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto, double suma, double hmotnost) throws PodacieCisloException { // test
 		Dobierka dobierka = new Dobierka(meno, priezvisko, ulica, cislo, psc, Mesto, suma, hmotnost);
@@ -82,7 +78,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 
 		return dobierka;
 	}
-
+	@Override
 	public PoistenyList zapisPL(String podacieCislo, String meno, String priezvisko, String ulica, int cislo, int psc,
 			String Mesto, double suma) throws PodacieCisloException { // test
 		PoistenyList pl = new PoistenyList(meno, priezvisko, ulica, cislo, psc, Mesto, suma);
@@ -94,7 +90,7 @@ public class VeduciPosty implements Zamestnanec, ManageMoney {
 
 		return pl;
 	}
-
+	@Override
 	public boolean CheckDuplicate(String podacieCislo) {
 
 		for (int counter = 0; counter < ar.size(); counter++) {

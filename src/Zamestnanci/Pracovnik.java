@@ -22,17 +22,8 @@ public class Pracovnik implements Zamestnanec { // LEAF
 	private int ID;
 	private double mzda;
 	private String pohlavie;
-
-	private double stavHotovosti = 0;
 	private String uvazok;
 
-	public double getStavHotovosti() {
-		return stavHotovosti;
-	}
-
-	public void setStavHotovosti(double stavHotovosti) {
-		this.stavHotovosti = stavHotovosti;
-	}
 
 	/**
 	 * Konštruktor pracovníka
@@ -51,17 +42,9 @@ public class Pracovnik implements Zamestnanec { // LEAF
 		this.uvazok = uvazok;
 		this.pohlavie = pohlavie;
 	}
-
+	@Override
 	public String getPohlavie() {
 		return pohlavie;
-	}
-
-	public void setPohlavie(String pohlavie) {
-		this.pohlavie = pohlavie;
-	}
-
-	public void predajTovar() {
-
 	}
 
 	@Override
@@ -97,7 +80,7 @@ public class Pracovnik implements Zamestnanec { // LEAF
 		// TODO Auto-generated method stub
 
 	}
-
+	@Override
 	public void info() {
 		System.out.println("_______________");
 		System.out.println("ID: " + getID());
@@ -124,10 +107,18 @@ public class Pracovnik implements Zamestnanec { // LEAF
 		return "meno: " + meno + ", priezvisko: " + priezvisko;
 	}
 
+	/**
+	 * 
+	 * @return pracovný úväzok pracovníka
+	 */
 	public String getUvazok() {
 		return uvazok;
 	}
 
+	/**
+	 * 
+	 * @param uvazok je pracovný úväzok zamestnanca
+	 */
 	public void setUvazok(String uvazok) {
 		this.uvazok = uvazok;
 	}

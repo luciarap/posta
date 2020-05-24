@@ -12,18 +12,34 @@ public class Dobierka extends Zasielky {
 	private double suma;
 	private double hmotnost;
 
+	/**
+	 * 
+	 * @return vr·ti sumu dobierky
+	 */
 	public double getSuma() {
 		return suma;
 	}
 
+	/**
+	 * 
+	 * @param suma je suma dobierky
+	 */
 	public void setSuma(double suma) {
 		this.suma = suma;
 	}
 
+	/**
+	 * 
+	 * @return hmotnosù dobierky
+	 */
 	public double getHmotnost() {
 		return hmotnost;
 	}
 
+	/**
+	 * 
+	 * @param hmotnost je hmotnosù dobierky
+	 */
 	public void setHmotnost(double hmotnost) {
 		this.hmotnost = hmotnost;
 	}

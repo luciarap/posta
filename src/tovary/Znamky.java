@@ -26,6 +26,11 @@ public class Znamky extends Tovary {
 
 		private String nazovDruhu;
 
+		/**
+		 * Konštruktor na enum
+		 * 
+		 * @param nazov je názov druhu tovaru
+		 */
 		private DruhZnamok(String nazov) {
 			this.nazovDruhu = nazov;
 		}
@@ -46,6 +51,10 @@ public class Znamky extends Tovary {
 		}
 	}
 
+	/**
+	 * 
+	 * @return vracia boolean hodnotu, èi je druh tovaru korektný
+	 */
 	public boolean isValid() {
 		return isValid;
 	}

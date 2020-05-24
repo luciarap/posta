@@ -23,10 +23,18 @@ public class ManazerHotovosti {
 		return manageMoney.pridaj(stav, suma);
 	}
 
+	/**
+	 * 
+	 * @return stav hotovosti na pošte
+	 */
 	public static double getStavHotovosti() {
 		return stavHotovosti;
 	}
 
+	/**
+	 * 
+	 * @param stavHotovosti je stav hotovosti na pošte
+	 */
 	public static void setStavHotovosti(double stavHotovosti) {
 		ManazerHotovosti.stavHotovosti = stavHotovosti;
 	}
