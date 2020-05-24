@@ -5,8 +5,6 @@ oop-2020-str-18-b-sulaimankhail-luciarap created by GitHub Classroom
 Main s GUI -> `PostaGUI.java`
 Spúšťa sa ako AspectJ/Java aplikácia.
 
-Posta.java - len konzola
-
 Login pre GUI
 
 `username: veduci`
@@ -24,3 +22,7 @@ Správa o projekte sa nachádza v pdf súbore spravaRapanova.pdf
 Celý UML diagram sa nachádza v súbore UML diagram.ucls alebo UML.png, čiastkový diagram, ktorý bol použitý v správe o realizácii projektu sa nachádza v uml cast.ucls alebo uml cast.png
 
 Javadoc html sa nachádza v súbore doc -> index.html
+
+obrazky obsahujú použité obrázky v projekte. Zdroje obrázkov sa nachádzajú na konci Správy o realizácii projektu.
+
+serializacia obsahuje serializované súbory - tovary a zásielky. Do tovary.ser sa ukladajú Tovary a do doporucenyList.ser všetky zásielky.
