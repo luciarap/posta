@@ -1,5 +1,7 @@
 # Poštový systém na zapisovanie a doručovanie zásielok, predaj tovaru, správu používateľov
+
 Course: Object-Oriented Programming
+
 Main s GUI -> `PostaGUI.java`
 Spúšťa sa ako AspectJ/Java aplikácia.
 
